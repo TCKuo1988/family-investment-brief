@@ -49,7 +49,7 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 <div id="podcast-details"><div class="card podcastcard"><div class="podcasthead"><div class="podcasticon">♫</div><div><h2 class="title" style="margin:0">股癌 Podcast｜最新集市場觀點</h2><div class="sub">EP706・2026/10/17・約 52 分鐘｜觀點摘要</div></div></div>
 <ul class="podcastpoints"><li><b>市場廣度縮小：</b>主持人觀察維持強勢的股票減少，對多頭後段盤勢提高警戒。</li><li><b>硬體與軟體輪動：</b>留意 AI 硬體類股評價壓力，以及資金轉向軟體的可能性。</li><li><b>逢跌態度：</b>重視風險與現金，不主張以槓桿 ETF 盲目抄底。</li></ul>
 <p class="podsource">以上為第三方節目整理的主持人觀點，並非已證實的市場事實或本網站交易建議。<a href="https://podcasts.apple.com/tw/podcast/gooaye-%E8%82%A1%E7%99%8C/id1500839292" target="_blank" rel="noopener">收聽原節目 ↗</a>｜<a href="https://yasac.substack.com/p/ep706" target="_blank" rel="noopener">參考摘要來源 ↗</a></p></div></div><div class="card"><h2 class="title">五、今日決策與後續驗證清單</h2><div class="sectionline"><b>現在不做：</b>因單日跌幅或新聞熱度立即換股、追逐低價 ETF、擴大原定機會型投入預算。</div><div class="sectionline"><b>應該持續觀察：</b>台股能否收復反彈區、半導體需求是否伴隨企業獲利指引修正、AI 雲端業者算力利用率及自由現金流。</div><div class="sectionline"><b>最優先研究：</b>SpaceX AI 算力收入雖快速上升，營業利益與自由現金流能否在新增資料中心投產後同步改善？這會同時牽動對 NVDA 上游需求的中期判斷。</div><p class="source">本頁是 10/21 分析版型示範，依先前晨報內容深化，未對全部財報數值作新的獨立核驗。未來正式晨報應逐條附原始財報、法說及日期連結，並定期檢視預測是否成真。</p></div></div></section>
-<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，資料庫維持拒絕所有讀寫。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">這是你的登入識別碼，不是密碼或存取金鑰。私人持股尚未啟用。</p></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="auth-diagnose" type="button">檢查 Firebase 連線</button><p class="source" id="auth-diagnosis" style="overflow-wrap:anywhere">點選後會顯示驗證服務回應，不會登入帳號或讀取私人資料。</p></div></section>
+<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，私人資料尚未上傳，僅以 Firebase 規則驗證指定帳號對私人路徑的讀取權限。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">這是你的登入識別碼，不是密碼或存取金鑰。私人持股尚未啟用。</p></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="db-test" type="button" disabled>測試私人資料讀取權限</button><p class="source" id="db-test-result">請先使用 Google 登入。</p><button class="smallbtn" id="auth-diagnose" type="button">檢查 Firebase 連線</button><p class="source" id="auth-diagnosis" style="overflow-wrap:anywhere">點選後會顯示驗證服務回應，不會登入帳號或讀取私人資料。</p></div></section>
 <div class="foot">非即時行情，所有日期以頁面標註為準。本報告是投資研究整理，非買賣指令。<br>詳細分析目前為 2026/10/21 歷史內容；每日自動更新尚未啟用。</div></main>
 <script>
 const q=id=>document.getElementById(id);
@@ -114,11 +114,23 @@ fetch('./report.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw 
 </script><script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-const config={apiKey:"AIzaSyAVJdnqSs25_qI25Esv8EIZabsLLHVV4zk",authDomain:"tck-family-investment.firebaseapp.com",projectId:"tck-family-investment",appId:"1:343962418857:web:c27463019b4ceeb67573b8"};
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+const config={apiKey:"AIzaSyAVJdnqSs25_qI25Esv8EIZabsLLHVV4zk",authDomain:"tck-family-investment.firebaseapp.com",databaseURL:"https://tck-family-investment-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"tck-family-investment",appId:"1:343962418857:web:c27463019b4ceeb67573b8"};
 const status=document.getElementById('auth-status');
 try{
   const app=initializeApp(config);
   const auth=getAuth(app);
+  const db=getDatabase(app);
+  const testButton=document.getElementById("db-test");
+  const dbResult=document.getElementById("db-test-result");
+  testButton.addEventListener("click",async()=>{
+    if(!auth.currentUser){dbResult.textContent="請先登入";return;}
+    testButton.disabled=true;dbResult.textContent="正在以目前帳號檢查 familyPortfolio 讀取權限…";
+    try{const snap=await get(ref(db,"familyPortfolio"));
+      dbResult.textContent=snap.exists()?"讀取成功：私人路徑已有資料（此測試不顯示內容）。":"讀取成功：已獲授權，私人路徑目前尚無資料。";
+    }catch(e){dbResult.textContent="讀取失敗："+(e.code||e.message)+"。若顯示 PERMISSION_DENIED，請確認規則已發布及 UID 是否完全相符。";}
+    finally{testButton.disabled=!auth.currentUser;}
+  });
   const diagnosis=document.getElementById('auth-diagnosis');
   document.getElementById('auth-diagnose').addEventListener('click',async()=>{
     diagnosis.textContent='正在檢查 Identity Toolkit API…';
@@ -142,6 +154,8 @@ try{
   onAuthStateChanged(auth,u=>{
     document.getElementById('auth-guest').hidden=!!u;
     document.getElementById('auth-user').hidden=!u;
+    testButton.disabled=!u;
+    dbResult.textContent=u?'登入成功，可按「測試私人資料讀取權限」。':'請先使用 Google 登入。';
     if(u){document.getElementById('auth-name').textContent=u.displayName||'已登入';document.getElementById('auth-email').textContent=u.email||'';document.getElementById('auth-uid').textContent=u.uid;status.textContent='登入成功。尚未開放私人資料讀取。'}
     else status.textContent='尚未登入。只有完成白名單與資料庫安全規則，才會開放持股資料。';
   },e=>{status.textContent='登入狀態錯誤：'+e.message});
