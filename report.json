@@ -10,9 +10,18 @@
   "etf-summary": "進入可觀察的小額回檔區間，但不急於進場。僅使用原本可運用閒錢小額分批。",
   "stocks-tag": "整體維持",
   "stocks": [
-    {"ticker":"NVDA","note":"AI 算力需求論點未被推翻，繼續追蹤 GPU 採購及大型客戶資本支出。"},
-    {"ticker":"TSLA","note":"關注 Robotaxi、FSD 與 Optimus 商業化；消息尚不足以改變持股論點。"},
-    {"ticker":"SPCX","note":"AI 營收加速，長線論點增強；但資本支出與資金回收壓力仍高。"}
+    {
+      "ticker": "NVDA",
+      "note": "AI 算力需求論點未被推翻，繼續追蹤 GPU 採購及大型客戶資本支出。"
+    },
+    {
+      "ticker": "TSLA",
+      "note": "關注 Robotaxi、FSD 與 Optimus 商業化；消息尚不足以改變持股論點。"
+    },
+    {
+      "ticker": "SPCX",
+      "note": "AI 營收加速，長線論點增強；但資本支出與資金回收壓力仍高。"
+    }
   ],
   "action-tag": "暫不調整",
   "action": "維持原定長線持股；006208 僅觀察小額買點。尚無立即減碼、汰換或大幅加碼的明確證據。",
