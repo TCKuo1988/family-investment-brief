@@ -33,11 +33,16 @@ def yahoo_history(ticker):
     candles=(result.get("indicators",{}).get("quote") or [{}])[0].get("close") or []
     zone=ZoneInfo(result.get("meta",{}).get("exchangeTimezoneName") or "UTC")
     rows={}
+    now_local=dt.datetime.now(zone)
+    # Exclude an unfinished current market session; chart values are closing prices only.
+    min_close_hour=16 if "Taipei" in str(zone) else 17
     for ts,close in zip(stamps,candles):
         if close is None:continue
         value=round(float(close),4)
         if value<=0:continue
-        day=dt.datetime.fromtimestamp(ts,zone).date().isoformat()
+        session_date=dt.datetime.fromtimestamp(ts,zone).date()
+        if session_date==now_local.date() and now_local.hour<min_close_hour:continue
+        day=session_date.isoformat()
         rows[day]={"date":day,"close":value}
     return list(rows.values())[-22:]
 
