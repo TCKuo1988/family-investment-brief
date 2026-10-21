@@ -1,0 +1,28 @@
+name: Update TCK TWSE closing prices
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 8 * * 1-5' # UTC 08:40 = Taiwan 16:40, trading days
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read latest official TWSE prices
+        run: python scripts/update_twse.py
+      - name: Publish updated quote file only
+        run: |
+          if git diff --quiet -- report.json; then
+            echo 'No new trading day.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add report.json
+          git commit -m 'Update official TWSE closing prices'
+          git push

@@ -1,0 +1,1 @@
+上傳 index.html、report.json、scripts/update_twse.py、.github/workflows/update-market.yml 到 GitHub 同名路徑。公開資料：僅台股加權指數、0050、006208 最新交易日行情。台灣時間平日 16:40 觸發，實際執行可能延遲。晨報分析與 Podcast 尚未自動更新，私人持股資料不在此包。請勿把私人持股檔案上傳到 Public repo。
