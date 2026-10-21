@@ -1,0 +1,28 @@
+name: Refresh public 30-day market charts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 9 * * 1-5'
+permissions:
+  contents: write
+jobs:
+  fetch-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update only validated history
+        run: python scripts/update_history.py
+      - name: Save successful data updates
+        run: |
+          if git diff --quiet -- history.json; then
+            echo "No new validated data."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add history.json
+          git commit -m "Refresh public monthly market history"
+          git push
