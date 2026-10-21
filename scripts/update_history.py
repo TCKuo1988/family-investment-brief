@@ -39,7 +39,7 @@ def yahoo_history(ticker):
         if value<=0:continue
         day=dt.datetime.fromtimestamp(ts,zone).date().isoformat()
         rows[day]={"date":day,"close":value}
-    return list(rows.values())[-31:]
+    return list(rows.values())[-22:]
 
 def run():
     d=json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else {"series":{}}
