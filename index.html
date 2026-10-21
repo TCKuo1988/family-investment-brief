@@ -49,7 +49,7 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 <div id="podcast-details"><div class="card podcastcard"><div class="podcasthead"><div class="podcasticon">♫</div><div><h2 class="title" style="margin:0">股癌 Podcast｜最新集市場觀點</h2><div class="sub">EP706・2026/10/17・約 52 分鐘｜觀點摘要</div></div></div>
 <ul class="podcastpoints"><li><b>市場廣度縮小：</b>主持人觀察維持強勢的股票減少，對多頭後段盤勢提高警戒。</li><li><b>硬體與軟體輪動：</b>留意 AI 硬體類股評價壓力，以及資金轉向軟體的可能性。</li><li><b>逢跌態度：</b>重視風險與現金，不主張以槓桿 ETF 盲目抄底。</li></ul>
 <p class="podsource">以上為第三方節目整理的主持人觀點，並非已證實的市場事實或本網站交易建議。<a href="https://podcasts.apple.com/tw/podcast/gooaye-%E8%82%A1%E7%99%8C/id1500839292" target="_blank" rel="noopener">收聽原節目 ↗</a>｜<a href="https://yasac.substack.com/p/ep706" target="_blank" rel="noopener">參考摘要來源 ↗</a></p></div></div><div class="card"><h2 class="title">五、今日決策與後續驗證清單</h2><div class="sectionline"><b>現在不做：</b>因單日跌幅或新聞熱度立即換股、追逐低價 ETF、擴大原定機會型投入預算。</div><div class="sectionline"><b>應該持續觀察：</b>台股能否收復反彈區、半導體需求是否伴隨企業獲利指引修正、AI 雲端業者算力利用率及自由現金流。</div><div class="sectionline"><b>最優先研究：</b>SpaceX AI 算力收入雖快速上升，營業利益與自由現金流能否在新增資料中心投產後同步改善？這會同時牽動對 NVDA 上游需求的中期判斷。</div><p class="source">本頁是 10/21 分析版型示範，依先前晨報內容深化，未對全部財報數值作新的獨立核驗。未來正式晨報應逐條附原始財報、法說及日期連結，並定期檢視預測是否成真。</p></div></div></section>
-<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，私人資料尚未上傳，僅以 Firebase 規則驗證指定帳號對私人路徑的讀取權限。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">私人持股須經 Firebase 授權才能讀取，不會出現在公開網頁原始碼。</p><div id="private-dashboard" hidden><h3 class="title">家庭股票互動總覽</h3><div class="filter" id="private-filters" role="group" aria-label="篩選家庭成員"></div><p class="sub" id="private-date"></p><div class="grid"><div class="metric"><small>原檔股票市值</small><strong id="private-stocks-value">—</strong></div><div class="metric"><small>可投入現金</small><strong id="private-cash-value">—</strong></div><div class="metric"><small>股票＋現金</small><strong id="private-total-value">—</strong></div></div><h3 style="margin:18px 0 8px">資產配置</h3><div id="private-allocation" class="allocation" aria-label="家庭資產配置比例"></div><div id="private-legend" class="allocationlegend"></div><h3 style="margin:18px 0 8px">四人持股與資金</h3><div class="tablewrap"><table><thead><tr><th>成員</th><th>股票市值</th><th>可投入現金</th></tr></thead><tbody id="private-people"></tbody></table></div><h3 style="margin:18px 0 8px">個別標的</h3><div class="filter"><label for="private-search" class="sub">搜尋標的</label><input id="private-search" type="search" placeholder="例如 NVDA、006208" style="border:1px solid #cedaed;border-radius:9px;padding:8px 10px;min-width:190px;max-width:100%;font:inherit" /><label for="private-sort" class="sub">排序</label><select id="private-sort" style="border:1px solid #cedaed;border-radius:9px;padding:8px;font:inherit"><option value="value">市值由高到低</option><option value="ticker">標的代號</option><option value="cost">投入成本</option></select></div><div class="tablewrap"><table><thead><tr><th>成員</th><th>標的</th><th>股數</th><th>平均成本</th><th>成本總額(TWD)</th><th>來源市值(TWD)</th></tr></thead><tbody id="private-holdings"></tbody></table></div><p class="source">以上為 Excel 基準日的歷史快照，並非即時行情或當天最新部位。</p></div></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="db-test" type="button" disabled>測試私人資料讀取權限</button><p class="source" id="db-test-result">請先使用 Google 登入。</p><button class="smallbtn" id="auth-diagnose" type="button">檢查 Firebase 連線</button><p class="source" id="auth-diagnosis" style="overflow-wrap:anywhere">點選後會顯示驗證服務回應，不會登入帳號或讀取私人資料。</p></div></section>
+<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜私人投資儀表板</h2><p class="sub">使用已授權的 Google 帳號登入，即可安全查看家庭持股、成本與可投入現金。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">資料經 Firebase 身分及權限驗證後才載入，未放在公開 GitHub。</p><div id="private-dashboard" hidden><h3 class="title">家庭股票互動總覽</h3><div class="filter" id="private-filters" role="group" aria-label="篩選家庭成員"></div><p class="sub" id="private-date"></p><div class="grid"><div class="metric"><small>原檔股票市值</small><strong id="private-stocks-value">—</strong></div><div class="metric"><small>可投入現金</small><strong id="private-cash-value">—</strong></div><div class="metric"><small>股票＋現金</small><strong id="private-total-value">—</strong></div></div><h3 style="margin:18px 0 8px">資產配置</h3><div id="private-allocation" class="allocation" aria-label="家庭資產配置比例"></div><div id="private-legend" class="allocationlegend"></div><h3 style="margin:18px 0 8px">四人持股與資金</h3><div class="tablewrap"><table><thead><tr><th>成員</th><th>股票市值</th><th>可投入現金</th></tr></thead><tbody id="private-people"></tbody></table></div><h3 style="margin:18px 0 8px">個別標的</h3><div class="filter"><label for="private-search" class="sub">搜尋標的</label><input id="private-search" type="search" placeholder="例如 NVDA、006208" style="border:1px solid #cedaed;border-radius:9px;padding:8px 10px;min-width:190px;max-width:100%;font:inherit" /><label for="private-sort" class="sub">排序</label><select id="private-sort" style="border:1px solid #cedaed;border-radius:9px;padding:8px;font:inherit"><option value="value">市值由高到低</option><option value="ticker">標的代號</option><option value="cost">投入成本</option></select></div><div class="tablewrap"><table><thead><tr><th>成員</th><th>標的</th><th>股數</th><th>平均成本</th><th>成本總額(TWD)</th><th>來源市值(TWD)</th></tr></thead><tbody id="private-holdings"></tbody></table></div><p class="source">以上為 Excel 基準日的歷史快照，並非即時行情或當天最新部位。</p></div></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="db-test" type="button" disabled hidden>重新載入持股</button><p class="source" id="db-test-result">請先登入。</p></div></section>
 <div class="foot">非即時行情，所有日期以頁面標註為準。本報告是投資研究整理，非買賣指令。<br>詳細分析目前為 2026/10/21 歷史內容；每日自動更新尚未啟用。</div></main>
 <script>
 const q=id=>document.getElementById(id);
@@ -167,24 +167,25 @@ try{
   document.getElementById('private-sort').addEventListener('change',()=>{if(privateData)renderPrivate(privateData)});
     const testButton=document.getElementById("db-test");
   const dbResult=document.getElementById("db-test-result");
-  testButton.addEventListener("click",async()=>{
-    if(!auth.currentUser){dbResult.textContent="請先登入";return;}
-    testButton.disabled=true;dbResult.textContent="正在以目前帳號檢查 familyPortfolio 讀取權限…";
-    try{const snap=await get(ref(db,"familyPortfolio"));
-      if(snap.exists()){renderPrivate(snap.val());dbResult.textContent="讀取成功：已載入私人家庭持股總覽。";}else{dbResult.textContent="讀取成功：已獲授權，私人路徑目前尚無資料。";}
-    }catch(e){dbResult.textContent="讀取失敗："+(e.code||e.message)+"。若顯示 PERMISSION_DENIED，請確認規則已發布及 UID 是否完全相符。";}
-    finally{testButton.disabled=!auth.currentUser;}
-  });
-  const diagnosis=document.getElementById('auth-diagnosis');
-  document.getElementById('auth-diagnose').addEventListener('click',async()=>{
-    diagnosis.textContent='正在檢查 Identity Toolkit API…';
+  let loadSeq=0;
+  async function loadPrivatePortfolio(){
+    const user=auth.currentUser;
+    if(!user){dbResult.textContent="請先登入 Google 帳號";return;}
+    const seq=++loadSeq;
+    testButton.disabled=true;
+    dbResult.textContent="正在驗證權限並載入私人持股…";
+    document.getElementById("private-dashboard").hidden=true;
     try{
-      const endpoint='https://identitytoolkit.googleapis.com/v1/accounts:createAuthUri?key='+encodeURIComponent(config.apiKey);
-      const result=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifier:'nonexistent-tck-diagnostic@example.invalid',continueUri:location.origin})});
-      const data=await result.json();
-      diagnosis.textContent=result.ok?'連線有效（HTTP '+result.status+'）；請再試 Google 登入。':'API 回應 HTTP '+result.status+'｜'+(data.error?.status||'')+'｜'+(data.error?.message||'未提供錯誤細節');
-    }catch(e){diagnosis.textContent='連線或瀏覽器錯誤：'+String(e.message||e)}
-  });
+      const snap=await get(ref(db,"familyPortfolio"));
+      if(seq!==loadSeq || auth.currentUser?.uid!==user.uid)return;
+      if(snap.exists()){renderPrivate(snap.val());dbResult.textContent="私人持股已載入，可切換成員、搜尋及排序。";}
+      else dbResult.textContent="已授權，但尚無私人持股資料。";
+    }catch(e){
+      if(seq!==loadSeq)return;
+      dbResult.textContent=e.code==="PERMISSION_DENIED"||String(e.message).toLowerCase().includes("permission")?"目前登入帳號沒有私人持股存取權限，請確認已加入 Firebase 白名單。":"無法載入資料："+(e.code||e.message);
+    }finally{if(seq===loadSeq)testButton.disabled=!auth.currentUser;}
+  }
+  testButton.addEventListener("click",loadPrivatePortfolio);
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({prompt:"select_account"});
   document.getElementById('google-login').addEventListener('click',async()=>{
@@ -192,17 +193,23 @@ try{
     try{await signInWithPopup(auth,provider)}catch(e){status.textContent='登入未完成：'+(e.code||e.message)}
   });
   document.getElementById('google-logout').addEventListener('click',()=>signOut(auth));
-  document.getElementById('copy-auth-uid').addEventListener('click',async()=>{
-    try{await navigator.clipboard.writeText(auth.currentUser?.uid||'');status.textContent='UID 已複製'}catch(e){status.textContent='複製失敗，可手動選取 UID'}
-  });
   onAuthStateChanged(auth,u=>{
+    ++loadSeq;
     document.getElementById('auth-guest').hidden=!!u;
     document.getElementById('auth-user').hidden=!u;
     testButton.disabled=!u;
-    if(!u){document.getElementById("private-dashboard").hidden=true;privateData=null;}
-    dbResult.textContent=u?'登入成功，可按「測試私人資料讀取權限」。':'請先使用 Google 登入。';
-    if(u){document.getElementById('auth-name').textContent=u.displayName||'已登入';document.getElementById('auth-email').textContent=u.email||'';document.getElementById('auth-uid').textContent=u.uid;status.textContent='登入成功。尚未開放私人資料讀取。'}
-    else status.textContent='尚未登入。只有完成白名單與資料庫安全規則，才會開放持股資料。';
+    testButton.hidden=!u;
+    document.getElementById("private-dashboard").hidden=true;
+    privateData=null;
+    if(u){
+      document.getElementById('auth-name').textContent=u.displayName||'已登入';
+      document.getElementById('auth-email').textContent=u.email||'';
+      status.textContent='已使用 Google 登入。';
+      loadPrivatePortfolio();
+    }else{
+      status.textContent='請先使用授權的 Google 帳號登入。';
+      dbResult.textContent='登入後將自動載入私人持股。';
+    }
   },e=>{status.textContent='登入狀態錯誤：'+e.message});
 }catch(e){status.textContent='Firebase 初始化失敗：'+e.message}
 </script></body></html>
