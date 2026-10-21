@@ -49,7 +49,7 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 <div id="podcast-details"><div class="card podcastcard"><div class="podcasthead"><div class="podcasticon">♫</div><div><h2 class="title" style="margin:0">股癌 Podcast｜最新集市場觀點</h2><div class="sub">EP706・2026/10/17・約 52 分鐘｜觀點摘要</div></div></div>
 <ul class="podcastpoints"><li><b>市場廣度縮小：</b>主持人觀察維持強勢的股票減少，對多頭後段盤勢提高警戒。</li><li><b>硬體與軟體輪動：</b>留意 AI 硬體類股評價壓力，以及資金轉向軟體的可能性。</li><li><b>逢跌態度：</b>重視風險與現金，不主張以槓桿 ETF 盲目抄底。</li></ul>
 <p class="podsource">以上為第三方節目整理的主持人觀點，並非已證實的市場事實或本網站交易建議。<a href="https://podcasts.apple.com/tw/podcast/gooaye-%E8%82%A1%E7%99%8C/id1500839292" target="_blank" rel="noopener">收聽原節目 ↗</a>｜<a href="https://yasac.substack.com/p/ep706" target="_blank" rel="noopener">參考摘要來源 ↗</a></p></div></div><div class="card"><h2 class="title">五、今日決策與後續驗證清單</h2><div class="sectionline"><b>現在不做：</b>因單日跌幅或新聞熱度立即換股、追逐低價 ETF、擴大原定機會型投入預算。</div><div class="sectionline"><b>應該持續觀察：</b>台股能否收復反彈區、半導體需求是否伴隨企業獲利指引修正、AI 雲端業者算力利用率及自由現金流。</div><div class="sectionline"><b>最優先研究：</b>SpaceX AI 算力收入雖快速上升，營業利益與自由現金流能否在新增資料中心投產後同步改善？這會同時牽動對 NVDA 上游需求的中期判斷。</div><p class="source">本頁是 10/21 分析版型示範，依先前晨報內容深化，未對全部財報數值作新的獨立核驗。未來正式晨報應逐條附原始財報、法說及日期連結，並定期檢視預測是否成真。</p></div></div></section>
-<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，資料庫維持拒絕所有讀寫。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">這是你的登入識別碼，不是密碼或存取金鑰。私人持股尚未啟用。</p></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p></div></section>
+<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，資料庫維持拒絕所有讀寫。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">這是你的登入識別碼，不是密碼或存取金鑰。私人持股尚未啟用。</p></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="auth-diagnose" type="button">檢查 Firebase 連線</button><p class="source" id="auth-diagnosis" style="overflow-wrap:anywhere">點選後會顯示驗證服務回應，不會登入帳號或讀取私人資料。</p></div></section>
 <div class="foot">非即時行情，所有日期以頁面標註為準。本報告是投資研究整理，非買賣指令。<br>詳細分析目前為 2026/10/21 歷史內容；每日自動更新尚未啟用。</div></main>
 <script>
 const q=id=>document.getElementById(id);
@@ -119,6 +119,16 @@ const status=document.getElementById('auth-status');
 try{
   const app=initializeApp(config);
   const auth=getAuth(app);
+  const diagnosis=document.getElementById('auth-diagnosis');
+  document.getElementById('auth-diagnose').addEventListener('click',async()=>{
+    diagnosis.textContent='正在檢查 Identity Toolkit API…';
+    try{
+      const endpoint='https://identitytoolkit.googleapis.com/v1/accounts:createAuthUri?key='+encodeURIComponent(config.apiKey);
+      const result=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({identifier:'nonexistent-tck-diagnostic@example.invalid',continueUri:location.origin})});
+      const data=await result.json();
+      diagnosis.textContent=result.ok?'連線有效（HTTP '+result.status+'）；請再試 Google 登入。':'API 回應 HTTP '+result.status+'｜'+(data.error?.status||'')+'｜'+(data.error?.message||'未提供錯誤細節');
+    }catch(e){diagnosis.textContent='連線或瀏覽器錯誤：'+String(e.message||e)}
+  });
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({prompt:"select_account"});
   document.getElementById('google-login').addEventListener('click',async()=>{
