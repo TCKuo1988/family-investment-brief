@@ -189,5 +189,35 @@
       "討論AI硬體、平台、軟體的資金輪動可能；偏向降低題材與動能部位，而非全數出清。",
       "逢跌操作傾向不使用高槓桿抄底；這是主持人的操作觀點，不是已確認的市場事實。"
     ]
+  },
+  "us_quotes": {
+    "date": "2026-10-20",
+    "currency": "USD",
+    "source": "https://stockanalysis.com/",
+    "VOO": {
+      "close": 706.8,
+      "change": 2.2,
+      "percent": 0.31
+    },
+    "QQQ": {
+      "close": 717.63,
+      "change": -0.73,
+      "percent": -0.1
+    },
+    "NVDA": {
+      "close": 216.47,
+      "change": -0.62,
+      "percent": -0.29
+    },
+    "TSLA": {
+      "close": 373.71,
+      "change": 5.65,
+      "percent": 1.54
+    },
+    "SPCX": {
+      "close": 147.79,
+      "change": -0.17,
+      "percent": -0.11
+    }
   }
 }
