@@ -49,7 +49,7 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 <div id="podcast-details"><div class="card podcastcard"><div class="podcasthead"><div class="podcasticon">♫</div><div><h2 class="title" style="margin:0">股癌 Podcast｜最新集市場觀點</h2><div class="sub">EP706・2026/10/17・約 52 分鐘｜觀點摘要</div></div></div>
 <ul class="podcastpoints"><li><b>市場廣度縮小：</b>主持人觀察維持強勢的股票減少，對多頭後段盤勢提高警戒。</li><li><b>硬體與軟體輪動：</b>留意 AI 硬體類股評價壓力，以及資金轉向軟體的可能性。</li><li><b>逢跌態度：</b>重視風險與現金，不主張以槓桿 ETF 盲目抄底。</li></ul>
 <p class="podsource">以上為第三方節目整理的主持人觀點，並非已證實的市場事實或本網站交易建議。<a href="https://podcasts.apple.com/tw/podcast/gooaye-%E8%82%A1%E7%99%8C/id1500839292" target="_blank" rel="noopener">收聽原節目 ↗</a>｜<a href="https://yasac.substack.com/p/ep706" target="_blank" rel="noopener">參考摘要來源 ↗</a></p></div></div><div class="card"><h2 class="title">五、今日決策與後續驗證清單</h2><div class="sectionline"><b>現在不做：</b>因單日跌幅或新聞熱度立即換股、追逐低價 ETF、擴大原定機會型投入預算。</div><div class="sectionline"><b>應該持續觀察：</b>台股能否收復反彈區、半導體需求是否伴隨企業獲利指引修正、AI 雲端業者算力利用率及自由現金流。</div><div class="sectionline"><b>最優先研究：</b>SpaceX AI 算力收入雖快速上升，營業利益與自由現金流能否在新增資料中心投產後同步改善？這會同時牽動對 NVDA 上游需求的中期判斷。</div><p class="source">本頁是 10/21 分析版型示範，依先前晨報內容深化，未對全部財報數值作新的獨立核驗。未來正式晨報應逐條附原始財報、法說及日期連結，並定期檢視預測是否成真。</p></div></div></section>
-<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜私人儀表板</h2><p>家庭股數、成本、市值、報酬及配置比例不存放於公開網站。</p><p>私人 Google Sheets 已建立，包含全家四人的標的、股數、成本、可投入現金與資產配置。基於隱私安全，本公開網站不讀取或存放這些資料。</p><p><a class="smallbtn" style="display:inline-block;text-decoration:none" href="https://docs.google.com/spreadsheets/d/1VJtAWcKe7sSfc22fxaWe7kDgUtT_Drc-UH__wsyPbFc/edit#gid=903116204" target="_blank" rel="noopener noreferrer">開啟私人家庭持股總覽 ↗</a></p><p class="source">需使用有權限的 Google 帳號登入。勿將 Google Sheets 設為「知道連結的任何人」。</p></div></section>
+<section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜Google 登入測試</h2><p>目前僅測試 Google 身分驗證。家庭持股資料尚未放入 Firebase，資料庫維持拒絕所有讀寫。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><p class="sub">Firebase UID（用於設定專屬白名單）：</p><p><code id="auth-uid" style="overflow-wrap:anywhere"></code></p><button class="smallbtn" id="copy-auth-uid" type="button">複製 UID</button> <button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">這是你的登入識別碼，不是密碼或存取金鑰。私人持股尚未啟用。</p></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p></div></section>
 <div class="foot">非即時行情，所有日期以頁面標註為準。本報告是投資研究整理，非買賣指令。<br>詳細分析目前為 2026/10/21 歷史內容；每日自動更新尚未啟用。</div></main>
 <script>
 const q=id=>document.getElementById(id);
@@ -111,4 +111,29 @@ function renderTrackedPrices(d){
 function renderReport(d){renderTrackedPrices(d);fillDailyAnalysis(d);renderPodcast(d.podcast);['summary','status','market-tag','market-value','market-change','market-note','etf-tag','etf-summary','stocks-tag','action-tag','action','focus'].forEach(k=>put(k,d[k]));put('date',d['report-date']);if(d.quotes){let quotes=d.quotes;put('etf-date-label',`資料基準：${quotes.date||'未更新'} 收盤`);put('quote-status',`臺灣證券交易所收盤資料：${quotes.date||'資料日期未明'}；非即時報價。`);for(const code of ['006208','0050']){let x=quotes[code];if(!x)continue;put('price-'+code,Number(x.close).toFixed(2)+' 元');let v=Number(x.change);let el=q('change-'+code);if(el){el.textContent=(v<0?'▼ ':'▲ ')+Math.abs(v).toFixed(2)+(x.percent===null?'':`（${v>=0?'+':''}${Number(x.percent).toFixed(2)}%）`);el.parentNode.className=v<0?'neg':'pos';}}}if(Array.isArray(d.stocks))q('stocks').replaceChildren(...d.stocks.map(s=>{let el=document.createElement('div');el.className='sectionline';let b=document.createElement('b');b.textContent=s.ticker+'｜';el.append(b,document.createTextNode(s.note));return el}))}
 q('share').addEventListener('click',()=>{if(navigator.share)navigator.share({title:document.title,url:location.href}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(location.href).then(()=>alert('已複製網址'));else alert(location.href)});
 fetch('./report.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('report.json 載入失敗');return r.json()}).then(renderReport).catch(e=>{console.warn(e);put('status','資料載入異常，請重新整理或確認報告檔案')});
+</script><script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+const config={apiKey:"AIzaSyAVJdnqSs25_qI25Esv8EIZabsLLHV4zk",authDomain:"tck-family-investment.firebaseapp.com",projectId:"tck-family-investment",appId:"1:343962418857:web:c27463019b4ceeb67573b8"};
+const status=document.getElementById('auth-status');
+try{
+  const app=initializeApp(config);
+  const auth=getAuth(app);
+  const provider=new GoogleAuthProvider();
+  provider.setCustomParameters({prompt:"select_account"});
+  document.getElementById('google-login').addEventListener('click',async()=>{
+    status.textContent='正在開啟 Google 登入…';
+    try{await signInWithPopup(auth,provider)}catch(e){status.textContent='登入未完成：'+(e.code||e.message)}
+  });
+  document.getElementById('google-logout').addEventListener('click',()=>signOut(auth));
+  document.getElementById('copy-auth-uid').addEventListener('click',async()=>{
+    try{await navigator.clipboard.writeText(auth.currentUser?.uid||'');status.textContent='UID 已複製'}catch(e){status.textContent='複製失敗，可手動選取 UID'}
+  });
+  onAuthStateChanged(auth,u=>{
+    document.getElementById('auth-guest').hidden=!!u;
+    document.getElementById('auth-user').hidden=!u;
+    if(u){document.getElementById('auth-name').textContent=u.displayName||'已登入';document.getElementById('auth-email').textContent=u.email||'';document.getElementById('auth-uid').textContent=u.uid;status.textContent='登入成功。尚未開放私人資料讀取。'}
+    else status.textContent='尚未登入。只有完成白名單與資料庫安全規則，才會開放持股資料。';
+  },e=>{status.textContent='登入狀態錯誤：'+e.message});
+}catch(e){status.textContent='Firebase 初始化失敗：'+e.message}
 </script></body></html>
