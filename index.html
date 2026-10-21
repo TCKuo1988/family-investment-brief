@@ -84,12 +84,15 @@ function fillDailyAnalysis(d){
     });
     host.appendChild(card);
   });
-  if(d.podcast){const card=document.createElement('div');card.className='card podcastcard';
-    const h=document.createElement('h2');h.className='title';h.textContent='🎧 股癌 '+(d.podcast.episode||'')+'｜'+(d.podcast.date||'');card.appendChild(h);
-    (d.podcast.points||[]).forEach(x=>{const p=document.createElement('p');p.textContent='• '+x;card.appendChild(p)});
-    if(d.podcast.url&&/^https:\/\//.test(d.podcast.url)){const a=document.createElement('a');a.href=d.podcast.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='節目來源 ↗';card.appendChild(a)}
+  const podcasts=[...(d.podcast?[{show:"股癌",...d.podcast}]:[]),...(Array.isArray(d.additional_podcasts)?d.additional_podcasts:[])];
+  podcasts.forEach(pod=>{const card=document.createElement('div');card.className='card podcastcard';
+    const h=document.createElement('h2');h.className='title';h.textContent='🎧 '+(pod.show||'Podcast')+' '+(pod.episode||'')+'｜'+(pod.date||'日期未確認');card.appendChild(h);
+    if(pod.headline){const title=document.createElement('p');title.className='summary';title.textContent=pod.headline;card.appendChild(title)}
+    (pod.points||[]).forEach(x=>{const p=document.createElement('p');p.textContent='• '+x;card.appendChild(p)});
+    if(pod.impact){const p=document.createElement('p');p.className='source';p.textContent='與家庭投資的關係：'+pod.impact;card.appendChild(p)}
+    if(pod.url&&/^https:\/\//.test(pod.url)){const a=document.createElement('a');a.href=pod.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='節目來源 ↗';card.appendChild(a)}
     host.appendChild(card);
-  }
+  });
   host.hidden=false;legacy.hidden=true;
   const foot=document.querySelector('.foot');if(foot)foot.textContent='市場行情與研究分析各有資料日期；本報告僅供投資研究，不構成買賣指令。';
 }
@@ -97,7 +100,7 @@ function renderPodcast(p){
  if(!p)return;
  put('podcast-title','🎧 股癌 '+(p.episode||'')+'｜市場觀點');
  put('podcast-date',p.date||'日期待查');
- put('podcast-summary',(p.points||[]).slice(0,3).join('；')||'本集尚無可靠摘要，請參考原節目。');
+ put('podcast-summary',(p.points||[]).slice(0,2).join('；')||'本集尚無可靠摘要，請參考原節目。');
 }
 function renderTrackedPrices(d){
   const tbody=q('tracked-prices');if(!tbody)return;
