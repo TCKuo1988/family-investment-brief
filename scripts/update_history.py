@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Fetch recent daily closes for public market cards. No private portfolio data."""
+import datetime as dt
+import json
+import os
+import pathlib
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+from zoneinfo import ZoneInfo
+
+ROOT=pathlib.Path(__file__).resolve().parents[1]
+PATH=ROOT/"history.json"
+SYMBOLS={
+    "TAIEX":"%5ETWII",
+    "006208":"006208.TW",
+    "0050":"0050.TW",
+    "VOO":"VOO",
+    "QQQ":"QQQ",
+    "NVDA":"NVDA",
+    "TSLA":"TSLA",
+    "SPCX":"SPCX",
+}
+def yahoo_history(ticker):
+    url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?"+urllib.parse.urlencode({"range":"2mo","interval":"1d"})
+    req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; TCK-public-market-history/1.0)","Accept":"application/json"})
+    with urllib.request.urlopen(req,timeout=18) as response:
+        data=json.load(response)
+    result=(data.get("chart",{}).get("result") or [None])[0]
+    if not result: raise ValueError("No chart data: "+str(data.get("chart",{}).get("error")))
+    stamps=result.get("timestamp") or []
+    candles=(result.get("indicators",{}).get("quote") or [{}])[0].get("close") or []
+    zone=ZoneInfo(result.get("meta",{}).get("exchangeTimezoneName") or "UTC")
+    rows={}
+    for ts,close in zip(stamps,candles):
+        if close is None:continue
+        value=round(float(close),4)
+        if value<=0:continue
+        day=dt.datetime.fromtimestamp(ts,zone).date().isoformat()
+        rows[day]={"date":day,"close":value}
+    return list(rows.values())[-31:]
+
+def run():
+    d=json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else {"series":{}}
+    d.setdefault("series",{})
+    today=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    successes=0
+    for symbol,ticker in SYMBOLS.items():
+        try:
+            values=yahoo_history(ticker)
+            if len(values)<5:raise ValueError("fewer than 5 closes")
+            d["series"][symbol]=values
+            successes+=1
+            print(f"{symbol}: {len(values)} closes through {values[-1]['date']}")
+        except (OSError,ValueError,TypeError,KeyError) as e:
+            print(f"WARNING {symbol}: {e}; preserving any previous valid history")
+        time.sleep(1)
+    if successes:
+        d["updated_at"]=today
+        PATH.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    else:
+        print("WARNING: No history updated; keeping previous JSON unchanged")
+
+if __name__=="__main__":run()
