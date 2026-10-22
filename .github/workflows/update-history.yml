@@ -2,7 +2,8 @@ name: Refresh public 30-day market charts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9 * * 1-5'
+    - cron: '30 9 * * 1-5'   # 17:30 Taiwan: Taiwan market closes
+    - cron: '0 23 * * 0-4'  # 07:00 Taiwan Mon-Fri: prior US session closes
 permissions:
   contents: write
 jobs:
