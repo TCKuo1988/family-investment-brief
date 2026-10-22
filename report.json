@@ -1,238 +1,204 @@
 {
-  "report-date": "2026 / 10 / 21｜週三晨報",
-  "summary": "台股 10/20 跌 1.13%、短線偏弱；美股大盤分化。SpaceX AI 營收成長強，但資本投入龐大，NVDA／TSLA／SPCX 暫不變更長線持有策略。",
-  "status": "晨報製作：2026/10/21 上午（台灣時間）｜台股與美股均使用 10/20 最新已確認收盤資料｜非即時行情",
-  "market-tag": "短線偏弱｜非長線翻空",
-  "market-value": "46,292.93",
-  "market-change": "-529.15（-1.13%）",
-  "market-note": "10/20 加權指數下跌529.15點至46,292.93點，成交金額約7,586.84億元；上漲276家、下跌713家。下跌家數偏多，顯示壓力不只集中於單一權值股。10/21 盤中尚未確認。",
-  "etf-tag": "分批觀察",
-  "etf-summary": "006208 10/20 收245.30元（-1.05%）；0050收107.25元（-0.83%）。近期回檔已值得觀察，但兩檔單價不能直接比較便宜程度；只考慮原有閒錢小額分批，不因跌幅紀錄勉強投入。",
-  "stocks-tag": "長線論點未全面改變",
+  "report-date": "2026 / 10 / 22｜週四晨報",
+  "summary": "台股10/21反彈1.28%、006208上漲0.94%；美股10/21科技與AI領漲，Nasdaq +1.05%。SpaceX財報、NVIDIA算力需求、Tesla新財報是今日三大焦點；反彈不等於風險消失，長期策略暫維持。",
+  "status": "晨報製作：2026/10/22 上午（台灣時間）｜台、美股均以10/21已確認收盤價為基準｜非即時行情；家庭持股仍採私人歷史快照",
+  "market-tag": "反彈修復｜仍需觀察續航",
+  "market-value": "46,887.77",
+  "market-change": "+594.84（+1.28%）",
+  "market-note": "10/21加權指數收46,887.77點，較10/20上漲594.84點（1.28%）。前一日重挫後反彈，尚不足以單日確認重返強勢；10/22台股開盤前應以已完成交易日為準。",
+  "etf-tag": "反彈後不追價",
+  "etf-summary": "006208 10/21收247.60元（+2.30，+0.94%）；0050收108.15元（+0.90，+0.84%）。原有小額逢跌策略不變，但經單日反彈，不因害怕錯過而加碼。",
+  "stocks-tag": "AI鏈反彈｜財報驗證",
   "stocks": [
     {
       "ticker": "NVDA",
-      "note": "SpaceX AI 建設擴張支持算力需求，但尚不能推斷 NVIDIA 下一季營收；觀察雲端客戶資本支出與 GPU 毛利率。持有、暫不因單一財報追價。"
+      "note": "10/21收221.90美元（+2.51%）；AI資料中心需求與新產品敘事持續，仍要追蹤實際出貨、雲端資本支出、毛利率和ASIC競爭。持有論點未因單日上漲改變。"
     },
     {
       "ticker": "TSLA",
-      "note": "SpaceX 財報與潛在合併討論不能代替 Tesla 自駕／機器人商業化成果；觀察新財報、Robotaxi 付費規模與現金流。持有待驗證。"
+      "note": "10/21收386.63美元（+3.46%）；公司第三季財報公布後出現盤後波動。營收約280.5億美元、EPS約0.48美元；FSD、Robotaxi、Optimus仍須用商業化及現金流檢驗。SpaceX潛在合併只是討論，不能當成已成案。"
     },
     {
       "ticker": "SPCX",
-      "note": "第三季營收145.8億美元，SI/AI約75.6億美元；收入論點強化，但單季資本支出約195.9億美元，仍須檢驗算力投資回報。持有、評估估值。"
+      "note": "10/21收盤較10/20約+7.8%；第三季財報與AI業務成長推升股價。必須同時檢查資本支出、自由現金流及估值，不因一次大漲而追加風險。"
     }
   ],
-  "action-tag": "目前不調整",
-  "action": "既有 NVDA、TSLA、SPCX、VOO、QQQ 長期持股論點暫維持。006208／0050 只列小額逢跌觀察，未見必須立刻加碼、減碼或換股的可靠新證據。",
-  "focus": "後續優先：SpaceX AI 算力收入的營業利益與自由現金流，及雲端大廠資本支出對 NVDA 的需求傳導。",
+  "action-tag": "維持長期持有｜小額加碼等待條件",
+  "action": "主要策略不變。台股回升後006208不追高；保留閒錢、觀察大盤續航與AI企業財報。如果出現更大回檔且家庭現金流無壓力，才考慮原規劃的小額參與；不借錢或擠壓生活費。",
+  "focus": "優先研究：Tesla 2026 Q3 財報後 FSD/Robotaxi收入與現金流，及SpaceX SI 算力營收高成長是否轉成自由現金流；另追蹤 NVIDIA Vera Rubin 產品需求。",
   "quotes": {
-    "006208": {
-      "close": 245.3,
-      "change": -2.6,
-      "percent": -1.05
-    },
-    "date": "2026-10-20",
-    "0050": {
-      "close": 107.25,
-      "change": -0.9,
-      "percent": -0.83
-    },
+    "date": "2026-10-21",
     "taiex": {
-      "close": 46292.93,
-      "change": -529.15,
-      "percent": -1.13
+      "close": 46887.77,
+      "change": 594.84,
+      "percent": 1.28
+    },
+    "006208": {
+      "close": 247.6,
+      "change": 2.3,
+      "percent": 0.94
+    },
+    "0050": {
+      "close": 108.15,
+      "change": 0.9,
+      "percent": 0.84
     }
   },
-  "analysis_intro": "台股技術面與市場廣度偏弱，但基本面是否轉差仍需財報確認。SpaceX 的 AI 合約已形成營收，卻同時帶來龐大現金投入；本日判斷是『成長證據增加、估值和資本效率風險未消除』。",
+  "analysis_intro": "10/21台美股同步回升，半導體與AI主題明顯帶動市場。但必須將已確認收盤價、盤後公司資訊與主持人意見分開，避免把反彈直接解讀為風險解除。",
   "analysis_sections": [
     {
-      "title": "一、台股市場｜價格轉弱與企業基本面要分開判讀",
-      "conclusion": "短線偏弱；仍不能僅憑單日跌幅判定中長期熊市，006208／0050 不急於一次買滿。",
+      "title": "一、台股市場｜10/21反彈不等於趨勢已反轉",
+      "conclusion": "加權指數46,887.77點，+1.28%；006208 247.60元、+0.94%，0050 108.15元、+0.84%。單日修復，但尚需觀察量能與後續連續性。",
       "points": [
-        {
-          "heading": "已確認市場數據（10/20 收盤）",
-          "text": "加權指數46,292.93點、跌529.15點（-1.13%）；成交金額7,586.84億元。上漲276家、下跌713家，賣壓具有一定廣度。006208收245.30元（-1.05%）、0050收107.25元（-0.83%）。"
-        },
-        {
-          "heading": "為何重要",
-          "text": "高成交金額且下跌家數較多，短線情緒不佳；但估值下降不代表台積電或AI供應鏈訂單立即衰退。技術走勢只能描述風險狀態，仍需企業營運和法人資料交叉驗證。"
-        },
-        {
-          "heading": "後續觸發條件",
-          "text": "觀察10/20盤中低點46,163附近是否遭跌破且無法收復；若重新站回47,500～48,000並伴隨市場廣度改善，短線偏弱判斷可重新檢視。以上均屬觀察區、不是保證支撐壓力。"
-        }
+        "前一交易日市場下跌，10/21指數反彈594.84點；不能用一天漲幅證明中期風險消失。",
+        "0050與006208同屬大型權值股集中型ETF，與台積電景氣、AI權值股高度相關。",
+        "原本有閒錢才小額逢跌參與的策略維持，反彈日不必為參與感追價。"
       ],
       "sources": [
         {
-          "label": "中央社｜10/20 台股收盤",
-          "url": "https://www.cna.com.tw/news/afe/202610200151.aspx"
+          "label": "臺灣加權指數 10/21 歷史收盤",
+          "url": "https://hk.finance.yahoo.com/quote/%5ETWII/history/"
         },
         {
-          "label": "006208 歷史行情",
-          "url": "https://cn.investing.com/etfs/fubon-ftse-twse-taiwan-50-historical-data"
+          "label": "006208 10/21 歷史價格",
+          "url": "https://hk.investing.com/etfs/fubon-ftse-twse-taiwan-50-historical-data"
         },
         {
-          "label": "0050 行情",
+          "label": "0050 10/21 收盤",
           "url": "https://tw.finance.yahoo.com/quote/0050.TW"
         }
       ]
     },
     {
-      "title": "二、美股市場｜大盤上漲與科技股分歧",
-      "conclusion": "美國大型股並未同步下跌，但 Nasdaq 相對弱勢，適合持續觀察大型科技股估值及資金輪動。",
+      "title": "二、美股市場｜Nasdaq 領漲、AI風險偏好改善",
+      "conclusion": "10/21 S&P 500 +0.58%、Nasdaq +1.05%、Dow +0.69%，科技業與AI基礎建設類股表現較強。",
       "points": [
-        {
-          "heading": "10/20 美國市場已確認收盤",
-          "text": "S&P 500上漲約0.3%，收7,712.57；道瓊上漲約1%，收52,495.88；Nasdaq微幅下跌，收26,424.82。這屬於板塊分化，而不是美股全面崩跌。"
-        },
-        {
-          "heading": "對 VOO／QQQ 的影響",
-          "text": "VOO與QQQ作為長期核心持有工具，目前無須因一天表現調整；QQQ對大型科技股評價更敏感。若後續獲利預期及資本支出一起轉弱，才有必要重新評估新增資金優先順序。"
-        }
+        "SpaceX強勁財報及Super Micro正向展望支持算力投資題材；但資本密集型AI企業仍受融資成本影響。",
+        "VOO 710.70、QQQ 725.25、NVDA 221.90美元（10/21收盤）。",
+        "市場漲跌只是情緒溫度計，未改變VOO與QQQ作為長期股票投資的一般特性。"
       ],
       "sources": [
         {
-          "label": "AP｜10/20 美股收盤",
-          "url": "https://apnews.com/article/0a5ea168499c6ae617c49e10bf48f9c6"
+          "label": "Reuters 10/21 美國股市收盤",
+          "url": "https://www.reuters.com/legal/transactional/nasdaq-futures-lead-gains-spacex-super-micro-results-lift-ai-trade-2026-10-21/"
+        },
+        {
+          "label": "QQQ 10/21 歷史收盤",
+          "url": "https://chartexchange.com/symbol/nasdaq-qqq/historical/"
+        },
+        {
+          "label": "NVDA 10/21 歷史收盤",
+          "url": "https://chartexchange.com/symbol/nasdaq-nvda/historical/"
         }
       ]
     },
     {
-      "title": "三、SPCX｜AI 營收已變現，但不能只看成長率",
-      "conclusion": "SpaceX 的 AI 商業化論點加強；資本密集程度極高，現階段仍不構成立即加碼理由。",
+      "title": "三、SPCX／NVDA｜AI營收與算力資本支出並行",
+      "conclusion": "SPCX 10/21股價約上漲7.8%，NVDA上漲2.51%；市場重新定價AI投資需求，但成長率不能取代獲利品質。",
       "points": [
-        {
-          "heading": "公司第三季原始公告",
-          "text": "SpaceX第三季總營收約145.8億美元、年增161%；Super Intelligence（AI）業務約75.6億美元，已超過總營收一半。公司營業利益約28億美元，但資本投入規模很大，並不代表AI部門的每筆建設都已回本。"
-        },
-        {
-          "heading": "成長邏輯與風險",
-          "text": "資料中心需同時具備GPU、電力、冷卻和網路；租賃合約已能帶來收入，但設備建置前置支出龐大。若未來利用率下降或算力價格下降，收入高速成長也未必等於股東報酬同步成長。"
-        },
-        {
-          "heading": "下次財報要核對什麼",
-          "text": "追蹤SI部門營業利益率、客戶合約持續性、算力利用率、自由現金流及資本支出是否按預期帶來回收。管理層的遠期營收目標屬預測，不能當作已實現業績。"
-        }
+        "SpaceX營收成長及SI業務引發市場期待；關鍵是算力收入能否在龐大建設支出之後留下自由現金流。",
+        "NVIDIA Vera Rubin相關產品與部署方案有利技術敘事，但仍須檢查真正客戶投資與晶片毛利率。",
+        "不因同一天股價強漲而上修未經驗證的估值假設。"
       ],
       "sources": [
         {
-          "label": "SEC｜SpaceX Q3 2026 原始財報",
-          "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm"
+          "label": "Reuters 10/21 SpaceX及AI產業",
+          "url": "https://www.reuters.com/legal/transactional/nasdaq-futures-lead-gains-spacex-super-micro-results-lift-ai-trade-2026-10-21/"
         },
         {
-          "label": "Reuters｜SpaceX Q3 財報",
-          "url": "https://www.reuters.com/business/media-telecom/spacex-quarterly-revenue-jumps-beats-estimates-ai-business-surges-2026-10-20/"
+          "label": "NVIDIA 10/21",
+          "url": "https://chartexchange.com/symbol/nasdaq-nvda/historical/"
         }
       ]
     },
     {
-      "title": "四、NVDA／TSLA｜檢驗原來的持有理由",
-      "conclusion": "NVDA 的需求端取得新佐證，但對未來GPU毛利率尚無直接證明；TSLA仍需獨立驗證自駕與機器人的商業成績。",
+      "title": "四、TSLA｜盤後最新財報比市場傳聞重要",
+      "conclusion": "TSLA 10/21收386.63美元（+3.46%），盤後公司發布Q3成果；潛在SpaceX合併仍停留在討論，沒有保證。",
       "points": [
-        {
-          "heading": "NVDA｜產業傳導",
-          "text": "SpaceX租賃算力合約與基建投入支持AI運算需求仍在，但不能直接推導NVIDIA每季GPU出貨或股價。關鍵是雲端業者資本支出指引、採購趨勢、ASIC競爭，以及NVIDIA資料中心營收與毛利率。"
-        },
-        {
-          "heading": "TSLA｜不要以關係企業新聞取代公司證據",
-          "text": "SpaceX與Tesla可能合併的報導目前不等同完成交易，也不自動提高Tesla每股價值。原先FSD、Robotaxi與Optimus的投資論點仍要靠商業化規模、成本、安全監管及汽車本業現金流驗證。"
-        },
-        {
-          "heading": "今天的持股判斷",
-          "text": "NVDA、TSLA維持觀察及長期持有；若日後出現成長放緩與估值過高並存、或商業化長期失約，才重新評估加碼優先順序、減碼或汰換。"
-        }
+        "財報營收約280.5億美元、每股盈餘約0.48美元；不同資料商的預估基準稍有差異，須回歸公司正式報告確認細節。",
+        "FSD、Robotaxi與Optimus是長線選擇權，但應檢查付費營收、量產能力、車業利潤及自由現金流。",
+        "盤後消息不能混入10/21正常交易時間的收盤漲跌。"
       ],
       "sources": [
         {
-          "label": "SpaceX 財報（算力需求背景）",
-          "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm"
+          "label": "Tesla 10/21 收盤",
+          "url": "https://chartexchange.com/symbol/nasdaq-tsla/historical/"
+        },
+        {
+          "label": "Tesla 財報與 SpaceX 合併討論",
+          "url": "https://www.theguardian.com/technology/2026/oct/21/elon-musk-tesla-spacex"
         }
       ]
     },
     {
-      "title": "五、今日決策與下一步",
-      "conclusion": "策略沒有因單一新財報而翻轉；台股的小額參與感可以保留，但不要以技術回檔取代資金水位判斷。",
+      "title": "五、今日決策｜維持紀律，關注新財報而非追漲",
+      "conclusion": "沒有足夠理由修改長期核心持有配置；本日觀察重點是已公布的Tesla數字、SpaceX自由現金流與AI產業資本支出。",
       "points": [
-        {
-          "heading": "今日不做",
-          "text": "不因台股單日跌幅強迫投入、不因SpaceX營收暴增就把新增資金全部轉向SPCX；不將Podcast市場看法視為必然行情。"
-        },
-        {
-          "heading": "下一個研究焦點",
-          "text": "比較AI供應鏈『賣晶片』與『出租算力』兩種獲利模式：誰能把新增收入真正變成長期自由現金流，將比短線股價漲跌更重要。"
-        },
-        {
-          "heading": "資料限制",
-          "text": "本報告於10/21上午製作，台股和美股採10/20收盤，不含10/21台股盤中行情。資料來源已列於各節；未獲證實之後續事件與價格不列為既成事實。"
-        }
+        "006208：回檔時才考慮原先已規劃、可承擔的小額買入；單日反彈不增加頻率。",
+        "NVDA、TSLA、SPCX：持有前提依營運數字和投資回報驗證，不拿Podcast論點直接當交易訊號。",
+        "家庭持股頁面仍使用Firebase私人歷史基準資料，晨報更新不會變更任何家庭股數或成本。"
       ],
       "sources": [
         {
-          "label": "中央社｜台股收盤",
-          "url": "https://www.cna.com.tw/news/afe/202610200151.aspx"
-        },
-        {
-          "label": "AP｜美股收盤",
-          "url": "https://apnews.com/article/0a5ea168499c6ae617c49e10bf48f9c6"
+          "label": "Reuters 10/21 市場重點",
+          "url": "https://www.reuters.com/legal/transactional/nasdaq-futures-lead-gains-spacex-super-micro-results-lift-ai-trade-2026-10-21/"
         }
       ]
     }
   ],
   "podcast": {
-    "episode": "EP706",
-    "date": "2026/10/17",
-    "url": "https://yasac.substack.com/p/ep706",
+    "episode": "EP707",
+    "date": "2026/10/21",
+    "url": "https://yasac.substack.com/p/ep707",
     "points": [
-      "主持人觀察市場強勢股減少、反彈力度不足，對多頭後段風險提高警戒；並非宣告全面轉空。",
-      "認為台積電財報與指引不差卻未有效帶動盤面，提示『基本面成長』與『股價估值』可以分離。",
-      "討論AI硬體、平台、軟體的資金輪動可能；偏向降低題材與動能部位，而非全數出清。",
-      "逢跌操作傾向不使用高槓桿抄底；這是主持人的操作觀點，不是已確認的市場事實。"
+      "最新可核對的EP707節目筆記討論SpaceX財報與AI算力需求；主持人認為業績大幅超過預期但股價反應未必符合期待。",
+      "主持人談算力租用長短約與定價趨勢，屬其產業觀察與判斷，並非能直接保證未來報酬的事實。",
+      "對SPCX、NVDA的啟示：分辨需求敘事、資本支出、可實現獲利；維持獨立查證與估值紀律。"
     ]
   },
   "us_quotes": {
-    "date": "2026-10-20",
+    "date": "2026-10-21",
     "currency": "USD",
-    "source": "https://stockanalysis.com/",
+    "source": "https://chartexchange.com/",
     "VOO": {
-      "close": 706.8,
-      "change": 2.2,
-      "percent": 0.31
+      "close": 710.7,
+      "change": 3.9,
+      "percent": 0.55
     },
     "QQQ": {
-      "close": 717.63,
-      "change": -0.73,
-      "percent": -0.1
+      "close": 725.25,
+      "change": 7.62,
+      "percent": 1.06
     },
     "NVDA": {
-      "close": 216.47,
-      "change": -0.62,
-      "percent": -0.29
+      "close": 221.9,
+      "change": 5.43,
+      "percent": 2.51
     },
     "TSLA": {
-      "close": 373.71,
-      "change": 5.65,
-      "percent": 1.54
+      "close": 386.63,
+      "change": 12.92,
+      "percent": 3.46
     },
     "SPCX": {
-      "close": 147.79,
-      "change": -0.17,
-      "percent": -0.11
+      "close": 159.32,
+      "change": 11.53,
+      "percent": 7.8
     }
   },
   "additional_podcasts": [
     {
       "show": "M觀點",
       "episode": "EP346",
-      "date": "2026/10/21（節目頁最新集；日期待逐集核驗）",
+      "date": "2026/10/20前後（依節目列表，日期未單獨驗證）",
       "headline": "特斯拉的飛天跑車、微軟 AI 加速跟上、八十億分之一的人生",
       "points": [
-        "節目主題包含特斯拉產品與技術敘事；評估 TSLA 時應分開看產品願景、商業化進度與財務證據。",
-        "節目討論微軟 AI 競爭進展；可用來追蹤雲端與 AI 平台競爭，間接關係到 NVDA、QQQ、VOO 的產業曝險。",
-        "目前依官方節目資訊整理主題與投資關聯，尚未取得完整逐字稿，不能當作主持人完整論點或已驗證事實。"
+        "最新查得節目列表為EP346；節目列出特斯拉飛天跑車與微軟AI發展兩項科技主題。",
+        "與TSLA有直接主題關聯；微軟AI競爭與AI軟硬體投資對NVDA、QQQ、VOO具有間接關聯。",
+        "以上根據節目公開標題與時間軸整理，未取得全篇逐字內容，不能當成主持人完整結論。"
       ],
-      "impact": "直接相關：TSLA；間接相關：NVDA、QQQ、VOO。觀察商業化、AI 資本支出及競爭格局；不因單集節目直接買賣。",
-      "url": "https://podcasts.apple.com/tw/podcast/id1487378625"
+      "impact": "TSLA看商業化與產品承諾，NVDA、QQQ、VOO看AI平台競爭；節目意見須另對照正式財報。",
+      "url": "https://podcasts.apple.com/tw/podcast/podcast/id1487378625/episodes"
     }
   ]
 }
