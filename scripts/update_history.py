@@ -23,7 +23,7 @@ SYMBOLS={
     "SPCX":"SPCX",
 }
 def yahoo_history(ticker):
-    url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?"+urllib.parse.urlencode({"range":"2mo","interval":"1d"})
+    url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?"+urllib.parse.urlencode({"range":"8mo","interval":"1d"})
     req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; TCK-public-market-history/1.0)","Accept":"application/json"})
     with urllib.request.urlopen(req,timeout=18) as response:
         data=json.load(response)
@@ -44,7 +44,7 @@ def yahoo_history(ticker):
         if session_date==now_local.date() and now_local.hour<min_close_hour:continue
         day=session_date.isoformat()
         rows[day]={"date":day,"close":value}
-    return list(rows.values())[-22:]
+    return list(rows.values())[-165:]
 
 def run():
     d=json.loads(PATH.read_text(encoding="utf-8")) if PATH.exists() else {"series":{}}
@@ -54,7 +54,7 @@ def run():
     for symbol,ticker in SYMBOLS.items():
         try:
             values=yahoo_history(ticker)
-            if len(values)<5:raise ValueError("fewer than 5 closes")
+            if len(values)<95:raise ValueError("fewer than 95 closes; six-month history not verified")
             d["series"][symbol]=values
             successes+=1
             print(f"{symbol}: {len(values)} closes through {values[-1]['date']}")
