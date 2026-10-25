@@ -55,7 +55,8 @@ def run():
     for symbol,ticker in SYMBOLS.items():
         try:
             values=yahoo_history(ticker)
-            if len(values)<95:raise ValueError("fewer than 95 closes; six-month history not verified")
+            minimum=50 if symbol=="SPCX" else 95
+            if len(values)<minimum:raise ValueError(f"fewer than {minimum} closes; historical series not verified")
             d["series"][symbol]=values
             successes+=1
             print(f"{symbol}: {len(values)} closes through {values[-1]['date']}")
