@@ -132,7 +132,7 @@ function renderHistory(data){
    const plot=document.createElement('div');plot.className='history-plot';
    const coverage=all.length?Math.round((new Date(latest+'T12:00:00')-new Date(all[0].date+'T12:00:00'))/86400000):0;
    const requiredDays=historyMonths===1?18:historyMonths===3?75:155;
-   if(points.length>=5&&coverage>=requiredDays){
+   if(points.length>=5&&(coverage>=requiredDays||historyMonths===1)){
      available++;
      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 360 190');svg.setAttribute('role','img');
      const vals=points.map(p=>p.close),hi=Math.max(...vals),lo=Math.min(...vals),pad=Math.max((hi-lo)*.15,Math.abs(hi)*.005);
@@ -153,7 +153,7 @@ function renderHistory(data){
      const facts=document.createElement('div');facts.className='history-facts';
      [['最高',hi,points[hiI].date],['最低',lo,points[loI].date]].forEach(([k,v,date])=>{const cell=document.createElement('div'),sm=document.createElement('small'),strong=document.createElement('b');sm.textContent=k+' '+date.slice(5);strong.textContent=historyNum(v);cell.append(sm,strong);facts.appendChild(cell);});
      card.append(plot,facts);
-   }else{plot.className='history-empty';plot.textContent=all.length?'僅有 '+all.length+' 筆歷史收盤，尚不足以呈現完整近'+historyMonths+'個月走勢。':'尚無有效歷史資料';card.appendChild(plot);}
+   }else{plot.className='history-empty';plot.textContent=all.length?'目前有 '+all.length+' 筆歷史收盤，尚不足以呈現完整近'+historyMonths+'個月走勢；可切換較短區間。':'尚無有效歷史資料（請重新整理或稍後再試）';card.appendChild(plot);}
    const note=document.createElement('p');note.className='history-caption';note.textContent='資料截至 '+(latest||'未提供')+'｜'+points.length+' 筆區間資料';card.appendChild(note);root.appendChild(card);
  });
  q('history-status').textContent=available+' / 8 檔具備近'+historyMonths+'個月完整走勢；不足資料不延伸或模擬。';
