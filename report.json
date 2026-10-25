@@ -1,7 +1,7 @@
 {
   "report-date": "2026 / 10 / 25｜週日資料校對",
-  "summary": "截至10/25：台股加權最新有效收盤10/22為46,041.43；006208為244.85。美股10/23歷史收盤：VOO 698.58、QQQ 704.40、NVDA 210.96、TSLA 372.22。台美市場資料日期不同，不混稱同日收盤。維持長期核心配置，觀察10/27台股恢復交易後的價格反應。",
-  "status": "10/25週日資料校對：台股加權最新有效交易日10/22；006208與0050在10/23的相同收盤數值疑似休市沿用，統一標示10/22。美股VOO、QQQ、NVDA、TSLA最新歷史收盤資料為10/23。完整研究分析仍以原10/22事件脈絡為基準，並非10/23新一輪研究。私人持股資料未更動。 SPCX股票身分已依官方投資人關係與SEC確認；10/23收盤以獨立第三方報價147.49美元標示，漲跌幅暫不混用來源。",
+  "summary": "截至10/25：台股加權最新有效收盤10/22為46,041.43；006208為244.85。美股10/23歷史收盤：VOO 698.58、QQQ 704.40、NVDA 210.96、TSLA 372.22。台美市場資料日期不同，不混稱同日收盤。維持長期核心配置，觀察10/27台股恢復交易後的價格反應。 SPCX 10/23收147.49美元（+1.89%），上市以來歷史圖已補齊。",
+  "status": "10/25週日資料校對：台股加權最新有效交易日10/22；006208與0050在10/23的相同收盤數值疑似休市沿用，統一標示10/22。美股VOO、QQQ、NVDA、TSLA最新歷史收盤資料為10/23。完整研究分析仍以原10/22事件脈絡為基準，並非10/23新一輪研究。私人持股資料未更動。 SPCX上市以來93筆歷史收盤已成功回補，10/23收盤與漲跌幅均採同一歷史資料源。",
   "market-tag": "短期轉弱｜10/23休市",
   "market-value": "46,041.43",
   "market-change": "-846.34（-1.81%）",
@@ -20,7 +20,7 @@
     },
     {
       "ticker": "SPCX",
-      "note": "SPCX已由SpaceX官方投資人關係網站與SEC文件確認為2026/6/12上市的Space Exploration Technologies Corp.普通股。10/23第三方歷史收盤147.49美元；但現有Yahoo歷史抓取仍停在10/22，兩來源不可混算漲跌。研究重點：Starlink獲利、AI業務投入與資本支出現金需求。"
+      "note": "SPCX 10/23收147.49美元（+1.89%）；上市以來93筆歷史收盤已回補。分析重點為Starlink獲利、AI分部資本支出與現金流，不能以股價波動取代基本面驗證。"
     }
   ],
   "action-tag": "維持長期核心｜暫不追跌",
@@ -140,7 +140,7 @@
     },
     {
       "title": "四、TSLA／SpaceX（SPCX）｜本業現金流與AI資本支出",
-      "conclusion": "SPCX確為SpaceX於2026/6/12上市的普通股；10/23第三方報價147.49美元，與目前歷史圖表資料源尚未同步。投資評估應聚焦分部獲利、現金流及資本支出。",
+      "conclusion": "SPCX 10/23收147.49美元（+1.89%）；上市以來93筆行情已回補。長期判斷應聚焦Starlink獲利與AI資本支出現金回收。",
       "points": [
         "SpaceX官方投資人關係網站確認SPCX為Nasdaq掛牌普通股，非舊有太空ETF；此前暫停確認身分的說法已由官方資料釐清。",
         "SpaceX 2026年第三季官方財報：總營收145.75億美元、營業利益27.91億美元；分部含太空、連線服務（Starlink）及AI。",
@@ -197,7 +197,7 @@
   "us_quotes": {
     "date": "2026-10-23",
     "currency": "USD",
-    "source": "Yahoo Finance chart daily close (via repository history.json; 2026-10-25 data sync); SPCX 10/23 separate source: stockanalysis.com/stocks/spcx/ (change unverified)",
+    "source": "Yahoo Finance daily historical close via history.json; Taiwan ETFs last valid trading session 2026-10-22",
     "VOO": {
       "close": 698.58,
       "change": -3.72,
@@ -220,8 +220,8 @@
     },
     "SPCX": {
       "close": 147.49,
-      "change": null,
-      "percent": null
+      "change": 2.74,
+      "percent": 1.89
     }
   },
   "additional_podcasts": [
