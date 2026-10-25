@@ -62,6 +62,18 @@ def run():
         except (OSError,ValueError,TypeError,KeyError) as e:
             print(f"WARNING {symbol}: {e}; preserving any previous valid history")
         time.sleep(1)
+    # TWSE-listed ETFs may carry forward stale prices on a market holiday.
+    # Only retain dates when the TWSE benchmark itself has a trading session.
+    benchmark=d["series"].get("TAIEX",[])
+    if benchmark:
+        trading_days={row["date"] for row in benchmark}
+        for symbol in ("006208","0050"):
+            rows=d["series"].get(symbol,[])
+            if rows:
+                clean=[row for row in rows if row["date"] in trading_days]
+                if clean and len(clean)!=len(rows):
+                    print(f"{symbol}: removed {len(rows)-len(clean)} non-trading-day quotes")
+                    d["series"][symbol]=clean
     if successes:
         d["updated_at"]=today
         PATH.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
