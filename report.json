@@ -1,6 +1,6 @@
 {
   "report-date": "2026 / 10 / 25｜週日研究更新（最新美股10/23）",
-  "summary": "台股10/22最後有效收盤46,041.43，10/23休市；美股10/23 S&P 500 -0.52%、Nasdaq -0.21%，半導體類股約+0.4%，跌勢較10/22趨緩但AI估值與資本支出疑慮仍在。VOO 698.58、QQQ 704.40、NVDA 210.96、TSLA 372.22、SPCX 147.49美元。長期核心配置不變，10/27台股復市後再評估小額分批投入。",
+  "summary": "台股10/22最後有效收盤46,041.43，10/23休市；美股10/23 S&P 500 -0.52%、Nasdaq -0.21%，費半+0.44%、台積電ADR+1.49%，跌勢較10/22趨緩但AI估值與資本支出疑慮仍在。VOO 698.58、QQQ 704.40、NVDA 210.96、TSLA 372.22、SPCX 147.49美元。長期核心配置不變，10/27台股復市後再評估小額分批投入。",
   "status": "研究更新2026/10/25：美股最新完成交易日10/23；台股最後有效交易日10/22。報價以history.json同一歷史收盤來源為準，10/23美股宏觀市場資料採Reuters。專題保留10/22事件脈絡，已明確標註；私人Firebase持股未更動。",
   "market-tag": "短期偏弱｜待10/27復市",
   "market-value": "46,041.43",
@@ -25,7 +25,7 @@
   ],
   "action-tag": "維持長期核心｜暫不追跌",
   "action": "維持核心長期配置，避免將10/23半導體小幅反彈當成趨勢反轉。10/27台股恢復交易後觀察加權指數、台積電權重股與006208的量價反應；僅依原定閒錢小額分批，不因單日跌幅追價。NVDA重點看下一季客戶採購與毛利率；SPCX重點看Starlink現金創造及SI資本回收，TSLA獨立評估本業與自駕商業化。",
-  "focus": "本週研究焦點：Alphabet、Microsoft、Amazon財報的AI資本支出與自由現金流；NVDA客戶採購及毛利率；SpaceX Q3 10-Q披露的SI投資強度、Starlink利潤與潛在合併不確定性。",
+  "focus": "本週研究焦點：Alphabet、Microsoft、Amazon財報的AI資本支出與自由現金流；NVDA客戶採購及毛利率；SpaceX Q3 10-Q披露的SI投資強度、Starlink利潤與潛在合併不確定性。 已核實10/23費半與台積電ADR；台指期夜盤未核實，暫不補假數字。",
   "quotes": {
     "date": "2026-10-22",
     "taiex": {
@@ -242,18 +242,18 @@
   ],
   "market_signals": {
     "SOX": {
-      "date": null,
-      "close": null,
-      "change": null,
-      "percent": null,
-      "source": null
+      "date": "2026-10-23",
+      "close": 10779.46,
+      "change": 47.49,
+      "percent": 0.44,
+      "source": "https://indexes.nasdaq.com/Index/Overview/SOX"
     },
     "TSM": {
-      "date": null,
-      "close": null,
-      "change": null,
-      "percent": null,
-      "source": null
+      "date": "2026-10-23",
+      "close": 418.51,
+      "change": 6.16,
+      "percent": 1.49,
+      "source": "https://stockanalysis.com/stocks/tsm/history/"
     },
     "taiwan_futures_night": {
       "date": null,
@@ -265,8 +265,8 @@
     }
   },
   "market_outlook": {
-    "stance": "待核實",
-    "summary": "費半、台積電 ADR、台指期夜盤尚未完成同步核實；暫不判定下一交易日方向。",
-    "as_of": "未核實行情保持空值，不視為零或最新價。"
+    "stance": "台股復市待觀察｜海外半導體略回穩",
+    "summary": "10/23費半10,779.46（+0.44%）、台積電ADR 418.51美元（+1.49%），但10/22美股半導體曾急跌。台指期夜盤尚未取得可核實的相同交易時段數據，不據此推算台股10/27開盤點位。",
+    "as_of": "費半與TSM：美東2026/10/23收盤；台指期夜盤：未核實"
   }
 }
