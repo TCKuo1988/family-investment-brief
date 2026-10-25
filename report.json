@@ -205,5 +205,34 @@
       "impact": "TSLA看商業化與產品承諾，NVDA、QQQ、VOO看AI平台競爭；節目意見須另對照正式財報。",
       "url": "https://podcasts.apple.com/tw/podcast/podcast/id1487378625/episodes"
     }
-  ]
+  ],
+  "market_signals": {
+    "SOX": {
+      "date": null,
+      "close": null,
+      "change": null,
+      "percent": null,
+      "source": null
+    },
+    "TSM": {
+      "date": null,
+      "close": null,
+      "change": null,
+      "percent": null,
+      "source": null
+    },
+    "taiwan_futures_night": {
+      "date": null,
+      "close": null,
+      "change": null,
+      "percent": null,
+      "source": null,
+      "session": "night"
+    }
+  },
+  "market_outlook": {
+    "stance": "待核實",
+    "summary": "費半、台積電 ADR、台指期夜盤尚未完成同步核實；暫不判定下一交易日方向。",
+    "as_of": "未核實行情保持空值，不視為零或最新價。"
+  }
 }
