@@ -1,6 +1,9 @@
-name: Refresh public 30-day market charts
+name: Refresh public six-month market charts
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/update_history.py'
   schedule:
     - cron: '30 9 * * 1-5'   # 17:30 Taiwan: Taiwan market closes
     - cron: '0 23 * * 0-4'  # 07:00 Taiwan Mon-Fri: prior US session closes
@@ -25,5 +28,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add history.json
-          git commit -m "Refresh public monthly market history"
+          git commit -m "Refresh public six-month market history"
           git push
