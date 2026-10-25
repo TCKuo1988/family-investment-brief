@@ -23,7 +23,9 @@ SYMBOLS={
     "SPCX":"SPCX",
 }
 def yahoo_history(ticker):
-    url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?"+urllib.parse.urlencode({"range":"8mo","interval":"1d"})
+    start=dt.datetime(2026,6,11,tzinfo=dt.timezone.utc) if ticker=="SPCX" else dt.datetime.now(dt.timezone.utc)-dt.timedelta(days=250)
+    params={"period1":int(start.timestamp()),"period2":int((dt.datetime.now(dt.timezone.utc)+dt.timedelta(days=1)).timestamp()),"interval":"1d"}
+    url="https://query1.finance.yahoo.com/v8/finance/chart/"+ticker+"?"+urllib.parse.urlencode(params)
     req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; TCK-public-market-history/1.0)","Accept":"application/json"})
     with urllib.request.urlopen(req,timeout=18) as response:
         data=json.load(response)
