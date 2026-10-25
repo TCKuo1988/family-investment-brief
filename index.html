@@ -132,7 +132,7 @@ function renderHistory(data){
    const plot=document.createElement('div');plot.className='history-plot';
    const coverage=all.length?Math.round((new Date(latest+'T12:00:00')-new Date(all[0].date+'T12:00:00'))/86400000):0;
    const requiredDays=historyMonths===1?18:historyMonths===3?75:155;
-   if(points.length>=5&&(coverage>=requiredDays||historyMonths===1)){
+   if(points.length>=5&&(coverage>=requiredDays||historyMonths===1||(key==='SPCX'&&all.length>=50&&historyMonths===6))){
      available++;
      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 360 190');svg.setAttribute('role','img');
      const vals=points.map(p=>p.close),hi=Math.max(...vals),lo=Math.min(...vals),pad=Math.max((hi-lo)*.15,Math.abs(hi)*.005);
@@ -154,9 +154,9 @@ function renderHistory(data){
      [['最高',hi,points[hiI].date],['最低',lo,points[loI].date],['最新',vals[lastI],points[lastI].date]].forEach(([k,v,date])=>{const cell=document.createElement('div'),sm=document.createElement('small'),strong=document.createElement('b');sm.textContent=k+' '+date.slice(5);strong.textContent=historyNum(v);cell.append(sm,strong);facts.appendChild(cell);});
      const legend=document.createElement('div');legend.className='history-legend';const labelLine=(name,color,dashed)=>{const item=document.createElement('span');const swatch=document.createElement('i');swatch.style.borderTop='3px '+(dashed?'dashed ':'solid ')+color;item.append(swatch,document.createTextNode(name));legend.appendChild(item)};labelLine('收盤價','#286cc2',false);historyMA.forEach(period=>{const idx=[20,60,120].indexOf(period);const valid=all.length>=period;labelLine('MA'+period+(valid?'':'（資料不足）'),['#e19a42','#7d72c8','#339b90'][idx],true)});const insight=document.createElement('p');insight.className='history-insight';const insights=historyMA.map(period=>{if(all.length<period)return 'MA'+period+'：歷史資料不足';const sample=all.slice(-period);const ma=sample.reduce((sum,x)=>sum+x.close,0)/period;const gap=(vals[lastI]/ma-1)*100;return 'MA'+period+' '+historyNum(ma)+'（'+(gap>=0?'高於':'低於')+' '+Math.abs(gap).toFixed(1)+'%）';});insight.textContent=insights.length?'最新收盤相對均線：'+insights.join('｜'):'勾選 MA20／MA60／MA120，可比較收盤價與均線的位置。';card.append(plot,legend,facts,insight);
    }else{plot.className='history-empty';plot.textContent=all.length?'目前有 '+all.length+' 筆歷史收盤，尚不足以呈現完整近'+historyMonths+'個月走勢；可切換較短區間。':'尚無有效歷史資料（請重新整理或稍後再試）';card.appendChild(plot);}
-   const note=document.createElement('p');note.className='history-caption';note.textContent='資料截至 '+(latest||'未提供')+'｜'+points.length+' 筆區間資料';card.appendChild(note);root.appendChild(card);
+   const note=document.createElement('p');note.className='history-caption';note.textContent='資料截至 '+(latest||'未提供')+'｜'+points.length+' 筆區間資料'+(key==='SPCX'&&historyMonths===6&&coverage<155?'｜上市以來（未滿6個月）':'');card.appendChild(note);root.appendChild(card);
  });
- q('history-status').textContent=available+' / 8 檔具備近'+historyMonths+'個月完整走勢；不足資料不延伸或模擬。';
+ q('history-status').textContent=available+' / 8 檔有可用走勢；上市未滿所選區間者僅顯示實際交易日，不延伸或模擬。';
 }
 document.querySelectorAll('.ma-toggle').forEach(box=>box.addEventListener('change',()=>{historyMA=[...document.querySelectorAll('.ma-toggle:checked')].map(x=>Number(x.value));if(historyMA.length>2){box.checked=false;historyMA=[...document.querySelectorAll('.ma-toggle:checked')].map(x=>Number(x.value));}renderHistory(historyData);}));
 document.querySelectorAll('.range-btn').forEach(btn=>btn.addEventListener('click',()=>{historyMonths=Number(btn.dataset.range);document.querySelectorAll('.range-btn').forEach(b=>b.classList.toggle('active',b===btn));renderHistory(historyData);}));
