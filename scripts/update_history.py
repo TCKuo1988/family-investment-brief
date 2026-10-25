@@ -39,9 +39,10 @@ def yahoo_history(ticker):
     for ts,close in zip(stamps,candles):
         if close is None:continue
         value=round(float(close),4)
-        if value<=0:continue
+        if not (0<value<1_000_000_000):continue
         session_date=dt.datetime.fromtimestamp(ts,zone).date()
         if session_date==now_local.date() and now_local.hour<min_close_hour:continue
+        if session_date>now_local.date():continue
         day=session_date.isoformat()
         rows[day]={"date":day,"close":value}
     return list(rows.values())[-165:]
