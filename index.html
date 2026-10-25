@@ -119,7 +119,7 @@ function renderHistory(data){
  root.replaceChildren();let available=0;
  const todayKey=arr=>arr.length?arr[arr.length-1].date:null;
  HISTORY_SYMBOLS.forEach(([label,key])=>{
-   const all=((historyData.series||{})[key]||[]).filter(x=>x&&/^\\d{4}-\\d{2}-\\d{2}$/.test(x.date)&&Number.isFinite(Number(x.close))&&Number(x.close)>0).map(x=>({date:x.date,close:Number(x.close)})).sort((a,b)=>a.date.localeCompare(b.date));
+   const all=((historyData.series||{})[key]||[]).filter(x=>x&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&Number.isFinite(Number(x.close))&&Number(x.close)>0).map(x=>({date:x.date,close:Number(x.close)})).sort((a,b)=>a.date.localeCompare(b.date));
    const latest=todayKey(all),start=latest?new Date(latest+'T12:00:00'):null;
    if(start)start.setMonth(start.getMonth()-historyMonths);
    const cutoff=start?start.toISOString().slice(0,10):'';
@@ -130,7 +130,6 @@ function renderHistory(data){
    const price=document.createElement('span');price.className='history-price';price.textContent=points.length?historyNum(points[points.length-1].close):'—';
    top.append(name,price);card.appendChild(top);
    const plot=document.createElement('div');plot.className='history-plot';
-   const expected=historyMonths===1?15:historyMonths===3?45:90;
    const coverage=all.length?Math.round((new Date(latest+'T12:00:00')-new Date(all[0].date+'T12:00:00'))/86400000):0;
    const requiredDays=historyMonths===1?18:historyMonths===3?75:155;
    if(points.length>=5&&coverage>=requiredDays){
