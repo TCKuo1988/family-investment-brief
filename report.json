@@ -89,6 +89,37 @@
       ]
     },
     {
+      "title": "專題研究｜AI投資融資成本與NVIDIA的長期獲利",
+      "points": [
+        "【研究命題】AI算力需求成長，不等於所有AI雲端業者能獲利。當資料中心投資轉向債務及股權融資，利息與股權稀釋會影響客戶未來擴張能力；這是供應鏈需求的領先風險，而非已發生的NVIDIA訂單下滑。",
+        "【專業觀點】Reuters 10/22引述Miller Tabak策略師Matthew Maley指出，市場正重新評估AI投資回收時間；Great Hill Capital的Thomas Hayes則關注小型AI業者融資瓶頸。兩者都提醒應區分需求成長與投資回報。",
+        "【更深一層】SemiAnalysis研究AI基建的資本、長期算力採購承諾與資料中心三者關係。長約可能提高融資可行性，但也可能將設備折舊、利用率與信用風險轉移至其他參與者。其模型預測是情境估算，不是已發生支出。",
+        "【數據與反證】Reuters 10/22報導Meta第三季自由現金流轉負；但單季現金流不足以證明GPU採購會縮減。須交叉追蹤客戶資本支出指引、營運現金流、融資成本、NVIDIA資料中心營收與毛利率。",
+        "【樂觀情境】大型雲端客戶繼續採購，NVIDIA產品競爭力與軟體生態維持，客戶融資壓力主要反映為估值折價，而非供應商獲利反轉。",
+        "【保守情境】若高槓桿AI雲端業者融資受阻、設備利用率下降，且大型客戶同步下修資本支出，將提高訂單延後與毛利率承壓機率。",
+        "【投資啟示】NVDA維持長期追蹤但提高客戶財務監測；QQQ與006208則須留意高權重科技股估值的連動風險。單日股價大跌不是足夠的買進理由。",
+        "【研究界限】具名分析師觀點依公開報導意譯；其他因果鏈為本報研究推論。沒有取得付費報告全文，不以公開摘要冒充完整研究。"
+      ],
+      "sources": [
+        {
+          "label": "Reuters｜AI建置成本與分析師觀點，2026/10/22",
+          "url": "https://www.reuters.com/business/steep-bill-ai-buildout-punishes-meta-other-tech-favorites-2026-10-22/"
+        },
+        {
+          "label": "Reuters｜CoreWeave融資風險，2026/10/15",
+          "url": "https://www.reuters.com/legal/transactional/coreweave-shares-bonds-slide-further-ai-debt-fears-mount-2026-10-15/"
+        },
+        {
+          "label": "SemiAnalysis｜AI基建資本與算力採購承諾，2026/07/06",
+          "url": "https://newsletter.semianalysis.com/p/nvidia-gpu-debt-backstop-unleashes"
+        },
+        {
+          "label": "Goldman Sachs｜AI基建投資模型",
+          "url": "https://www.goldmansachs.com/insights/articles/tracking-trillions-the-assumptions-shaping-scale-of-the-ai-build-out"
+        }
+      ]
+    },
+    {
       "title": "三、NVDA｜客戶投入擴大，未必等於晶片利潤同步擴大",
       "conclusion": "NVDA 10/22約212.21美元（-4.40%）。今天應調降短線樂觀判斷，但尚無憑據因此認定核心GPU業務崩盤。",
       "points": [
