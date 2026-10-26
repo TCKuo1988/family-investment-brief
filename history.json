@@ -1,6 +1,6 @@
 {
   "description": "Validated historical close series for public watchlist; no synthetic prices.",
-  "updated_at": "2026-10-25T04:04:02+00:00",
+  "updated_at": "2026-10-26T00:58:17+00:00",
   "series": {
     "TAIEX": [
       {
