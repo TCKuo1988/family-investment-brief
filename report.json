@@ -1,186 +1,125 @@
 {
-  "report-date": "2026 / 10 / 27｜週二晨報（美股10/26、台股10/22）",
-  "summary": "10/27台股復市前觀察：台股最後有效收盤10/22加權46,041.43（-1.81%）；10/26美股依當日晨報資料Nasdaq +0.83%、SOX +2.82%、TSM ADR +1.40%。海外半導體反彈，台股情境中性偏多但不保證；006208維持小額分批、不追開盤。",
-  "status": "2026/10/27 08時晨報同步；台股最後交易日10/22，美股10/26。美股個股行情沿用當日晨報數據、未完成獨立逐檔重新核實；不得解讀為即時報價。私人持股資料未寫入。",
-  "market-tag": "台股10/27復市｜中性偏多情境",
-  "market-value": "46,041.43",
-  "market-change": "-846.34（-1.81%）",
-  "market-note": "10/22台股收46,041.43（-846.34，-1.81%）；10/23颱風休市、10/26補假，10/27恢復交易。10/26美股反彈有助台股修復，但仍須觀察開盤後承接與補跌。",
-  "etf-tag": "復市觀察｜小額分批不追價",
-  "etf-summary": "006208最後有效收盤10/22為244.85元（-1.11%）；0050為106.90元（-1.16%）。10/27恢復交易，先觀察盤中量價及ETF折溢價，再依原定閒置資金小額分批。",
-  "stocks-tag": "美股10/26反彈｜融資風險仍需檢驗",
+  "report-date": "2026 / 10 / 28｜週三晨報（美股10/27、台股10/27）",
+  "summary": "10/28台股開盤前：10/27台股加權46,096.23（+0.12%），2330收2,400（+0.63%），006208收244.60（-0.10%）、0050收106.60（-0.28%）；10/27美股S&P 500 7,722.60（+0.60%）、Nasdaq 26,477.81（+1.18%）、TSM ADR 436.87（+2.95%）。台指期10/27夜盤46,880（+774，+1.68%）。偏多但防開高走低。",
+  "status": "2026/10/28晨報同步；不同市場交易日均為10/27（美東/臺灣時區不同）。部分個股與SOX依當日晨報彙整，尚待獨立逐檔核實；不作即時報價。",
+  "market-tag": "台股10/27收盤｜指數小漲、ETF分歧",
+  "market-value": "46,096.23",
+  "market-change": "+54.80（+0.12%）",
+  "market-note": "10/27台股復市，加權收46,096.23（+54.80，+0.12%），台積電2,400（+0.63%），006208與0050分別-0.10%、-0.28%。10/28開盤關注美股科技股反彈能否擴散至其他權值股。",
+  "etf-tag": "小額分批｜不追開盤急漲",
+  "etf-summary": "10/27 006208收244.60元（-0.10%）、0050收106.60元（-0.28%）；維持原定閒置資金小額分批，先確認市場廣度與ETF折溢價。",
+  "stocks-tag": "美股10/27科技反彈｜資本效率仍待驗證",
   "stocks": [
     {
       "ticker": "NVDA",
-      "note": "10/26晨報收盤216.03美元（+2.40%）；AI需求仍有支撐，持續檢視雲端客戶資本支出、毛利率與融資能力。長期論點暫維持。"
+      "note": "10/27晨報收217.94美元（約+0.90%）；AI算力需求與客戶融資能力需同步檢驗，長期論點暫維持。"
     },
     {
       "ticker": "TSLA",
-      "note": "10/26晨報收盤391.62美元（+5.21%）；短線評價改善，惟SpaceX潛在合併並非已確定交易，仍以汽車、儲能及自駕商業化為核心。"
+      "note": "10/27晨報收407.50美元（+4.05%）；仍以汽車、儲能、自駕商業化檢驗長期估值，不以潛在合併為基本情境。"
     },
     {
       "ticker": "SPCX",
-      "note": "10/26晨報收盤146.90美元（-0.40%）；關注GPU融資租賃承諾與資本回收期，Starlink現金流及AI投資效率為長期關鍵。"
+      "note": "10/27晨報收148.58美元（+1.14%）；追蹤Starlink現金流、AI算力融資租賃及投資回收期。"
     }
   ],
-  "action-tag": "長期配置不變｜006208不追開盤",
-  "action": "10/27台股復市，006208可評估原定小額分批，但不因美股反彈而追價。NVDA留意AI資本支出與毛利率；SPCX留意GPU融資租賃與現金流；TSLA留意商業化，合併傳聞不作基準。",
-  "focus": "10/27深度研究：AI基建融資方式、設備租賃負擔及資本回收期如何影響NVDA和SPCX長期獲利。",
+  "action-tag": "偏多觀察｜006208不追價",
+  "action": "10/28美股與台指期偏多，台股可能開高但仍須防開高走低；006208不提高原定小額加碼金額，NVDA關注客戶資本支出、TSLA關注自駕商業化、SPCX關注資本效率。",
+  "focus": "10/28深度研究：AI算力採購擴張與融資成本如何同時影響NVDA訂單、SPCX現金流及科技股估值。",
   "quotes": {
-    "date": "2026-10-22",
+    "date": "2026-10-27",
     "taiex": {
-      "close": 46041.43,
-      "change": -846.34,
-      "percent": -1.81
+      "close": 46096.23,
+      "change": 54.8,
+      "percent": 0.12
     },
     "006208": {
-      "close": 244.85,
-      "change": -2.75,
-      "percent": -1.11
+      "close": 244.6,
+      "change": -0.25,
+      "percent": -0.1
     },
     "0050": {
-      "close": 106.9,
-      "change": -1.25,
-      "percent": -1.16
+      "close": 106.6,
+      "change": -0.3,
+      "percent": -0.28
     }
   },
-  "analysis_intro": "更新至2026/10/27晨報；台股10/22、美股10/26，交易日期不同且已標明。下方部分專題分析章節仍為10/25歷史研究內容，不應視為10/27新事件。",
+  "analysis_intro": "10/28最新晨報重點；以下分析章節已替換為當日觀察，行情與推論分開，尚未核實的個股數值註明來源限制。",
   "analysis_sections": [
     {
-      "title": "一、台股市場｜颱風休市前再度破低",
-      "conclusion": "10/22台股加權46,041.43（-1.81%），006208 244.85（-1.11%），0050 106.90（-1.16%）。10/23休市，10/26補假，下一交易日預計10/27。",
+      "title": "一、台股10/27｜指數小漲、ETF相對弱勢",
+      "conclusion": "加權46,096.23（+0.12%），2330 2,400（+0.63%），006208 244.60（-0.10%），0050 106.60（-0.28%）。",
       "points": [
-        "10/22台股下跌846.34點，收於當日最低，市場短線相對弱勢；前一天反彈未能站穩。",
-        "10/23不是零漲跌，而是沒有交易。圖表與單日比較應沿用10/22最後收盤值，並註明資料日期。",
-        "10/22美股AI科技再度遭到拋售，台灣電子權值股在10/27開盤可能反映海外行情，避免提早預測必然下跌或反彈。"
+        "復市後日內震盪明顯，權值股與ETF走勢分歧。",
+        "10/28需觀察反彈是否擴散，不能只看指數漲幅。"
       ],
       "sources": [
         {
-          "label": "臺灣證交所指數歷史報表",
+          "label": "臺灣證交所指數歷史",
           "url": "https://www.twse.com.tw/zh/indices/taiex/mi-5min-hist.html"
-        },
-        {
-          "label": "中央社 台股10/23颱風休市",
-          "url": "https://www.cna.com.tw/news/afe/202610220388.aspx"
-        },
-        {
-          "label": "006208歷史收盤",
-          "url": "https://hk.investing.com/etfs/fubon-ftse-twse-taiwan-50-historical-data"
         }
       ]
     },
     {
-      "title": "二、美股市場｜10/23跌勢趨緩，AI風險未解除",
-      "conclusion": "10/23美股：S&P 500 -0.52%、Nasdaq -0.21%、Dow -1.23%；半導體類股約+0.4%，與10/22半導體急跌不同。VOO 698.58、QQQ 704.40美元。",
+      "title": "二、美股10/27｜AI科技股領漲",
+      "conclusion": "S&P 500 7,722.60（+0.60%）、Nasdaq 26,477.81（+1.18%）、TSM ADR 436.87（+2.95%）。",
       "points": [
-        "10/23 Nasdaq跌幅縮小、半導體族群略反彈，但單日止跌不等於AI估值壓力解除。",
-        "10/23美國10年期公債殖利率約4.99%，能源價格上漲；利率與成本環境可能壓抑高估值企業的折現評價。",
-        "下週Alphabet、Microsoft與Amazon財報是重要觀察點：AI資本支出指引、雲端成長、自由現金流及回收期是否同步改善。",
-        "與10/22市場急跌的分析應區分日期，不能把前一日費半約-6.7%誤寫為10/23行情。"
+        "半導體指數約+3.6%，但此為晨報近似值，仍待官方核對。",
+        "AI投資融資成本與現金流風險仍在，反彈不等於風險解除。"
       ],
       "sources": [
         {
-          "label": "Reuters｜2026/10/23全球市場收盤",
-          "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-23/"
+          "label": "AP 2026/10/27美股收盤",
+          "url": "https://apnews.com/article/eae2932c0c253be1039e1545909656a8"
         },
         {
-          "label": "Reuters｜2026/10/22 AI資本支出疑慮",
-          "url": "https://www.reuters.com/business/steep-bill-ai-buildout-punishes-meta-other-tech-favorites-2026-10-22/"
+          "label": "TSM歷史價格",
+          "url": "https://stockanalysis.com/stocks/tsm/history/"
         }
       ]
     },
     {
-      "title": "專題研究｜AI投資融資成本與NVIDIA的長期獲利",
+      "title": "三、產業｜AI算力融資與半導體競爭",
+      "conclusion": "AI資本支出持續，晶片需求受惠，但企業融資、ASIC競爭與現金回收期需持續追蹤。",
       "points": [
-        "【分析師｜Matthew Maley／Miller Tabak】AI投資回收時間可能比市場原先預期更長。觀察重點：科技股估值是否因回收期延後而下修。",
-        "【分析師｜Thomas Hayes／Great Hill Capital】AI業者的融資瓶頸與投資回報疑慮是市場賣壓來源。觀察重點：高槓桿算力業者的融資能力。",
-        "【重要區別】雲端業者自由現金流承壓，不等於NVIDIA晶片訂單立即下滑；須看下一季資本支出指引、NVDA資料中心營收與毛利率。",
-        "【多方情境】主要雲端客戶持續採購，NVIDIA維持產品競爭力，股價調整以估值因素為主。",
-        "【空方情境】客戶融資受阻並下修資本支出，設備利用率下降，逐步影響供應商訂單與獲利。",
-        "【對持股影響】NVDA：長期論點暫維持；QQQ、006208：留意高權重科技股估值連動，不因單日跌幅就判斷便宜。",
-        "【資料限制】分析師觀點為公開報導意譯；多空情境為本報推論，非分析師原話。"
+        "Broadcom與Anthropic算力合作融資為近期市場焦點。",
+        "Meta擴張AI籌資計畫，投資人需分辨規劃上限與實際到位資金。",
+        "Corning光通訊業務成長，顯示AI基建需求不只集中在GPU。"
       ],
       "sources": [
         {
-          "label": "Reuters｜AI建置成本與分析師觀點，2026/10/22",
-          "url": "https://www.reuters.com/business/steep-bill-ai-buildout-punishes-meta-other-tech-favorites-2026-10-22/"
-        },
-        {
-          "label": "Reuters｜CoreWeave融資風險，2026/10/15",
-          "url": "https://www.reuters.com/legal/transactional/coreweave-shares-bonds-slide-further-ai-debt-fears-mount-2026-10-15/"
-        },
-        {
-          "label": "SemiAnalysis｜AI基建資本與算力採購承諾，2026/07/06",
-          "url": "https://newsletter.semianalysis.com/p/nvidia-gpu-debt-backstop-unleashes"
-        },
-        {
-          "label": "Goldman Sachs｜AI基建投資模型",
-          "url": "https://www.goldmansachs.com/insights/articles/tracking-trillions-the-assumptions-shaping-scale-of-the-ai-build-out"
-        }
-      ],
-      "conclusion": "重點｜AI資本支出仍可能支撐NVDA短期需求，但客戶融資壓力提高中期訂單風險；目前不足以判定長期需求反轉。"
-    },
-    {
-      "title": "三、NVDA｜客戶投入擴大，未必等於晶片利潤同步擴大",
-      "conclusion": "NVDA 10/23收210.96美元（-0.59%）；10/22急跌後仍偏弱。短期估值壓力與長期GPU訂單需求應分開判斷。",
-      "points": [
-        "10/23股價210.96美元，較10/22的212.21美元再跌0.59%；這是股價訊號，不代表營運已下修。",
-        "多方驗證：下一次法說若資料中心營收、毛利率與客戶採購指引維持，AI基建需求論點仍有支撐。",
-        "空方驗證：主要雲端客戶減少GPU採購、融資成本抬升、毛利率連續下修或ASIC替代速度加快，才構成持有論點的實質警訊。",
-        "策略：維持既有長期持有論點；新資金不因單日跌幅就視為估值便宜，需觀察企業指引。"
-      ],
-      "sources": [
-        {
-          "label": "Yahoo Finance歷史收盤（網站history.json）",
-          "url": "https://finance.yahoo.com/quote/NVDA/history/"
-        },
-        {
-          "label": "Reuters｜AI基建成本壓力",
-          "url": "https://www.reuters.com/business/steep-bill-ai-buildout-punishes-meta-other-tech-favorites-2026-10-22/"
+          "label": "Reuters 2026/10/27市場分析",
+          "url": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-10-27/"
         }
       ]
     },
     {
-      "title": "四、TSLA／SpaceX（SPCX）｜本業現金流與AI資本支出",
-      "conclusion": "SPCX 10/23收147.49美元（+1.89%）；上市以來93筆行情已回補。長期判斷應聚焦Starlink獲利與AI資本支出現金回收。",
+      "title": "四、長期持股｜NVDA、TSLA、SPCX",
+      "conclusion": "長期持有論點暫維持，不因單日反彈提高配置。",
       "points": [
-        "SpaceX官方投資人關係網站確認SPCX為Nasdaq掛牌普通股，非舊有太空ETF；此前暫停確認身分的說法已由官方資料釐清。",
-        "SpaceX 2026年第三季官方財報：總營收145.75億美元、營業利益27.91億美元；分部含太空、連線服務（Starlink）及AI。",
-        "同季資本支出195.93億美元，其中AI分部164.44億美元；營業利益不等於自由現金流，不能忽略高額擴建成本。",
-        "Starlink所在連線服務分部第三季營業利益23.67億美元，是重要獲利來源；AI分部仍須追蹤資本效率、融資需求及實際回收期。",
-        "TSLA與SPCX應分別評估；關聯人物及可能合作不代表兩檔股票風險相同，也不能把合併當作基本情境。",
-        "SpaceX正式10-Q披露：截至9/30現金及約當現金512.94億美元、短期有價證券385.61億美元；流動性充裕與高額AI資本支出須同時評估。",
-        "SpaceX與Tesla均成立特別委員會評估潛在合併，但SEC文件明示尚未達成決議，亦不保證交易成立；不得把合併當成基本情境。",
-        "投資判斷：Starlink用戶成長伴隨消費者ARPU下降；須持續比較訂戶數、單位收入、連線分部利潤與SI分部投資回報。"
+        "NVDA：看雲端客戶資本支出、資料中心營收與毛利率。",
+        "TSLA：看汽車、儲能及自駕商業化，潛在合併不是確定交易。",
+        "SPCX：看Starlink現金流、AI設備融資與回收期。"
       ],
       "sources": [
         {
-          "label": "SpaceX 2026 Q3 10-Q｜SEC 2026/10/22",
-          "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm"
-        },
-        {
-          "label": "SpaceX 2026 Q3業績公告｜SEC 2026/10/20",
-          "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm"
+          "label": "Reuters 2026/10/27市場分析",
+          "url": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-10-27/"
         }
       ]
     },
     {
-      "title": "五、實際投資決策｜先看支撐，不急著猜底",
-      "conclusion": "原長期投資框架不變，但應將短期市場溫度由反彈觀察調整為偏弱；對NVDA/SPCX採更嚴格資本回收期驗證。",
+      "title": "五、今日決策｜006208維持小額分批",
+      "conclusion": "不追開盤、不提高單次投入；觀察ETF折溢價與市場廣度。",
       "points": [
-        "006208因台股休市需等10/27恢復交易；有閒錢的小額買入策略可保留，不能以『最大跌幅』作單一進場依據。",
-        "VOO/QQQ已包含大量AI科技權值股；與NVDA等科技曝險疊加時需知道彼此風險高度相關。",
-        "若Meta等AI買方收縮資本支出，或TSLA出現更大融資和現金流壓力，屆時應重新檢驗增持論點，而非機械式攤平。",
-        "每日市場行情及Podcast只提供驗證與思考依據；私人Firebase持股數量、成本、現金不因公開晨報更新而改動。"
+        "VOO/QQQ與科技個股有重疊曝險，長期配置維持。",
+        "美股與期貨偏多屬情境預判，不保證現貨同幅上漲。",
+        "私人持股數量、成本與資金未寫入公開資料。"
       ],
       "sources": [
         {
-          "label": "臺股休市公告",
-          "url": "https://www.cna.com.tw/news/afe/202610220388.aspx"
-        },
-        {
-          "label": "Reuters 10/22 美股回檔",
-          "url": "https://www.reuters.com/business/nasdaq-futures-drop-over-1-ai-worries-resurface-oil-climbs-2026-10-22/"
+          "label": "臺灣證交所",
+          "url": "https://www.twse.com.tw/"
         }
       ]
     }
@@ -190,81 +129,80 @@
     "date": "2026/10/24",
     "url": "https://yasac.substack.com/",
     "points": [
-      "僅依10/27晨報第三方摘要：市場流動性及反彈追價風險；非完整逐字稿。",
-      "主持人觀點不等同確定事實；投資啟示為維持長期紀律。"
+      "股癌：本次未取得完整逐字稿，不推定主持人具體投資結論。"
     ]
   },
   "us_quotes": {
-    "date": "2026-10-26",
+    "date": "2026-10-27",
     "currency": "USD",
-    "source": "2026/10/27 ChatGPT晨報彙整之10/26歷史收盤；個股未於本次網站同步流程獨立逐檔複核",
+    "source": "2026/10/28 ChatGPT晨報彙整；S&P、Nasdaq及TSM已交叉查證，其餘個股仍待獨立核實",
     "VOO": {
-      "close": 703.41,
-      "change": 4.83,
-      "percent": 0.69
+      "close": 707.52,
+      "change": 4.11,
+      "percent": 0.58
     },
     "QQQ": {
-      "close": 712.2,
-      "change": 7.8,
-      "percent": 1.11
+      "close": 721.32,
+      "change": 9.12,
+      "percent": 1.28
     },
     "NVDA": {
-      "close": 216.03,
-      "change": 5.07,
-      "percent": 2.4
+      "close": 217.94,
+      "change": 1.94,
+      "percent": 0.9
     },
     "TSLA": {
-      "close": 391.62,
-      "change": 19.4,
-      "percent": 5.21
+      "close": 407.5,
+      "change": 15.88,
+      "percent": 4.05
     },
     "SPCX": {
-      "close": 146.9,
-      "change": -0.59,
-      "percent": -0.4
+      "close": 148.58,
+      "change": 1.68,
+      "percent": 1.14
     }
   },
   "additional_podcasts": [
     {
       "show": "M觀點",
-      "episode": "EP347",
-      "date": "2026/10/22",
-      "headline": "SpaceX AI業務、Tesla潛在合併及AI Agent競爭",
+      "episode": "EP348",
+      "date": "2026/10/26",
+      "headline": "烏克蘭星鏈、反蒸餾與中國模型、特斯拉自製地圖",
       "points": [
-        "依10/27晨報節目簡介，未取得完整逐字稿。",
-        "潛在合併不可視為確定交易。"
+        "依10/28晨報節目簡介，未取得完整逐字稿。",
+        "Starlink與Tesla相關主題僅列為研究線索，不視為已確認營運成果。"
       ],
-      "impact": "SPCX、TSLA各自檢驗財務及商業化，不因傳聞調整長期配置。",
+      "impact": "持續觀察Starlink服務風險及Tesla自駕競爭力。",
       "url": "https://podcasts.apple.com/tw/podcast/podcast/id1487378625/episodes"
     }
   ],
   "market_signals": {
     "SOX": {
-      "date": "2026-10-26",
-      "close": 11083.47,
-      "change": 304.01,
-      "percent": 2.82,
-      "source": "2026/10/27 ChatGPT晨報；待官方再次複核"
+      "date": "2026-10-27",
+      "close": 11482.5,
+      "change": 399.03,
+      "percent": 3.6,
+      "source": "10/28晨報近似值；待官方複核"
     },
     "TSM": {
-      "date": "2026-10-26",
-      "close": 424.37,
-      "change": 5.86,
-      "percent": 1.4,
-      "source": "2026/10/27 ChatGPT晨報；待官方再次複核"
+      "date": "2026-10-27",
+      "close": 436.87,
+      "change": 12.5,
+      "percent": 2.95,
+      "source": "Stock Analysis 10/27歷史收盤"
     },
     "taiwan_futures_night": {
-      "date": "2026-10-22",
-      "close": 45654,
-      "change": -580,
-      "percent": -1.25,
-      "source": "臺灣期貨交易所10/22盤後交易（10/23 05:00結束）",
+      "date": "2026-10-27",
+      "close": 46880,
+      "change": 774,
+      "percent": 1.68,
+      "source": "10/28晨報所載臺灣期交所盤後最後成交價；待再次複核",
       "session": "night"
     }
   },
   "market_outlook": {
-    "stance": "10/27復市：中性偏多，防開高走低",
-    "summary": "10/26 Nasdaq +0.83%、SOX +2.82%、TSM ADR +1.40%提供正面訊號；10/22台指期夜盤-1.25%屬較早交易時段，不能視為10/26最新夜盤。台積電與006208/0050具修復條件，但不保證開盤結果。",
-    "as_of": "美股10/26 EDT收盤；台股10/22 CST收盤；台指期10/22夜盤"
+    "stance": "10/28偏多，防開高走低",
+    "summary": "Nasdaq +1.18%、SOX約+3.60%、TSM ADR +2.95%、台指期夜盤+1.68%；台積電與006208/0050偏多，但10/27 ETF弱於指數，需觀察市場廣度。",
+    "as_of": "美股10/27 EDT；台股10/27 UTC+8；台指期10/27夜盤至10/28清晨"
   }
 }
