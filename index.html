@@ -270,7 +270,10 @@ try{
     document.getElementById('private-cash-value').textContent=fmtMoney(available);
     document.getElementById('private-total-value').textContent=fmtMoney(stocks+available);
     const updated=filtered.filter(x=>valuation(x).updated).length;
-    document.getElementById('private-date').textContent='持股來源日期：'+(data.asOf||'未註明')+'｜臺股估值行情：'+(publicQuoteDate||'未載入')+'｜'+updated+'筆臺股標的已依收盤價重估；其餘仍為來源快照（混合日期，不代表全組合最新市值）';
+    const stale=filtered.filter(x=>!valuation(x).updated);
+    const pendingTickers=[...new Set(stale.map(x=>String(x.ticker||'').toUpperCase()))].join('、');
+    const allFresh=filtered.length>0&&stale.length===0;
+    document.getElementById('private-date').textContent='持股來源日期：'+(data.asOf||'未註明')+'｜臺股行情：'+(publicQuoteDate||'未載入')+'｜已按有效收盤價重估 '+updated+'/'+filtered.length+' 筆'+(allFresh?'｜全部標的已依行情重估':'｜未重估標的：'+(pendingTickers||'無')+'（沿用Excel快照）')+'。'+(allFresh?'':'注意：目前為混合日期估值，非全組合最新市值；美股須有經核實美元收盤價與同日美元兌臺幣匯率才能換算。');
     const filterEl=document.getElementById('private-filters');filterEl.replaceChildren();
     ['全部',...personNames].forEach(p=>{
       const btn=document.createElement('button');btn.type='button';btn.className='pill'+(p===privateOwner?' active':'');btn.textContent=p==='全部'?'全家':p;btn.setAttribute('aria-pressed',String(p===privateOwner));
