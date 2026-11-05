@@ -137,14 +137,26 @@
   "us_quotes": {
     "date": "2026-11-04",
     "currency": "USD",
-    "source": "11/05 ChatGPT盤前晨報；精確值未核實者不填入",
+    "source": "2026-11-04 regular-session closes, stockanalysis.com and Yahoo Finance",
     "TSLA": {
       "close": 385.19,
       "percent": -3.34
     },
     "VOO": {
-      "close": 704.07,
-      "percent": 1.52
+      "close": 704.74,
+      "percent": 1.61
+    },
+    "NVDA": {
+      "close": 200.13,
+      "percent": -3.17
+    },
+    "QQQ": {
+      "close": 691.95,
+      "percent": 0.97
+    },
+    "SPCX": {
+      "close": 135.92,
+      "percent": -3.81
     }
   },
   "additional_podcasts": [
@@ -186,5 +198,14 @@
     "stance": "11/05盤前中性，半導體偏弱，留意開高走低",
     "summary": "Nasdaq+1.44%、SOX約-3%、TSM ADR-2.24%、台指期夜盤+0.47%，訊號分歧；台積電與006208、0050偏多、中性、偏空情境均保留。",
     "as_of": "2026/11/05 08:00 UTC+8；台股及美股11/04正常交易收盤、台指期11/04夜盤"
+  },
+  "fx": {
+    "provider": "Bank of Taiwan",
+    "pair": "USD/TWD",
+    "type": "spot_buy",
+    "rate": 32.91,
+    "date": "2026-11-05",
+    "source": "https://rate.bot.com.tw/xrt/quote/l6m/USD?Lang=en-US",
+    "note": "Bank of Taiwan spot buying rate, not cash rate; indicative and before remittance fees"
   }
 }
