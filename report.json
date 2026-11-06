@@ -163,25 +163,6 @@
     }
   ],
   "market_signals": {
-    "SOX": {
-      "date": "2026-11-04",
-      "percent": -3,
-      "source": "11/05晨報約略跌幅；精確收盤未核實"
-    },
-    "TSM": {
-      "date": "2026-11-04",
-      "close": 395.75,
-      "percent": -2.24,
-      "source": "11/05晨報彙整"
-    },
-    "taiwan_futures_night": {
-      "date": "2026-11-04",
-      "close": 43404,
-      "change": 201,
-      "percent": 0.47,
-      "session": "night",
-      "source": "11/05晨報引述期交所夜盤統計"
-    },
     "as_of": "2026-11-05",
     "sp500": {
       "close": 7353.73,
@@ -213,12 +194,32 @@
       "note": "Difference is versus cited session reference, not verified previous settlement; percent withheld"
     },
     "us_holdings_quote_status": "4/5 verified; VOO unverified and null",
-    "date": "2026-11-05"
+    "date": "2026-11-05",
+    "SOX": {
+      "date": "2026-11-05",
+      "percent": -12.2,
+      "close": null,
+      "source": "Reuters/WSJ rounded SOX percentage; exact index close withheld"
+    },
+    "TSM": {
+      "date": "2026-11-05",
+      "close": null,
+      "percent": null,
+      "source": "11/05 TSM ADR closing values conflict among sources; awaiting verified exact quote; over 10% decline reported"
+    },
+    "taiwan_futures_night": {
+      "date": "2026-11-05",
+      "close": 38936,
+      "session": "night",
+      "change_from_reference": -2946,
+      "percent": null,
+      "source": "Taiwan index futures night session; difference versus cited session reference, not previous settlement"
+    }
   },
   "market_outlook": {
-    "stance": "11/05盤前中性，半導體偏弱，留意開高走低",
-    "summary": "Nasdaq+1.44%、SOX約-3%、TSM ADR-2.24%、台指期夜盤+0.47%，訊號分歧；台積電與006208、0050偏多、中性、偏空情境均保留。",
-    "as_of": "2026/11/05 08:00 UTC+8；台股及美股11/04正常交易收盤、台指期11/04夜盤"
+    "stance": "11/06盤前高度警戒：美股科技與半導體急跌，臺股開盤承壓；先觀察承接，避免開盤追單",
+    "summary": "11/05美股Nasdaq -5.52%、S&P 500 -4.36%、SOX約-12.2%；11/05臺股收41,574.72（-3.20%），台指期夜盤收38,936點。科技股集中風險升高；006208僅在必要現金流獨立保留且開盤賣壓趨緩時考慮小額分批，持續破低則不急買。",
+    "as_of": "2026/11/06 08:30 UTC+8；臺股、美股11/05收盤；臺指期11/05夜盤"
   },
   "fx": {
     "provider": "Bank of Taiwan",
