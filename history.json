@@ -1,6 +1,6 @@
 {
   "description": "Validated historical close series for public watchlist; no synthetic prices.",
-  "updated_at": "2026-11-10T04:28:40+00:00",
+  "updated_at": "2026-11-10T17:10:40+00:00",
   "series": {
     "TAIEX": [
       {
@@ -666,10 +666,6 @@
     ],
     "006208": [
       {
-        "date": "2026-03-10",
-        "close": 174.0
-      },
-      {
         "date": "2026-03-11",
         "close": 181.2
       },
@@ -1320,6 +1316,10 @@
       {
         "date": "2026-11-06",
         "close": 210.1
+      },
+      {
+        "date": "2026-11-09",
+        "close": 223.6
       }
     ],
     "0050": [
