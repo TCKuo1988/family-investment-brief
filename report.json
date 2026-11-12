@@ -1,154 +1,153 @@
 {
-  "report-date": "2026/11/12｜週四08:00盤前（臺股11/11、美股11/11）",
-  "summary": "臺股11/11加權44,257.15（+3.62%）、台積電2,395、006208 236.60、0050 103.20；美股11/11 S&P500 +1.31%、Nasdaq +1.60%，AI類股反彈，仍留意個股與盤後波動。",
-  "status": "11/12盤前｜臺美股反彈，夜盤及部分指標待核實",
-  "market-tag": "臺股11/11正式收盤",
-  "market-value": "44,257.15",
-  "market-change": "+1,545.23（+3.62%）",
-  "market-note": "台積電收2,395（+110）；臺指期夜盤待核實",
-  "etf-tag": "臺股ETF｜11/11正式收盤",
-  "etf-summary": "006208 236.60（+3.36%）；0050 103.20（+3.51%）",
-  "stocks-tag": "美股11/11正式收盤",
+  "report-date": "2026/11/13｜週五08:00盤前（臺股11/12、美股11/12）",
+  "summary": "臺股11/12加權43,091.87（-2.63%）、台積電2,340、006208 231.95、0050 100.95；美股11/12 Nasdaq -0.39%、NVDA -4.34%，AI類股分歧，臺指期夜盤反彈。",
+  "status": "11/13盤前｜高波動，AI個股事件與利率風險",
+  "market-tag": "臺股11/12正式收盤",
+  "market-value": "43,091.87",
+  "market-change": "-1,165.28（-2.63%）",
+  "market-note": "台積電2,340（-55）；11/12夜盤至11/13凌晨43,676（+548，+1.27%）",
+  "etf-tag": "臺股ETF｜11/12正式收盤",
+  "etf-summary": "006208 231.95（-1.97%）；0050 100.95（-2.18%）",
+  "stocks-tag": "美股11/12正式收盤",
   "stocks": [
     {
       "ticker": "VOO",
-      "price": 698.25,
-      "change_percent": 1.269,
-      "note": "2026/11/11 美東正式收盤"
+      "price": 696.04,
+      "change_percent": -0.331,
+      "note": "2026/11/12 美東正式收盤"
     },
     {
       "ticker": "NVDA",
-      "price": 173.85,
-      "change_percent": 2.937,
-      "note": "2026/11/11 美東正式收盤"
+      "price": 166.19,
+      "change_percent": -4.34,
+      "note": "2026/11/12 美東正式收盤"
     },
     {
       "ticker": "TSLA",
-      "price": 390.8,
-      "change_percent": 2.902,
-      "note": "2026/11/11 美東正式收盤"
+      "price": 397.45,
+      "change_percent": 1.7,
+      "note": "2026/11/12 美東正式收盤"
     },
     {
       "ticker": "QQQ",
-      "price": 692.01,
-      "change_percent": 2.556,
-      "note": "2026/11/11 美東正式收盤"
+      "price": 688.17,
+      "change_percent": -0.32,
+      "note": "2026/11/12 美東正式收盤"
     },
     {
       "ticker": "SPCX",
-      "price": 139.85,
-      "change_percent": -2.264,
-      "note": "2026/11/11 美東正式收盤"
+      "price": 139.98,
+      "change_percent": 0.165,
+      "note": "2026/11/12 美東正式收盤"
     }
   ],
-  "action-tag": "11/12盤前｜反彈延續但避免追價",
-  "action": "臺美股反彈，維持長期核心配置；006208與0050固定投入不變，額外加碼須檢查現金流與回檔條件。",
-  "focus": "CoreWeave需求展望是否支持AI資本支出長期回收；關注NVDA盤後消息與正式披露。",
+  "action-tag": "11/13盤前｜科技股分歧，避免追價",
+  "action": "台股昨日回檔、美股NVDA下跌但夜盤反彈；006208及0050維持長期核心持有，額外加碼先觀察承接及現金流。",
+  "focus": "NVDA管理層變動與AI晶片競爭、資料中心投資回收，以及美國PPI與利率預期。",
   "quotes": {
     "2330": {
-      "close": 2395,
-      "change": 110,
-      "percent": 4.81
+      "close": 2340,
+      "change": -55,
+      "percent": -2.3
     },
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "taiex": {
-      "close": 44257.15,
-      "change": 1545.23,
-      "percent": 3.62
+      "close": 43091.87,
+      "change": -1165.28,
+      "percent": -2.63
     },
     "006208": {
-      "close": 236.6,
-      "change": 7.7,
-      "percent": 3.36
+      "close": 231.95,
+      "change": -4.65,
+      "percent": -1.97
     },
     "0050": {
-      "close": 103.2,
-      "change": 3.5,
-      "percent": 3.51
+      "close": 100.95,
+      "change": -2.25,
+      "percent": -2.18
     }
   },
-  "analysis_intro": "11/11臺股與美股反彈；Nasdaq +1.60%，SOX據Reuters約+5.7%，臺指期夜盤與TSM ADR精確數值未核實。",
+  "analysis_intro": "11/12臺股-2.63%，美股Nasdaq-0.39%、SOX約-0.54%；NVDA因管理層事件跌4.34%，臺指期夜盤回升1.27%，TSM ADR精確收盤待核實。",
   "analysis_sections": [
     {
-      "title": "市場溫度｜高波動反彈",
-      "conclusion": "AI股反彈，仍有估值與個股事件風險",
+      "title": "市場溫度｜高波動、科技股分歧",
+      "conclusion": "NVDA事件風險與利率疑慮並存，夜盤反彈不代表已止跌",
       "points": [
-        "臺股11/11 +3.62%；006208 +3.36%",
-        "美股Nasdaq +1.60%；半導體板塊約+5.7%",
-        "期貨夜盤及TSM ADR精確收盤待核實"
+        "臺股11/12 -2.63%，006208 -1.97%",
+        "Nasdaq -0.39%、NVDA -4.34%；夜盤 +1.27%"
       ]
     },
     {
-      "title": "11/12臺股情境",
-      "conclusion": "偏多：台積電守穩；中性：高檔震盪；偏空：科技股賣壓擴大",
+      "title": "11/13臺股情境",
+      "conclusion": "偏多：台積電承接且夜盤反彈延續；中性：開高震盪；偏空：再度跌破前低",
       "points": [
-        "不追高，固定定期定額維持",
-        "額外加碼僅用獨立可承擔風險資金"
+        "不追高，維持固定定期定額",
+        "額外加碼需有獨立可承擔風險資金"
       ]
     },
     {
       "title": "AI與總體焦點",
-      "conclusion": "CoreWeave展望緩和AI投資疑慮，仍需驗證實際現金流",
+      "conclusion": "NVDA管理層變動與AI監管風險影響估值；觀察PPI與利率",
       "points": [
-        "Reuters 2026/11/11：CoreWeave股價大漲",
-        "美國債券市場退伍軍人節休市，股票正常交易"
+        "Reuters 2026/11/12：NVDA跌4.3%、AMD及AVGO上漲",
+        "科技股表現分歧，不等於AI需求已反轉"
       ]
     },
     {
       "title": "長期論點",
-      "conclusion": "以獲利與資本支出回報驗證AI趨勢，避免單日行情機械調整",
+      "conclusion": "檢驗AI基建自由現金流與半導體訂單，避免單日波動機械交易",
       "points": [
-        "評估AI基建投入與自由現金流",
-        "關注集中度與再平衡，不機械賣出"
+        "觀察AI供應鏈需求及管理層接班",
+        "控制個股集中風險"
       ]
     }
   ],
   "podcast": {
-    "status": "截至11/12未核實最新集數",
+    "status": "截至11/13尚未核實最新集數",
     "items": [],
-    "note": "未取得可靠逐字稿或節目簡介，不推定主持人觀點"
+    "note": "未取得可核實節目資訊或逐字稿，不推定主持人觀點"
   },
   "us_quotes": {
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "currency": "USD",
-    "source": "ChartExchange regular-session historical closes 2026-11-11",
+    "source": "Yahoo Finance and ChartExchange regular-session close 2026-11-12",
     "VOO": {
-      "close": 698.25,
-      "percent": 1.269
+      "close": 696.04,
+      "percent": -0.331
     },
     "NVDA": {
-      "close": 173.85,
-      "percent": 2.937
+      "close": 166.19,
+      "percent": -4.34
     },
     "TSLA": {
-      "close": 390.8,
-      "percent": 2.902
+      "close": 397.45,
+      "percent": 1.7
     },
     "QQQ": {
-      "close": 692.01,
-      "percent": 2.556
+      "close": 688.17,
+      "percent": -0.32
     },
     "SPCX": {
-      "close": 139.85,
-      "percent": -2.264
+      "close": 139.98,
+      "percent": 0.165
     }
   },
   "additional_podcasts": [],
   "market_signals": {
-    "as_of": "2026-11-11",
-    "date": "2026-11-11",
+    "as_of": "2026-11-12",
+    "date": "2026-11-12",
     "sp500": {
-      "close": 7619.38,
-      "percent": 1.31
+      "close": 7592.4,
+      "percent": -0.35
     },
     "nasdaq": {
-      "close": 25466.19,
-      "percent": 1.6
+      "close": 25366.09,
+      "percent": -0.39
     },
     "sox": {
       "close": null,
-      "percent": 5.7,
-      "note": "Reuters半導體板塊漲幅，未確認SOX精確值"
+      "percent": -0.54,
+      "note": "臺灣媒體報導跌幅，精確點位未核實"
     },
     "tsm_adr": {
       "close": null,
@@ -156,24 +155,24 @@
       "note": "待核實"
     },
     "night_futures": {
-      "close": null,
-      "change": null,
-      "percent": null,
-      "session": "2026-11-11夜盤至11/12凌晨，待核實"
+      "close": 43676,
+      "change": 548,
+      "percent": 1.27,
+      "session": "2026-11-12夜盤至11/13凌晨"
     }
   },
   "market_outlook": {
-    "as_of": "2026-11-12 08:00 Asia/Taipei; cash markets last closed 2026-11-11",
-    "stance": "中性偏多，波動風險高",
-    "summary": "美股科技股反彈有利臺股情緒，仍需核實期貨夜盤及TSM ADR；避免追高。"
+    "as_of": "2026-11-13 08:00 Asia/Taipei; cash markets last closed 2026-11-12",
+    "stance": "中性偏謹慎，高波動",
+    "summary": "美股科技股分歧、NVDA事件壓力與臺指期夜盤回升並存，留意開盤承接。"
   },
   "fx": {
     "provider": "Bank of Taiwan",
     "pair": "USD/TWD",
     "type": "spot_buy",
-    "rate": 32.82,
-    "date": "2026-11-11",
-    "source": "https://rate.bot.com.tw/xrt/quote/ltm/USD/spot",
-    "note": "2026/11/11官方營業時間歷史牌告即期買入"
+    "rate": 32.81,
+    "date": "2026-11-12",
+    "source": "https://rate.bot.com.tw/xrt/quote/l6m/USD/spot/1",
+    "note": "臺銀2026/11/12非營業時間牌告即期買入，僅供估值參考"
   }
 }
