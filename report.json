@@ -1,181 +1,181 @@
 {
-  "report-date": "2026/11/16｜週一08:00盤前版（臺美股最近完成交易日11/13）",
-  "summary": "11/16週一臺股開盤前，最近完成臺美股交易日仍為11/13。臺股43,675.12（+1.35%），006208 235.05、0050 102.50；美股Nasdaq 25,136.27（-0.91%）、QQQ 679.89（-1.20%）。科技股偏弱，盤前中性偏空，等待台積電承接確認。",
-  "status": "11/16週一盤前｜11/13正式收盤基準｜科技股高波動",
-  "market-tag": "臺股11/13正式收盤",
-  "market-value": "43,675.12",
-  "market-change": "+583.25（+1.35%）",
-  "market-note": "台積電2350（+10）；11/13夜盤完整結束價尚未核實",
-  "etf-tag": "臺股ETF｜11/13正式收盤",
-  "etf-summary": "006208 235.05（+1.34%）；0050 102.50（+1.54%）",
-  "stocks-tag": "美股11/13正式收盤",
+  "report-date": "2026/11/17｜週二08:00盤前版（臺美股11/16正式收盤）",
+  "summary": "11/16臺股重挫6.03%，美股Nasdaq -2.49%、SOX -5.28%、TSM ADR約-6.34%；11/17盤前偏空且波動極高。長期持有策略不變，額外加碼暫緩。",
+  "status": "11/17週二盤前｜11/16臺美股正式收盤｜高風險",
+  "market-tag": "臺股11/16正式收盤",
+  "market-value": "41,040.08",
+  "market-change": "−2,635.04（−6.03%）",
+  "market-note": "台積電2215（-135）；11/16夜盤最終收盤未核實",
+  "etf-tag": "臺股ETF｜11/16正式收盤",
+  "etf-summary": "006208 220.85（-6.04%）；0050 96.45（-5.90%）",
+  "stocks-tag": "美股11/16正式收盤",
   "stocks": [
     {
       "ticker": "VOO",
-      "price": 691.82,
-      "change_percent": -0.6,
-      "note": "2026/11/13 美東16:00正式收盤；美元"
+      "price": null,
+      "change_percent": null,
+      "note": "2026/11/16各資料源正式收盤價不一致，待核實，未沿用11/13"
     },
     {
       "ticker": "NVDA",
-      "price": 162.85,
-      "change_percent": -2.01,
-      "note": "2026/11/13 美東16:00正式收盤；美元"
+      "price": 156.14,
+      "change_percent": -4.12,
+      "note": "2026/11/16美東16:00正式收盤；美元"
     },
     {
       "ticker": "TSLA",
-      "price": 390.22,
-      "change_percent": -1.82,
-      "note": "2026/11/13 美東16:00正式收盤；美元"
+      "price": 379.74,
+      "change_percent": -2.69,
+      "note": "2026/11/16美東16:00正式收盤；美元"
     },
     {
       "ticker": "QQQ",
-      "price": 679.89,
-      "change_percent": -1.2,
-      "note": "2026/11/13 美東16:00正式收盤；美元"
+      "price": 661.24,
+      "change_percent": -2.74,
+      "note": "2026/11/16美東16:00正式收盤；美元"
     },
     {
       "ticker": "SPCX",
-      "price": 139.08,
-      "change_percent": -0.61,
-      "note": "2026/11/13 美東16:00正式收盤；美元"
+      "price": 137.36,
+      "change_percent": -1.26,
+      "note": "2026/11/16美東16:00正式收盤；美元"
     }
   ],
-  "action-tag": "11/16盤前｜觀察台積電與台50承接，暫不追價",
-  "action": "006208、0050長期只買不賣；固定定期定額維持。美股科技股波動及NVDA個股事件提高集中風險，新增資金優先評估分散配置，額外加碼須確認現金流。",
-  "focus": "Reuters 2026/11/13：AI科技股回檔、NVIDIA治理不確定性及通膨利率風險；11/16盤前觀察台積電與台50承接。",
+  "action-tag": "11/17盤前｜急跌風險，額外加碼暫緩",
+  "action": "006208、0050長期只買不賣；固定定期定額不變。Nasdaq與SOX急跌、台積電ADR走弱，暫緩額外加碼，避免動用緊急備用金。",
+  "focus": "2026/11/16 Reuters/AP：美國AI晶片出口管制、NVIDIA管理層不確定性與財報前波動；臺股單日跌6.03%。",
   "quotes": {
     "2330": {
-      "close": 2350,
-      "change": 10,
-      "percent": 0.43
+      "close": 2215,
+      "change": -135,
+      "percent": -5.74
     },
-    "date": "2026-11-13",
+    "date": "2026-11-16",
     "taiex": {
-      "close": 43675.12,
-      "change": 583.25,
-      "percent": 1.35
+      "close": 41040.08,
+      "change": -2635.04,
+      "percent": -6.03
     },
     "006208": {
-      "close": 235.05,
-      "change": 3.1,
-      "percent": 1.34
+      "close": 220.85,
+      "change": -14.2,
+      "percent": -6.04
     },
     "0050": {
-      "close": 102.5,
-      "change": 1.55,
-      "percent": 1.54
+      "close": 96.45,
+      "change": -6.05,
+      "percent": -5.9
     }
   },
-  "analysis_intro": "11/16週一臺灣08:00盤前，美股11/13正式收盤Nasdaq -0.91%、TSM ADR -1.68%；SOX與臺指期夜盤最終收盤未核實，不推定最新點位。",
+  "analysis_intro": "11/17臺灣08:00盤前，11/16美股Nasdaq -2.49%、SOX -5.28%、TSM ADR約-6.34%，臺股11/16已跌6.03%；夜盤收盤未核實。",
   "analysis_sections": [
     {
-      "title": "市場溫度｜高波動、偏謹慎",
-      "conclusion": "11/16盤前，11/13 Nasdaq -0.91%、TSM ADR -1.68%",
+      "title": "市場溫度｜極高波動、偏空",
+      "conclusion": "11/16臺美科技股同步急跌",
       "points": [
-        "11/13美股科技股偏弱，週一觀察臺股承接",
-        "SOX及臺指期夜盤最終收盤未核實"
+        "Nasdaq -2.49%、SOX -5.28%，風險偏好下降",
+        "臺指期11/16夜盤最終價未核實，不能推定反彈"
       ]
     },
     {
-      "title": "11/16臺股三情境",
-      "conclusion": "偏多：台積電領漲；中性：開低震盪；偏空：半導體賣壓延續",
+      "title": "11/17臺股三情境",
+      "conclusion": "偏多：台積電止跌；中性：低檔震盪；偏空：半導體再度擴大跌勢",
       "points": [
-        "006208、0050長期持有，不追價",
-        "固定定期定額不變，額外加碼以現金流與風險為前提"
+        "006208、0050不因單日跌幅機械賣出",
+        "額外加碼暫緩，固定定期定額不受影響"
       ]
     },
     {
-      "title": "AI科技及總體焦點",
-      "conclusion": "11/13 Reuters：科技股受NVIDIA治理不確定性及AI投資回報疑慮影響",
+      "title": "AI科技與總體焦點",
+      "conclusion": "2026/11/16 Reuters：AI晶片出口管制、NVDA財報前風險與利率壓力",
       "points": [
-        "需追蹤AI訂單、資本支出及自由現金流",
-        "利率預期影響高估值科技股折現率"
+        "確認公司正式財報、指引及資本支出回報",
+        "避免將估值修正直接視為AI需求崩潰"
       ]
     },
     {
       "title": "長期論點與研究",
-      "conclusion": "研究AI基礎設施融資壓力對NVIDIA及台積電訂單的傳導",
+      "conclusion": "研究美國AI晶片管制對NVDA與台積電先進製程訂單的傳導",
       "points": [
-        "區分短期估值變動與長期需求變化",
-        "避免因單日波動機械賣出"
+        "檢驗訂單、毛利率、雲端資本支出與自由現金流",
+        "優先控制集中度及資金流動性"
       ]
     }
   ],
   "podcast": {
-    "status": "截至11/16 08:00未核實新集數",
+    "status": "截至2026/11/17 08:00未完成新集數核實",
     "items": [],
-    "note": "未取得可核實的股癌與M觀點新集數或逐字稿，不引用主持人觀點"
+    "note": "股癌與M觀點未取得可核實的新集數或逐字稿；不引述主持人觀點"
   },
   "us_quotes": {
-    "date": "2026-11-13",
+    "date": "2026-11-16",
     "currency": "USD",
-    "source": "2026-11-13 regular close; NVDA Yahoo Finance/StockAnalysis verified 2026-11-15; other symbols retained from 11/14 verified snapshot, no new Sunday trading",
+    "source": "2026-11-16 regular session: NVDA Reuters/AP; TSLA Yahoo Finance; QQQ Senntric; SPCX StockAnalysis. VOO sources disagree, left null.",
     "VOO": {
-      "close": 691.82,
-      "percent": -0.6
+      "close": null,
+      "percent": null,
+      "note": "正式收盤資料源不一致（680.22/680.78），待核實"
     },
     "NVDA": {
-      "close": 162.85,
-      "percent": -2.01
+      "close": 156.14,
+      "percent": -4.12
     },
     "TSLA": {
-      "close": 390.22,
-      "percent": -1.82
+      "close": 379.74,
+      "percent": -2.69
     },
     "QQQ": {
-      "close": 679.89,
-      "percent": -1.2
+      "close": 661.24,
+      "percent": -2.74
     },
     "SPCX": {
-      "close": 139.08,
-      "percent": -0.61
+      "close": 137.36,
+      "percent": -1.26
     }
   },
   "additional_podcasts": [],
   "market_signals": {
-    "as_of": "2026-11-13",
-    "date": "2026-11-13",
+    "as_of": "2026-11-16",
+    "date": "2026-11-16",
     "sp500": {
-      "close": 7561.67,
-      "change": -30.73,
-      "percent": -0.4
+      "close": 7416.59,
+      "change": -145.08,
+      "percent": -1.92
     },
     "nasdaq": {
-      "close": 25136.27,
-      "change": -229.82,
-      "percent": -0.91
+      "close": 24509.76,
+      "change": -626.51,
+      "percent": -2.49
     },
     "sox": {
-      "close": null,
-      "percent": null,
-      "note": "正式收盤點位及幅度未完成一致核實"
+      "close": 9610.65,
+      "percent": -5.28
     },
     "tsm_adr": {
-      "close": 398.68,
-      "change": -6.81,
-      "percent": -1.68
+      "close": 373.45,
+      "percent": -6.34,
+      "note": "收盤價與來源有小幅衝突，需進一步核對"
     },
     "night_futures": {
       "close": null,
       "change": null,
       "percent": null,
-      "session": "2026-11-13夜盤至11/14凌晨",
-      "note": "僅核實11/13 21:59盤中44120點，未核實完整夜盤最終收盤"
+      "session": "2026-11-16夜盤至11/17凌晨",
+      "note": "最終收盤尚未核實；不得以11/13夜盤代替"
     }
   },
   "market_outlook": {
-    "as_of": "2026-11-16 08:00 Asia/Taipei; last cash session 2026-11-13",
-    "stance": "中性偏空、高波動",
-    "summary": "11/16臺股盤前：偏多為台積電及台50守穩；中性為開低震盪；偏空為半導體賣壓延續。SOX及夜盤最終數據未核實，信心有限。"
+    "as_of": "2026-11-17 08:00 Asia/Taipei; last cash session 2026-11-16",
+    "stance": "偏空、高波動",
+    "summary": "偏多：台積電止跌帶動ETF；中性：開低震盪；偏空：半導體賣壓延續。夜盤最終數據缺漏，判斷需保留彈性。"
   },
   "fx": {
     "provider": "Bank of Taiwan",
     "pair": "USD/TWD",
     "type": "spot_buy",
-    "rate": 32.76,
-    "date": "2026-11-13",
-    "source": "https://rate.bot.com.tw/xrt/quote/l6m/USD/spot/1",
-    "note": "臺銀2026/11/13非營業時間牌告美元即期買入；非現鈔或賣出"
+    "rate": 32.825,
+    "date": "2026-11-16",
+    "source": "https://www.bot.com.tw/tw",
+    "note": "臺銀官網2026/11/16 16:21即期買入牌告，非現鈔或即期賣出"
   }
 }
