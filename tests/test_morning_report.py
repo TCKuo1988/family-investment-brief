@@ -1,8 +1,10 @@
 import copy
-from datetime import date
+from datetime import date, datetime
+import io
 import json
 from pathlib import Path
 import sys
+from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 from urllib.error import HTTPError
@@ -38,6 +40,31 @@ class MorningReportTests(unittest.TestCase):
         self.assertNotIn(r"\n", message)
         for text in ("台積電 ADR", "NVDA｜", "TSLA｜", "SPCX｜", "1～4", "3～12", line.SITE):
             self.assertIn(text, message)
+
+    def test_mobile_summary_precedes_prices(self):
+        message = line.render(self.report)
+        headline, prices = message.split("🇺🇸 美股", maxsplit=1)
+        for label in ("市場強弱", "NVDA｜", "TSLA｜", "SPCX｜", "家庭策略", line.SITE):
+            self.assertIn(label, headline)
+        self.assertIn("🇹🇼 臺股", prices)
+
+    def test_deployment_mismatch_blocks_line_and_reports_the_failed_stage(self):
+        fake_now = datetime.combine(self.edition, datetime.strptime("08:25", "%H:%M").time(), line.TAIPEI)
+        with TemporaryDirectory() as directory:
+            summary = Path(directory) / "summary"
+            with patch.dict(line.os.environ, {"GITHUB_STEP_SUMMARY": str(summary)}), \
+                 patch.object(line, "datetime") as clock, \
+                 patch.object(line, "urlopen", return_value=io.BytesIO(b"older deployed report")), \
+                 patch.object(line, "send") as send, \
+                 patch.object(line.Path, "write_text"), \
+                 patch.object(sys, "argv", ["script", "--send"]):
+                clock.now.return_value = fake_now
+                with self.assertRaisesRegex(SystemExit, "has not published"):
+                    line.main()
+                send.assert_not_called()
+            output = summary.read_text()
+            self.assertIn("**Pages**　失敗", output)
+            self.assertIn("**LINE**　未呼叫", output)
 
     def test_missing_close_and_stale_edition(self):
         bad = copy.deepcopy(self.report)

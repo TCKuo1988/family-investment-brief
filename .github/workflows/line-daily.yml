@@ -13,6 +13,8 @@ on:
         type: string
   schedule:
     - cron: '10 0 * * *' # 08:10 Taipei
+    - cron: '25 0 * * *' # 08:25 Taipei fallback
+  deployment_status:
   push:
     branches: [main]
     paths: ['report.json', 'scripts/**', '.github/workflows/line-daily.yml']
@@ -36,6 +38,7 @@ jobs:
         env:
           REPORT_DAY: ${{ inputs.report_day }}
         run: |
+          printf '### TCK LINE 預覽\n\n- **GitHub 提交**　`%s`\n' "$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
           edition="$REPORT_DAY"
           if [[ -z "$edition" && "$GITHUB_EVENT_NAME" == push ]]; then
             edition="$(python -c 'import json; print(json.load(open("report.json"))["edition_date"])')"
@@ -50,7 +53,12 @@ jobs:
           if-no-files-found: error
 
   send:
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'send'))
+    if: >-
+      (github.ref == 'refs/heads/main' &&
+        (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'send'))) ||
+      (github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' &&
+        github.event.deployment.environment == 'github-pages' &&
+        (github.event.deployment.ref == 'main' || github.event.deployment.ref == 'refs/heads/main'))
     runs-on: ubuntu-latest
     timeout-minutes: 8
     permissions:
@@ -74,15 +82,33 @@ jobs:
           set -euo pipefail
           edition="$(TZ=Asia/Taipei date +%F)"
           tag="line-sent/$edition"
+          printf '### TCK LINE 推播檢查\n\n- **事件**　%s\n- **GitHub 提交**　`%s`\n' \
+            "$GITHUB_EVENT_NAME" "$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          if [[ "$GITHUB_EVENT_NAME" != workflow_dispatch ]]; then
+            now="$(TZ=Asia/Taipei date +%H:%M)"
+            if [[ "$now" < '08:10' || "$now" > '09:00' ]]; then
+              printf -- '- **LINE**　%s，超出臺北時間自動補送時段\n' "$now" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+          fi
           if git ls-remote --exit-code --tags origin "refs/tags/$tag"; then
             echo "Already accepted for $edition"
+            printf -- '- **LINE**　%s 已有成功紀錄\n' "$edition" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           else
             status=$?
-            if [[ "$status" != 2 ]]; then exit "$status"; fi
+            if [[ "$status" != 2 ]]; then
+              printf -- '- **LINE**　無法確認既有發送紀錄（Git 狀態 %s）\n' "$status" >> "$GITHUB_STEP_SUMMARY"
+              exit "$status"
+            fi
           fi
           python scripts/push_line_verified.py --send --report-day "$edition"
-          git push origin "HEAD:refs/tags/$tag"
+          if git push origin "HEAD:refs/tags/$tag"; then
+            printf -- '- **發送紀錄**　`%s` 已寫入\n' "$tag" >> "$GITHUB_STEP_SUMMARY"
+          else
+            printf -- '- **發送紀錄**　LINE 已受理，但 Git 標記寫入失敗，可用同一 retry key 重試\n' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
