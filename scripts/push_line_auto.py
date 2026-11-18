@@ -61,7 +61,7 @@ def main():
     now = dt.datetime.now(TZ)
     if now.weekday() >= 5:
         stop("weekend")
-    if os.environ.get("LINE_MANUAL_TODAY") != "true" and (now.hour != 8 or not (5 <= now.minute <= 35)):
+    if os.environ.get("LINE_MANUAL_TODAY", "").strip().lower() not in ("true", "1", "yes") and (now.hour != 8 or not (5 <= now.minute <= 35)):
         stop("outside 08:05–08:35 Asia/Taipei window")
     data = json.loads(Path("history.json").read_text(encoding="utf-8"))
     series = data.get("series") or {}
