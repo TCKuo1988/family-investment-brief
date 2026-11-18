@@ -93,19 +93,37 @@ def main():
         observation = "台美股同步走強；仍依長期配置與現金流執行。"
     else:
         observation = "維持長期配置紀律；額外加碼須考量現金流與風險承受度。"
+    def line(symbol, name=None):
+        _, price, pct = quotes[symbol]
+        direction = "🔴" if pct > 0 else ("🟢" if pct < 0 else "⚪")
+        return f"{direction} {name or symbol:<7} {price:,.2f}  ({pct:+.2f}%)"
+
+    lag = "⚠️ 資料非昨日交易日，請留意更新時差。\\n" if tw_day != today - dt.timedelta(days=1) or us_day != today - dt.timedelta(days=1) else ""
     message = (
-        f"📊 TCK 台美股精簡晨報｜{now:%m/%d} 08:10\n"
-        f"🇹🇼 臺股收盤 {tw_day:%m/%d}\n"
-        f"加權 {fmt('TAIEX')}\n"
-        f"006208 {fmt('006208')}｜0050 {fmt('0050')}\n"
-        f"🇺🇸 美股收盤 {us_day:%m/%d}（美元）\n"
-        f"VOO {fmt('VOO')}｜QQQ {fmt('QQQ')}\n"
-        f"NVDA {fmt('NVDA')}｜TSLA {fmt('TSLA')}\n"
-        f"SPCX {fmt('SPCX')}\n"
-        f"🔎 {observation}\n"
-        "📌 以上為行情規則式觀察，非個別投資建議。\n"
-        "資料：Yahoo Finance 歷史日線（可能與交易所官方收盤價有差異）\n"
-        "🔗 https://tckuo1988.github.io/family-investment-brief/"
+        f"📊 TCK｜台美股投資晨報\\n"
+        f"🗓 {now:%Y/%m/%d} 早間版\\n"
+        "━━━━━━━━━━━━\\n"
+        f"🇹🇼 台股｜{tw_day:%m/%d} 收盤（新臺幣）\\n"
+        f"{line('TAIEX', '加權指數')}\\n"
+        f"{line('006208')}\\n"
+        f"{line('0050')}\\n"
+        "\\n"
+        f"🇺🇸 美股｜{us_day:%m/%d} 收盤（美元）\\n"
+        f"{line('VOO')}\\n"
+        f"{line('QQQ')}\\n"
+        f"{line('NVDA')}\\n"
+        f"{line('TSLA')}\\n"
+        f"{line('SPCX')}\\n"
+        "━━━━━━━━━━━━\\n"
+        f"{lag}"
+        f"🔎 今日觀察\\n{observation}\\n"
+        "\\n"
+        "💡 短期｜先看市場波動與可動用現金；不因單日下跌一次投入全部資金。\\n"
+        "🧭 中期｜維持核心 ETF 配置，定期檢視科技股集中度與家庭重大支出。\\n"
+        "\\n"
+        "📌 規則式觀察，未接入即時家庭資產餘額。\\n"
+        "資料：Yahoo Finance 日線；以各市場實際標示日期為準。\\n"
+        "https://tckuo1988.github.io/family-investment-brief/"
     )
     if len(message) > 4900:
         stop("message too long")
