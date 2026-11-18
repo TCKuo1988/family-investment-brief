@@ -1,104 +1,104 @@
 {
-  "report-date": "2026/11/17｜週二08:00盤前版（臺美股11/16正式收盤）",
-  "summary": "11/16臺股重挫6.03%，美股Nasdaq -2.49%、SOX -5.28%、TSM ADR約-6.34%；11/17盤前偏空且波動極高。長期持有策略不變，額外加碼暫緩。",
-  "status": "11/17週二盤前｜11/16臺美股正式收盤｜高風險",
-  "market-tag": "臺股11/16正式收盤",
-  "market-value": "41,040.08",
-  "market-change": "−2,635.04（−6.03%）",
-  "market-note": "台積電2215（-135）；11/16夜盤最終收盤未核實",
-  "etf-tag": "臺股ETF｜11/16正式收盤",
-  "etf-summary": "006208 220.85（-6.04%）；0050 96.45（-5.90%）",
-  "stocks-tag": "美股11/16正式收盤",
+  "report-date": "2026/11/18｜週三08:00盤前版（臺美股11/17正式收盤）",
+  "summary": "11/17臺股加權40,092.11（-2.31%），連續兩日急跌；美股S&P 500 7,340.53（-1.03%）、Nasdaq 24,328.38（-0.74%）。AI估值與市場風險偏好承壓，但NVIDIA最新財報營收與指引高於預期，須區分獲利基本面與估值／治理風險。",
+  "status": "11/18盤前｜11/17臺美股正式收盤｜高波動、偏空，NVDA財報已公布",
+  "market-tag": "臺股11/17正式收盤",
+  "market-value": "40,092.11",
+  "market-change": "−947.97（−2.31%）",
+  "market-note": "臺股連兩日下跌；11/17台積電2170（-45）、006208 211.90（-4.05%）、0050 94.00（約-2.54%）",
+  "etf-tag": "臺股ETF｜11/17正式收盤",
+  "etf-summary": "006208 211.90（-4.05%）；0050 94.00（約-2.54%）",
+  "stocks-tag": "美股11/17正式收盤｜個股行情未全部交叉核實",
   "stocks": [
     {
       "ticker": "VOO",
       "price": null,
       "change_percent": null,
-      "note": "2026/11/16各資料源正式收盤價不一致，待核實，未沿用11/13"
+      "note": "11/17正式收盤價尚未完成獨立交叉核實；不沿用11/16報價"
     },
     {
       "ticker": "NVDA",
-      "price": 156.14,
-      "change_percent": -4.12,
-      "note": "2026/11/16美東16:00正式收盤；美元"
+      "price": null,
+      "change_percent": null,
+      "note": "11/17正式收盤價尚未完成獨立交叉核實；不沿用11/16報價"
     },
     {
       "ticker": "TSLA",
-      "price": 379.74,
-      "change_percent": -2.69,
-      "note": "2026/11/16美東16:00正式收盤；美元"
+      "price": null,
+      "change_percent": null,
+      "note": "11/17正式收盤價尚未完成獨立交叉核實；不沿用11/16報價"
     },
     {
       "ticker": "QQQ",
-      "price": 661.24,
-      "change_percent": -2.74,
-      "note": "2026/11/16美東16:00正式收盤；美元"
+      "price": null,
+      "change_percent": null,
+      "note": "11/17正式收盤價尚未完成獨立交叉核實；不沿用11/16報價"
     },
     {
       "ticker": "SPCX",
-      "price": 137.36,
-      "change_percent": -1.26,
-      "note": "2026/11/16美東16:00正式收盤；美元"
+      "price": null,
+      "change_percent": null,
+      "note": "11/17正式收盤價尚未完成獨立交叉核實；不沿用11/16報價"
     }
   ],
-  "action-tag": "11/17盤前｜急跌風險，額外加碼暫緩",
-  "action": "006208、0050長期只買不賣；固定定期定額不變。Nasdaq與SOX急跌、台積電ADR走弱，暫緩額外加碼，避免動用緊急備用金。",
-  "focus": "2026/11/16 Reuters/AP：美國AI晶片出口管制、NVIDIA管理層不確定性與財報前波動；臺股單日跌6.03%。",
+  "action-tag": "11/18盤前｜定投照常，額外加碼先確認可動用現金",
+  "action": "比比每月1萬元與本人0050每月3000元既定定投不因單日跌幅調整；臺股連兩日急跌，額外投入先確認家庭現金緩衝。美股重點追蹤NVDA財報強勁與領導層變動、AI資本支出可持續性，不因單日反彈或急跌改變長期持有論點。",
+  "focus": "11/17 AP：美股普跌，S&P500 -1.03%、Nasdaq約-0.74%；11/17 NVIDIA官方Q3 FY2027營收1158億美元、年增103%，Q4營收指引1260億至1340億美元；市場仍評估管理層更替與AI投資回報。",
   "quotes": {
     "2330": {
-      "close": 2215,
-      "change": -135,
-      "percent": -5.74
+      "close": 2170,
+      "change": -45,
+      "percent": -2.03
     },
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "taiex": {
-      "close": 41040.08,
-      "change": -2635.04,
-      "percent": -6.03
+      "close": 40092.11,
+      "change": -947.97,
+      "percent": -2.31
     },
     "006208": {
-      "close": 220.85,
-      "change": -14.2,
-      "percent": -6.04
+      "close": 211.9,
+      "change": -8.95,
+      "percent": -4.05
     },
     "0050": {
-      "close": 96.45,
-      "change": -6.05,
-      "percent": -5.9
+      "close": 94,
+      "change": -2.45,
+      "percent": -2.54
     }
   },
-  "analysis_intro": "11/17臺灣08:00盤前，11/16美股Nasdaq -2.49%、SOX -5.28%、TSM ADR約-6.34%，臺股11/16已跌6.03%；夜盤收盤未核實。",
+  "analysis_intro": "截至11/18臺灣盤前：臺股11/17加權-2.31%、前一日-6.03%；美股11/17 S&P500 -1.03%、Nasdaq約-0.74%。NVIDIA 11/17財報公布後，市場焦點由單純成長轉向獲利品質、AI支出持續性及領導層風險。",
   "analysis_sections": [
     {
-      "title": "市場溫度｜極高波動、偏空",
-      "conclusion": "11/16臺美科技股同步急跌",
+      "title": "市場狀態｜連續修正、跌勢擴散",
+      "conclusion": "臺股兩日累計明顯下修；美股大型股與金融股亦承壓，不能單純歸因於半導體單一事件",
       "points": [
-        "Nasdaq -2.49%、SOX -5.28%，風險偏好下降",
-        "臺指期11/16夜盤最終價未核實，不能推定反彈"
+        "臺股11/16 -6.03%、11/17 -2.31%；美股S&P500 11/17 -1.03%",
+        "AP報導AI股與金融股拖累，市場避險需求增加；尚不能據此認定經濟衰退"
       ]
     },
     {
-      "title": "11/17臺股三情境",
-      "conclusion": "偏多：台積電止跌；中性：低檔震盪；偏空：半導體再度擴大跌勢",
+      "title": "NVDA財報｜營運成長與估值風險並存",
+      "conclusion": "NVIDIA官方Q3營收1158億美元、年增103%，Q4指引1260億至1340億美元，高於市場預期；AI需求尚未呈現全面崩潰證據",
       "points": [
-        "006208、0050不因單日跌幅機械賣出",
-        "額外加碼暫緩，固定定期定額不受影響"
+        "資料中心營收1076億美元、年增110%；非GAAP毛利率74.9%",
+        "仍須追蹤管理層更替、出口限制、超大規模雲端業者資本支出與自由現金流"
       ]
     },
     {
-      "title": "AI科技與總體焦點",
-      "conclusion": "2026/11/16 Reuters：AI晶片出口管制、NVDA財報前風險與利率壓力",
+      "title": "TSLA／SPCX｜論點追蹤",
+      "conclusion": "未找到足以證實11/17出現重大基本面改變的獨立資料；不得以單日股價推斷業務趨勢",
       "points": [
-        "確認公司正式財報、指引及資本支出回報",
-        "避免將估值修正直接視為AI需求崩潰"
+        "TSLA持續觀察交付、汽車毛利、儲能與自駕商業化",
+        "SPCX須先確認正式標的與當日收盤資料，避免代號混淆"
       ]
     },
     {
-      "title": "長期論點與研究",
-      "conclusion": "研究美國AI晶片管制對NVDA與台積電先進製程訂單的傳導",
+      "title": "1～4週與3～12個月｜投資判讀",
+      "conclusion": "短期關注財報後價格反應及市場廣度；中期關注AI資本支出、企業獲利與估值重估是否延續",
       "points": [
-        "檢驗訂單、毛利率、雲端資本支出與自由現金流",
-        "優先控制集中度及資金流動性"
+        "固定定投照常；額外加碼與家庭現金水位分開管理",
+        "若後續財報與資本支出持續強勁，較支持估值修正而非需求崩潰；反之須重估科技股集中度"
       ]
     }
   ],
@@ -108,66 +108,63 @@
     "note": "股癌與M觀點未取得可核實的新集數或逐字稿；不引述主持人觀點"
   },
   "us_quotes": {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "currency": "USD",
-    "source": "2026-11-16 regular session: NVDA Reuters/AP; TSLA Yahoo Finance; QQQ Senntric; SPCX StockAnalysis. VOO sources disagree, left null.",
+    "source": "individual stock closing prices pending independent verification; no Yahoo used",
     "VOO": {
       "close": null,
-      "percent": null,
-      "note": "正式收盤資料源不一致（680.22/680.78），待核實"
+      "percent": null
     },
     "NVDA": {
-      "close": 156.14,
-      "percent": -4.12
+      "close": null,
+      "percent": null
     },
     "TSLA": {
-      "close": 379.74,
-      "percent": -2.69
+      "close": null,
+      "percent": null
     },
     "QQQ": {
-      "close": 661.24,
-      "percent": -2.74
+      "close": null,
+      "percent": null
     },
     "SPCX": {
-      "close": 137.36,
-      "percent": -1.26
+      "close": null,
+      "percent": null
     }
   },
   "additional_podcasts": [],
   "market_signals": {
-    "as_of": "2026-11-16",
-    "date": "2026-11-16",
+    "as_of": "2026-11-17",
+    "date": "2026-11-17",
     "sp500": {
-      "close": 7416.59,
-      "change": -145.08,
-      "percent": -1.92
+      "close": 7340.53,
+      "change": -76.06,
+      "percent": -1.03
     },
     "nasdaq": {
-      "close": 24509.76,
-      "change": -626.51,
-      "percent": -2.49
+      "close": 24328.38,
+      "change": -181.37,
+      "percent": -0.74
     },
     "sox": {
-      "close": 9610.65,
-      "percent": -5.28
+      "close": null,
+      "percent": null,
+      "note": "11/17 SOX尚未核實"
     },
     "tsm_adr": {
-      "close": 373.45,
-      "percent": -6.34,
-      "note": "收盤價與來源有小幅衝突，需進一步核對"
+      "close": null,
+      "percent": null
     },
     "night_futures": {
       "close": null,
-      "change": null,
       "percent": null,
-      "session": "2026-11-16夜盤至11/17凌晨",
-      "note": "最終收盤尚未核實；不得以11/13夜盤代替"
+      "note": "夜盤未核實"
     }
   },
   "market_outlook": {
-    "as_of": "2026-11-17 08:00 Asia/Taipei; last cash session 2026-11-16",
-    "stance": "偏空、高波動",
-    "summary": "偏多：台積電止跌帶動ETF；中性：開低震盪；偏空：半導體賣壓延續。夜盤最終數據缺漏，判斷需保留彈性。"
+    "as_of": "2026-11-18 08:00 Asia/Taipei",
+    "stance": "偏空、高波動；NVDA財報營運面強勁",
+    "summary": "短期：市場修正與避險仍在；中期：NVIDIA營收與指引仍支持AI需求，但管理層與估值風險未消失。"
   },
   "fx": {
     "provider": "Bank of Taiwan",
@@ -177,5 +174,27 @@
     "date": "2026-11-16",
     "source": "https://www.bot.com.tw/tw",
     "note": "臺銀官網2026/11/16 16:21即期買入牌告，非現鈔或即期賣出"
-  }
+  },
+  "sources": [
+    {
+      "title": "TWSE 11/17 MI_INDEX",
+      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=html&type=ALLBUT0999",
+      "date": "2026-11-17"
+    },
+    {
+      "title": "AP 11/17 US market close",
+      "url": "https://apnews.com/article/ff6caef4d9289cf7f1e6ee48a706eddc",
+      "date": "2026-11-17"
+    },
+    {
+      "title": "NVIDIA FY2027 Q3 official results",
+      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/46a9c98c-87ae-40f5-acac-7d9264b18eb4.pdf",
+      "date": "2026-11-17"
+    },
+    {
+      "title": "MoneyDJ 006208 11/17",
+      "url": "https://www.moneydj.com/etf/x/basic/basic0003.xdjhtm?etfid=006208.tw&topc=",
+      "date": "2026-11-17"
+    }
+  ]
 }
