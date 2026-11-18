@@ -31,10 +31,11 @@ def quote_lines(quotes, labels):
             yield f"{label}  {close:,.2f}（{change:+.2f}%）"
 
 
-def render(report):
+def render(report, *, correction=False):
     us, tw, notes = report["us_quotes"], report["quotes"], report["daily_research"]
+    label = "｜更新補發" if correction else ""
     return "\n".join([
-        f"📊 TCK 台美股晨報｜{report['edition_date']}",
+        f"📊 TCK 台美股晨報｜{report['edition_date']}{label}",
         f"📉 市場強弱｜{notes['market_strength']}",
         *[f"🎯 {symbol}｜{notes[symbol]}" for symbol in ("NVDA", "TSLA", "SPCX")],
         f"🏠 家庭策略｜{report['action']}",
@@ -50,12 +51,13 @@ def render(report):
     ]).replace("\\r\\n", "\n").replace("\\n", "\n")
 
 
-def send(message, edition):
+def send(message, edition, *, correction=False):
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"].strip()
     group = os.environ["LINE_GROUP_ID"].strip()
     if not token or not group:
         raise ValueError("LINE credentials unavailable")
-    key = uuid5(NAMESPACE_URL, f"{SITE}LINE/{edition}/{group}")
+    delivery = "LINE-correction" if correction else "LINE"
+    key = uuid5(NAMESPACE_URL, f"{SITE}{delivery}/{edition}/{group}")
     request = Request(
         "https://api.line.me/v2/bot/message/push",
         data=json.dumps({"to": group, "messages": [{"type": "text", "text": message}]},
@@ -81,6 +83,7 @@ def send(message, edition):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--send", action="store_true")
+    parser.add_argument("--correction", action="store_true")
     parser.add_argument("--report-day", type=date.fromisoformat)
     args = parser.parse_args()
     now = datetime.now(TAIPEI)
@@ -100,7 +103,7 @@ def main():
         validate_report(report, edition)
         checks["臺股交易日"] = report["quotes"]["date"]
         checks["美股交易日"] = report["us_quotes"]["date"]
-        message = render(report)
+        message = render(report, correction=args.correction)
         if len(message.encode("utf-16-le")) // 2 > 5000:
             raise ValueError("LINE message exceeds 5000 UTF-16 units")
         Path("line_preview.txt").write_text(message + "\n", encoding="utf-8")
@@ -114,7 +117,7 @@ def main():
                 raise ValueError("GitHub Pages has not published this report revision")
         checks[stage] = "已發布相同報告"
         stage = "LINE"
-        checks[stage] = send(message, edition)
+        checks[stage] = send(message, edition, correction=args.correction)
     except (ValueError, OSError, KeyError, AttributeError, TypeError) as exc:
         checks[stage] = f"失敗：{exc}"
         raise SystemExit(f"LINE withheld or unsuccessful: {exc}") from None

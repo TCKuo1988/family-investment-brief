@@ -6,10 +6,10 @@ on:
       mode:
         description: Delivery mode
         type: choice
-        options: [preview, send]
+        options: [preview, send, correction]
         default: preview
       report_day:
-        description: 'Preview edition YYYY-MM-DD (defaults to today)'
+        description: 'Edition YYYY-MM-DD (required for correction)'
         type: string
   schedule:
     - cron: '10 0 * * *' # 08:10 Taipei
@@ -55,7 +55,7 @@ jobs:
   send:
     if: >-
       (github.ref == 'refs/heads/main' &&
-        (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'send'))) ||
+        (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && (inputs.mode == 'send' || inputs.mode == 'correction')))) ||
       (github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' &&
         github.event.deployment.environment == 'github-pages' &&
         (github.event.deployment.ref == 'main' || github.event.deployment.ref == 'refs/heads/main'))
@@ -76,6 +76,8 @@ jobs:
       - run: pip install -r scripts/requirements-market.txt
       - name: Send the published edition once and record LINE acceptance
         env:
+          DELIVERY_MODE: ${{ inputs.mode }}
+          REPORT_DAY: ${{ inputs.report_day }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
         run: |
@@ -91,6 +93,16 @@ jobs:
               exit 0
             fi
           fi
+          args=(--send --report-day "$edition")
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch && "$DELIVERY_MODE" == correction ]]; then
+            if [[ "$REPORT_DAY" != "$edition" ]]; then
+              echo "Correction requires an explicit date matching today's Taipei edition." >&2
+              exit 1
+            fi
+            git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null
+            tag="line-correction-sent/$edition"
+            args+=(--correction)
+          fi
           if git ls-remote --exit-code --tags origin "refs/tags/$tag"; then
             echo "Already accepted for $edition"
             printf -- '- **LINE**　%s 已有成功紀錄\n' "$edition" >> "$GITHUB_STEP_SUMMARY"
@@ -102,7 +114,7 @@ jobs:
               exit "$status"
             fi
           fi
-          python scripts/push_line_verified.py --send --report-day "$edition"
+          python scripts/push_line_verified.py "${args[@]}"
           if git push origin "HEAD:refs/tags/$tag"; then
             printf -- '- **發送紀錄**　`%s` 已寫入\n' "$tag" >> "$GITHUB_STEP_SUMMARY"
           else
