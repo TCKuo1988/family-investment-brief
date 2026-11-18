@@ -102,12 +102,12 @@ function renderPodcast(p){
 function renderTrackedPrices(d){
   const tbody=q('tracked-prices');if(!tbody)return;
   tbody.replaceChildren();
-  const entries=[['台股','加權指數','taiex'],['台股','006208','006208'],['台股','0050','0050'],['美股','VOO','VOO'],['美股','QQQ','QQQ'],['美股','NVDA','NVDA'],['美股','TSLA','TSLA'],['美股','SPCX','SPCX'],['美股','費半 SOX','SOX'],['美股','台積電 ADR','TSM'],['期貨','台指夜盤','TX_NIGHT']];
+  const entries=[['美股','S&P 500','sp500'],['美股','Nasdaq','nasdaq'],['台股','加權指數','taiex'],['台股','006208','006208'],['台股','0050','0050'],['美股','VOO','VOO'],['美股','QQQ','QQQ'],['美股','NVDA','NVDA'],['美股','TSLA','TSLA'],['美股','SPCX','SPCX'],['美股','費半 SOX','SOX'],['美股','台積電 ADR','TSM'],['期貨','台指夜盤','TX_NIGHT']];
   entries.forEach(([market,ticker,key])=>{
-    let quote=key==='taiex'?d.quotes?.taiex:(key==='TX_NIGHT'?d.market_signals?.taiwan_futures_night:(d.quotes?.[key]||d.us_quotes?.[key]||d.market_signals?.[key]));
-    let date=(quote?.date||(market==='台股'?d.quotes?.date:market==='美股'?d.us_quotes?.date:null))||'—';
+    let signalKey={SOX:'sox',TSM:'tsm_adr',TX_NIGHT:'night_futures'}[key]||key;let quote=key==='taiex'?d.quotes?.taiex:(d.quotes?.[key]||d.us_quotes?.[key]||d.market_signals?.[signalKey]);
+    let date=(quote?.date||(market==='台股'?d.quotes?.date:market==='美股'?d.us_quotes?.date:d.market_signals?.date))||'—';
     const tr=document.createElement('tr');
-    [market+'｜'+ticker,quote&&quote.close!=null&&Number.isFinite(Number(quote.close))?Number(quote.close).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'尚未提供',quote&&quote.percent!=null&&Number.isFinite(Number(quote.percent))?(Number(quote.percent)>0?'+':'')+Number(quote.percent).toFixed(2)+'%':'—',date].forEach((value,i)=>{const td=document.createElement('td');td.textContent=value;if(i===2&&quote)td.className=Number(quote.percent)<0?'neg':'';tr.appendChild(td)});
+    [market+'｜'+ticker,quote&&quote.close!=null&&Number.isFinite(Number(quote.close))?Number(quote.close).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'尚未提供',quote&&quote.percent!=null&&Number.isFinite(Number(quote.percent))?(Number(quote.percent)>0?'+':'')+Number(quote.percent).toFixed(2)+'%':'—',date].forEach((value,i)=>{const td=document.createElement('td');td.textContent=value;if(i===2&&quote&&quote.percent!=null)td.className=Number(quote.percent)<0?'neg':Number(quote.percent)>0?'pos':'';tr.appendChild(td)});
     tbody.appendChild(tr);
   });
 }
