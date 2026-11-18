@@ -6,6 +6,7 @@ import io
 import json
 import math
 import os
+from pathlib import Path
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
@@ -100,14 +101,13 @@ def main():
         price,pct=data
         sign="🔴" if pct>0 else "🟢" if pct<0 else "⚪"
         return f"{sign} {name}  {price:,.2f}（{pct:+.2f}%）"
-    tai_pct=tw["TAIEX"][1]
-    tech_pct=us["QQQ"][1]
-    if tai_pct<=-2 or tech_pct<=-2:
-        short="市場波動偏高；額外加碼採分批方式，優先保留家庭備用金。"
-    elif tai_pct>=2 and tech_pct>=2:
-        short="市場同步反彈；避免追高，按既定投入節奏執行。"
-    else:
-        short="依原定計畫投入；額外加碼須確認可動用資金。"
+    research_path=Path("line_research.json")
+    if not research_path.exists(): fail("daily sourced research is missing")
+    research=json.loads(research_path.read_text(encoding="utf-8"))
+    if research.get("generated_on")!=now.date().isoformat(): fail("daily research is not current")
+    required=("headline","drivers","regime","holdings","near_term","medium_term","portfolio")
+    if any(not isinstance(research.get(k),str) or len(research[k].strip())<12 for k in required): fail("research is incomplete")
+    if not isinstance(research.get("sources"),list) or len(research["sources"])<2: fail("research lacks sources")
     message="\n".join([
         f"📊 TCK 台美股晨報｜{now:%m/%d}",
         "",
@@ -120,8 +120,15 @@ def main():
         f"🇺🇸 美股｜{us_day:%m/%d} 收盤",
         *[fmt(symbol,us[symbol]) for symbol in ("NVDA","TSLA","VOO","QQQ","SPCX")],
         "",
-        "💡 短期｜"+short,
-        "🧭 中期｜以核心 ETF 為主，檢視科技股集中度及教育、車貸等家庭現金需求。",
+        "",
+        "📰 今日焦點｜"+research["headline"],
+        "🔎 事件與原因｜"+research["drivers"],
+        "📉 修正判讀｜"+research["regime"],
+        "🎯 NVDA／TSLA／SPCX｜"+research["holdings"],
+        "⏱ 1～4週｜"+research["near_term"],
+        "🧭 3～12個月｜"+research["medium_term"],
+        "🏠 對長期持有｜"+research["portfolio"],
+        "資料｜"+"；".join(s["title"] for s in research["sources"][:3]),
         "",
         "🔗 https://tckuo1988.github.io/family-investment-brief/",
     ])
