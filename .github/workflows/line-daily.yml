@@ -7,6 +7,11 @@ on:
         required: true
         type: boolean
         default: false
+      send_today:
+        description: 'Send current verified market brief now (refresh data first)'
+        required: true
+        type: boolean
+        default: false
   schedule:
     - cron: '10 0 * * 1-5' # 08:10 Asia/Taipei Mon-Fri
 permissions:
@@ -37,4 +42,5 @@ jobs:
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
+          LINE_MANUAL_TODAY: ${{ github.event_name == 'workflow_dispatch' && inputs.send_today }}
         run: python scripts/push_line_auto.py
