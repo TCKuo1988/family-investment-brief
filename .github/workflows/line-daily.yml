@@ -38,12 +38,6 @@ jobs:
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         continue-on-error: true
         run: python scripts/update_twse.py
-      - name: Research latest market drivers and investment thesis
-        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_RESEARCH_MODEL: gpt-5.1
-        run: python scripts/build_line_research.py
       - name: Validate market sessions and send automatic LINE brief
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         env:
