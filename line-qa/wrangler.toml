@@ -1,0 +1,15 @@
+name = "tck-line-qa"
+main = "worker.mjs"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[[durable_objects.bindings]]
+name = "QA_STATE"
+class_name = "QuestionState"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["QuestionState"]
+
+[observability]
+enabled = false
