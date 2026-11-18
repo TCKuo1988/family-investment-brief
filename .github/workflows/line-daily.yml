@@ -7,6 +7,11 @@ on:
         required: true
         type: boolean
         default: false
+      preview_only:
+        description: 'Preview message without sending LINE'
+        required: true
+        type: boolean
+        default: true
       send_today:
         description: 'Send current verified market brief now (refresh data first)'
         required: true
@@ -34,14 +39,17 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
         run: python scripts/test_line_push.py
-      - name: Refresh official TWSE market quotes
-        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
-        continue-on-error: true
-        run: python scripts/update_twse.py
       - name: Validate market sessions and send automatic LINE brief
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
-          LINE_MANUAL_TODAY: ${{ github.event_name == 'workflow_dispatch' && inputs.send_today }}
+          LINE_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.preview_only }}
         run: python scripts/push_line_verified.py
+      - name: Upload LINE preview
+        if: ${{ always() && (github.event_name == 'schedule' || !inputs.send_test) }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: line-preview
+          path: line_preview.txt
+          if-no-files-found: ignore
