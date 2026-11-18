@@ -101,13 +101,18 @@ def main():
         price,pct=data
         sign="🔴" if pct>0 else "🟢" if pct<0 else "⚪"
         return f"{sign} {name}  {price:,.2f}（{pct:+.2f}%）"
-    research_path=Path("line_research.json")
-    if not research_path.exists(): fail("daily sourced research is missing")
-    research=json.loads(research_path.read_text(encoding="utf-8"))
-    if research.get("generated_on")!=now.date().isoformat(): fail("daily research is not current")
-    required=("headline","drivers","regime","holdings","near_term","medium_term","portfolio")
-    if any(not isinstance(research.get(k),str) or len(research[k].strip())<12 for k in required): fail("research is incomplete")
-    if not isinstance(research.get("sources"),list) or len(research["sources"])<2: fail("research lacks sources")
+    report=json.loads(Path("report.json").read_text(encoding="utf-8"))
+    report_day=str(report.get("report-date",""))[:10].replace("/","-")
+    if report_day!=now.date().isoformat(): fail("existing ChatGPT report has not been updated today")
+    if str(report.get("quotes",{}).get("date",""))!=tw_day.isoformat():
+        fail("website report Taiwan quotes do not match latest verified TWSE session")
+    if str(report.get("us_quotes",{}).get("date",""))!=us_day.isoformat():
+        fail("website report US quotes do not match latest verified US session")
+    if not report.get("summary") or not report.get("analysis_sections"):
+        fail("website report lacks analysis")
+    sections=report["analysis_sections"]
+    details=[str(s.get("conclusion","")).strip() for s in sections if isinstance(s,dict) and s.get("conclusion")]
+    if len(details)<2: fail("website report analysis is incomplete")
     message="\n".join([
         f"📊 TCK 台美股晨報｜{now:%m/%d}",
         "",
@@ -121,14 +126,10 @@ def main():
         *[fmt(symbol,us[symbol]) for symbol in ("NVDA","TSLA","VOO","QQQ","SPCX")],
         "",
         "",
-        "📰 今日焦點｜"+research["headline"],
-        "🔎 事件與原因｜"+research["drivers"],
-        "📉 修正判讀｜"+research["regime"],
-        "🎯 NVDA／TSLA／SPCX｜"+research["holdings"],
-        "⏱ 1～4週｜"+research["near_term"],
-        "🧭 3～12個月｜"+research["medium_term"],
-        "🏠 對長期持有｜"+research["portfolio"],
-        "資料｜"+"；".join(s["title"] for s in research["sources"][:3]),
+        "📰 今日焦點｜"+str(report.get("summary","")),
+        "🔎 市場判讀｜"+details[0],
+        "🎯 重點觀察｜"+"；".join(details[1:3]),
+        "🏠 家庭投資｜"+str(report.get("action","")),
         "",
         "🔗 https://tckuo1988.github.io/family-investment-brief/",
     ])
