@@ -1,6 +1,12 @@
 name: TCK LINE group daily market brief
 on:
   workflow_dispatch:
+    inputs:
+      send_test:
+        description: 'Send a one-time connectivity test (no market data)'
+        required: true
+        type: boolean
+        default: false
   schedule:
     - cron: '10 0 * * *' # 08:10 Asia/Taipei (UTC+8)
 permissions:
@@ -17,7 +23,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Send one-time LINE connectivity test
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.send_test }}
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
+        run: python scripts/test_line_push.py
       - name: Validate public report and push to LINE
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
