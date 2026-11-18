@@ -61,8 +61,10 @@ def main():
         print(message)
         print("PREVIEW ONLY: no LINE push")
         return
-    if any(stocks.get(t,{}).get("price") is None for t in ("NVDA","TSLA","SPCX","VOO","QQQ")):
-        fail("US quotes incomplete; preview available, live push withheld")
+    core=report.get("market_signals",{})
+    if not all(isinstance(core.get(t,{}).get("close"),(int,float)) for t in ("sp500","nasdaq")):
+        fail("US core indexes incomplete; preview available, live push withheld")
+    # Missing individual quotes remain explicitly marked 待核實; do not block a verified core-market brief.
     token=os.environ.get("LINE_CHANNEL_ACCESS_TOKEN","").strip()
     group=os.environ.get("LINE_GROUP_ID","").strip()
     if not token or not group: fail("LINE credentials unavailable")
