@@ -93,6 +93,23 @@ def main():
         observation = "台美股同步走強；仍依長期配置與現金流執行。"
     else:
         observation = "維持長期配置紀律；額外加碼須考量現金流與風險承受度。"
+    # Prefer official TWSE quotes refreshed in this job. Never blend mismatched dates.
+    official = json.loads(Path("report.json").read_text(encoding="utf-8")).get("quotes", {})
+    try:
+        official_day = dt.date.fromisoformat(official["date"])
+        if official_day == tw_day and all(
+            isinstance(official[key]["close"], (int, float)) and official[key]["close"] > 0
+            for key in ("taiex", "006208", "0050")
+        ):
+            for symbol, key in (("TAIEX", "taiex"), ("006208", "006208"), ("0050", "0050")):
+                record = official[key]
+                if record.get("percent") is not None:
+                    quotes[symbol] = (official_day, float(record["close"]), float(record["percent"]))
+            print("Using verified official TWSE closes:", official_day)
+        else:
+            print("TWSE official quote date differs from validated history; retaining history for consistent dates")
+    except (KeyError, ValueError, TypeError):
+        print("TWSE official quote unavailable; retaining validated history")
     def line(symbol, name=None):
         _, price, pct = quotes[symbol]
         direction = "🔴" if pct > 0 else ("🟢" if pct < 0 else "⚪")
