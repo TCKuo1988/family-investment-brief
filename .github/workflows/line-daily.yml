@@ -34,6 +34,10 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
         run: python scripts/test_line_push.py
+      - name: Refresh official TWSE market quotes
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
+        continue-on-error: true
+        run: python scripts/update_twse.py
       - name: Refresh market history from Yahoo Finance
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         run: python scripts/update_history.py
