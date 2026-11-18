@@ -1,77 +1,107 @@
 #!/usr/bin/env python3
-"""Render a compact LINE digest from the same published report.json; no Yahoo or paid AI API."""
-import datetime as dt
+"""Preview or publish the validated report.json edition through LINE."""
+import argparse
+from datetime import date, datetime, time
 import json
 import os
 from pathlib import Path
-import urllib.request
-from zoneinfo import ZoneInfo
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
+from uuid import NAMESPACE_URL, uuid5
 
-def fail(message):
-    raise SystemExit("SKIP LINE: "+message)
+from market_sessions import TAIPEI
+from validate_report import REPORT, load_report, validate_report
+
+SITE = "https://tckuo1988.github.io/family-investment-brief/"
+US_LABELS = (("sp500", "S&P 500"), ("nasdaq", "Nasdaq Composite"), ("sox", "費半 SOX"),
+             ("NVDA", "NVDA"), ("TSLA", "TSLA"), ("SPCX", "SPCX"),
+             ("VOO", "VOO"), ("QQQ", "QQQ"), ("TSM", "台積電 ADR"))
+TW_LABELS = (("taiex", "加權"), ("2330", "台積電"), ("006208", "006208"), ("0050", "0050"))
+
+
+def quote_lines(quotes, labels):
+    for ticker, label in labels:
+        item = quotes[ticker]
+        close, change = item["close"], item["percent"]
+        if close is None:
+            yield f"{label}  {item['note']}"
+        elif change is None:
+            yield f"{label}  {close:,.2f}（漲跌待核實）"
+        else:
+            yield f"{label}  {close:,.2f}（{change:+.2f}%）"
+
+
+def render(report):
+    us, tw, notes = report["us_quotes"], report["quotes"], report["daily_research"]
+    return "\n".join([
+        f"📊 TCK 台美股晨報｜{report['edition_date']}",
+        f"🇺🇸 美股｜{us['date']} 美東正規盤",
+        *quote_lines(us, US_LABELS), "",
+        f"🇹🇼 臺股｜{tw['date']} 正式收盤",
+        *quote_lines(tw, TW_LABELS), "",
+        f"📉 市場強弱｜{notes['market_strength']}",
+        f"📰 產業與新聞｜{notes['news']}", "",
+        *[f"🎯 {symbol}｜{notes[symbol]}" for symbol in ("NVDA", "TSLA", "SPCX")], "",
+        f"⏱ 1～4 週｜{notes['short_term']}",
+        f"📅 3～12 個月｜{notes['medium_term']}",
+        f"📌 006208／0050｜{notes['etf_watch']}",
+        f"🏠 家庭策略｜{report['action']}", "", f"🔗 {SITE}",
+    ]).replace("\\r\\n", "\n").replace("\\n", "\n")
+
+
+def send(message, edition):
+    token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"].strip()
+    group = os.environ["LINE_GROUP_ID"].strip()
+    if not token or not group:
+        raise ValueError("LINE credentials unavailable")
+    key = uuid5(NAMESPACE_URL, f"{SITE}LINE/{edition}/{group}")
+    request = Request(
+        "https://api.line.me/v2/bot/message/push",
+        data=json.dumps({"to": group, "messages": [{"type": "text", "text": message}]},
+                        ensure_ascii=False).encode(),
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                 "X-Line-Retry-Key": str(key)},
+    )
+    try:
+        with urlopen(request, timeout=20) as response:
+            if response.status != 200:
+                raise ValueError(f"Unexpected LINE HTTP {response.status}")
+            print(f"LINE accepted HTTP 200 request_id={response.headers.get('X-Line-Request-Id')}")
+    except HTTPError as exc:
+        accepted = exc.headers.get("X-Line-Accepted-Request-Id")
+        if exc.code == 409 and accepted:
+            print(f"LINE already accepted HTTP 409 request_id={accepted}")
+            return
+        raise ValueError(f"LINE HTTP {exc.code} request_id={exc.headers.get('X-Line-Request-Id')}") from None
+
 
 def main():
-    now=dt.datetime.now(ZoneInfo("Asia/Taipei"))
-    report=json.loads(Path("report.json").read_text(encoding="utf-8"))
-    report_day=str(report.get("report-date",""))[:10].replace("/","-")
-    if report_day!=now.date().isoformat(): fail("today's research report has not been published")
-    sections=report.get("analysis_sections",[])
-    if not report.get("summary") or not isinstance(sections,list) or len(sections)<3:
-        fail("research sections incomplete")
-    def fmt(value,kind="close"):
-        return f"{value:,.2f}" if isinstance(value,(int,float)) else "待核實"
-    def pct(value):
-        return f"{value:+.2f}%" if isinstance(value,(int,float)) else "待核實"
-    def line(label,item):
-        if not isinstance(item,dict): item={}
-        return f"{label}  {fmt(item.get('close'))}（{pct(item.get('percent'))}）"
-    tw=report.get("quotes",{})
-    us=report.get("us_quotes",{})
-    if not tw.get("date") or not us.get("date"): fail("market dates missing")
-    if tw["date"]!=us["date"]: fail("market dates inconsistent; do not blend sessions")
-    expected=now.date()-dt.timedelta(days=1)
-    while expected.weekday()>=5: expected-=dt.timedelta(days=1)
-    if tw["date"]!=expected.isoformat():
-        fail("market prices not from most recent expected weekday; holiday handling requires review")
-    if not all(isinstance(tw.get(s,{}).get("close"),(int,float)) for s in ("taiex","2330","006208","0050")):
-        fail("TWSE quotes incomplete")
-    # US holdings may be missing; never fill from a different day.
-    stocks={s.get("ticker"):s for s in report.get("stocks",[]) if isinstance(s,dict)}
-    lines=[
-        f"📊 TCK 台美股晨報｜{now:%m/%d}",
-        f"🇺🇸 美股｜{us['date'][5:]} 收盤",
-        *[line(label,report.get("market_signals",{}).get(key)) for label,key in (("S&P 500","sp500"),("Nasdaq","nasdaq"),("SOX","sox")],
-        *[line(t,{"close":stocks.get(t,{}).get("price"),"percent":stocks.get(t,{}).get("change_percent")}) for t in ("NVDA","TSLA","SPCX","VOO","QQQ")],
-        "",
-        f"🇹🇼 臺股｜{tw['date'][5:]} 收盤",
-        *[line(label,tw.get(key)) for label,key in (("加權","taiex"),("台積電","2330"),("006208","006208"),("0050","0050"))],
-        "",
-        "📰 市場焦點｜"+str(report["summary"]),
-        "📉 波動判讀｜"+str(sections[0].get("conclusion","")),
-        "🎯 美股論點｜"+str(sections[1].get("conclusion","")),
-        "⏱ 短中期｜"+str(sections[-1].get("conclusion","")),
-        "🏠 投資策略｜"+str(report.get("action","")),
-        "",
-        "🔗 https://tckuo1988.github.io/family-investment-brief/"
-    ]
-    message="\n".join(lines)
-    if len(message)>4500: fail("LINE digest too long")
-    Path("line_preview.txt").write_text(message+"\n",encoding="utf-8")
-    if os.environ.get("LINE_DRY_RUN","").lower() in ("true","1","yes"):
-        print(message)
-        print("PREVIEW ONLY: no LINE push")
-        return
-    core=report.get("market_signals",{})
-    if not all(isinstance(core.get(t,{}).get("close"),(int,float)) for t in ("sp500","nasdaq")):
-        fail("US core indexes incomplete; preview available, live push withheld")
-    # Missing individual quotes remain explicitly marked 待核實; do not block a verified core-market brief.
-    token=os.environ.get("LINE_CHANNEL_ACCESS_TOKEN","").strip()
-    group=os.environ.get("LINE_GROUP_ID","").strip()
-    if not token or not group: fail("LINE credentials unavailable")
-    req=urllib.request.Request("https://api.line.me/v2/bot/message/push",data=json.dumps({"to":group,"messages":[{"type":"text","text":message}]},ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"Content-Type":"application/json"})
-    with urllib.request.urlopen(req,timeout=20) as response:
-        if response.status!=200: fail("LINE push rejected")
-    print("LINE sent from report.json for",report_day)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--send", action="store_true")
+    parser.add_argument("--report-day", type=date.fromisoformat)
+    args = parser.parse_args()
+    now = datetime.now(TAIPEI)
+    edition = args.report_day or now.date()
+    if args.send and (edition != now.date() or now.time() < time(8, 10)):
+        parser.error("Live delivery requires today's edition from 08:10 Asia/Taipei")
+    try:
+        raw = REPORT.read_bytes()
+        report = load_report(raw)
+        validate_report(report, edition)
+        message = render(report)
+        if len(message.encode("utf-16-le")) // 2 > 5000:
+            raise ValueError("LINE message exceeds 5000 UTF-16 units")
+        Path("line_preview.txt").write_text(message + "\n", encoding="utf-8")
+        if not args.send:
+            print(message)
+            return
+        with urlopen(Request(SITE + "report.json", headers={"Cache-Control": "no-cache"}), timeout=20) as response:
+            if response.read() != raw:
+                raise ValueError("GitHub Pages has not published this report revision")
+        send(message, edition)
+    except (ValueError, OSError, KeyError, AttributeError, TypeError, URLError) as exc:
+        raise SystemExit(f"LINE withheld or unsuccessful: {exc}") from None
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

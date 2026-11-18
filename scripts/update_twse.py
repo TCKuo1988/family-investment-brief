@@ -1,59 +1,59 @@
 #!/usr/bin/env python3
-"""從臺灣證券交易所 OpenAPI 更新公開市場價格，不碰私人持股資料。"""
-import json, urllib.request, datetime, pathlib, sys
+"""Fetch the dated TWSE closing bulletin for the morning edition."""
+import argparse
+from datetime import date, datetime, timezone
+import json
+import re
+from urllib.request import Request, urlopen
 
-BASE='https://openapi.twse.com.tw/v1'
-ROOT=pathlib.Path(__file__).resolve().parents[1]
+from market_sessions import TAIPEI, expected_sessions
 
-def fetch(path):
-    req=urllib.request.Request(BASE+path, headers={'User-Agent':'TCK-Investment-Brief/1.0','Accept':'application/json'})
-    with urllib.request.urlopen(req,timeout=25) as r: return json.load(r)
+CODES = ("2330", "006208", "0050")
 
-def num(s): return float(str(s).replace(',','').replace('+','').strip())
 
-def date_roc(s):
-    s=str(s).replace('/','').replace('-','')
-    if len(s)!=7 or not s.isdigit(): raise ValueError('日期格式異常: '+s)
-    return f'{int(s[:3])+1911:04d}-{s[3:5]}-{s[5:7]}'
+def fetch_quotes(day):
+    url = ("https://www.twse.com.tw/exchangeReport/MI_INDEX"
+           f"?response=json&date={day:%Y%m%d}&type=ALLBUT0999")
+    with urlopen(Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=25) as response:
+        bulletin = json.load(response)
+    if bulletin.get("stat") != "OK" or bulletin.get("date") != day.strftime("%Y%m%d"):
+        raise ValueError(f"TWSE did not return the requested session {day}")
 
-def main():
-    stocks=fetch('/exchangeReport/STOCK_DAY_ALL')
-    index=fetch('/exchangeReport/MI_INDEX')
-    if not isinstance(stocks,list) or not isinstance(index,list): raise ValueError('API資料格式異常')
-    quotes={}
-    for code in ['006208','0050']:
-        hits=[r for r in stocks if str(r.get('Code','')).strip()==code]
-        if len(hits)!=1: raise ValueError('ETF報價缺漏: '+code)
-        r=hits[0]; close=num(r['ClosingPrice']); change=num(r.get('Change','0'))
-        if close<=0: raise ValueError('ETF價格異常: '+code)
-        quotes[code]={'close':close,'change':change,'percent':round(change/(close-change)*100,2) if close!=change else None}
-        quotes.setdefault('date',date_roc(r['Date']))
-        if date_roc(r['Date'])!=quotes['date']: raise ValueError('ETF日期不一致')
-    hits=[r for r in index if r.get('指數')=='發行量加權股價指數']
-    if len(hits)!=1: raise ValueError('加權指數缺漏')
-    market=hits[0]; market_date=date_roc(market['日期'])
-    if market_date!=quotes['date']: raise ValueError('指數和ETF資料日期不一致')
-    today=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).date()
-    dt=datetime.date.fromisoformat(quotes['date'])
-    if dt>today or (today-dt).days>5: raise ValueError('行情日期已過期，不更新')
-    datafile=ROOT/'report.json'; report=json.loads(datafile.read_text(encoding='utf8'))
-    old=report.get('quotes',{}).get('date','')
-    if old and old>quotes['date']: raise ValueError('新行情日期早於既有資料')
-    if old==quotes['date']:
-        print('最新交易日未改變，略過'); return
-    quote_change=num(market['漲跌點數']) * (-1 if market.get('漲跌')=='-' else 1)
-    quotes['taiex']={'close':num(market['收盤指數']),'change':quote_change,'percent':round(quote_change/(num(market['收盤指數'])-quote_change)*100,2)}
-    report['quotes']=quotes
-    # 不覆蓋既有晨報分析日期與策略評論，以免假裝當日分析
-    report['market-value']=f"{quotes['taiex']['close']:,.2f}"
-    report['market-change']=f"{quote_change:+,.2f}（{quotes['taiex']['percent']:+.2f}%）"
-    report['status']=f"最新官方行情：{quotes['date']} 收盤｜晨報分析仍為 {report.get('report-date','歷史日期')}，尚未自動更新"
-    report['market-note']=f"以上為 {quotes['date']} 官方收盤行情。下方趨勢結論屬既有歷史分析，不得視為當日最新判斷。"
-    datafile.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
-    print('已更新官方行情至',quotes['date'])
+    def table(first_column):
+        prefix = f"{day.year - 1911}年{day:%m月%d日}"
+        match, = [t for t in bulletin["tables"] if t.get("title", "").startswith(prefix)
+                  and (t.get("fields") or [""])[0] == first_column]
+        return {row[0]: dict(zip(match["fields"], row)) for row in match["data"]}
 
-if __name__=='__main__':
-    try:main()
-    except Exception as exc:
-        print('行情更新失敗，保留既有報價與標示:',exc,file=sys.stderr)
-        sys.exit(1)
+    def number(value):
+        return float(value.replace(",", ""))
+
+    def quote(row, close_column, change_column):
+        close = number(row[close_column])
+        sign = re.sub("<[^>]*>", "", row["漲跌(+/-)"]).strip()
+        if not 0 < close < 1e9:
+            raise ValueError("Invalid TWSE closing price")
+        if sign not in ("+", "-", ""):
+            return {"close": close, "change": None, "percent": None,
+                    "note": "交易所未列可比較漲跌（例如除息或參考價重設）"}
+        change = number(row[change_column]) * (-1 if sign == "-" else 1)
+        if close - change <= 0:
+            raise ValueError("Invalid TWSE reference price")
+        return {"close": close, "change": change,
+                "percent": round(100 * change / (close - change), 2)}
+
+    stocks = table("證券代號")
+    index = table("指數")["發行量加權股價指數"]
+    return {
+        "date": day.isoformat(), "source": url,
+        "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "taiex": quote(index, "收盤指數", "漲跌點數"),
+        **{code: quote(stocks[code], "收盤價", "漲跌價差") for code in CODES},
+    }
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--report-day", type=date.fromisoformat, default=datetime.now(TAIPEI).date())
+    args = parser.parse_args()
+    print(json.dumps(fetch_quotes(expected_sessions(args.report_day)["tw"][0]), ensure_ascii=False, indent=2))

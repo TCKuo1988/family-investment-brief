@@ -1,36 +1,36 @@
-
-name: Update TCK TWSE closing prices
+name: Collect TCK market closes
 
 on:
   workflow_dispatch:
+    inputs:
+      report_day:
+        description: 'Taipei edition date YYYY-MM-DD (defaults to today)'
+        type: string
   schedule:
-    - cron: '40 8 * * 1-5'
+    - cron: '35 23 * * 0-4' # 07:35 Taipei Mon–Fri
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  refresh:
+  collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Read latest official TWSE prices
-        run: python scripts/update_twse.py
-
-      - name: Publish updated quote file
+      - run: pip install -r scripts/requirements-market.txt
+      - name: Collect dated quotes without changing the published edition
+        env:
+          REPORT_DAY: ${{ inputs.report_day }}
         run: |
-          if git diff --quiet -- report.json; then
-            echo 'No new trading day.'
-            exit 0
-          fi
-
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add report.json
-          git commit -m 'Update official TWSE closing prices'
-          git push
+          args=()
+          if [[ -n "$REPORT_DAY" ]]; then args+=(--report-day "$REPORT_DAY"); fi
+          python scripts/collect_market.py "${args[@]}" > market-quotes.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: market-quotes
+          path: market-quotes.json
+          if-no-files-found: error

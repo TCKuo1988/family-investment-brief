@@ -1,54 +1,90 @@
 name: TCK LINE group daily market brief
+
 on:
   workflow_dispatch:
     inputs:
-      send_test:
-        description: 'Send a one-time connectivity test (no market data)'
-        required: true
-        type: boolean
-        default: false
-      preview_only:
-        description: 'Preview message without sending LINE'
-        required: true
-        type: boolean
-        default: true
-      send_today:
-        description: 'Send current verified market brief now (refresh data first)'
-        required: true
-        type: boolean
-        default: false
+      mode:
+        description: Delivery mode
+        type: choice
+        options: [preview, send]
+        default: preview
+      report_day:
+        description: 'Preview edition YYYY-MM-DD (defaults to today)'
+        type: string
   schedule:
-    - cron: '10 0 * * 1-5' # 08:10 Asia/Taipei Mon-Fri
+    - cron: '10 0 * * 1-5' # 08:10 Taipei Mon–Fri
+  push:
+    branches: [main]
+    paths: ['report.json', 'scripts/**', '.github/workflows/line-daily.yml']
+
 permissions:
   contents: read
-concurrency:
-  group: tck-line-daily
-  cancel-in-progress: false
+
 jobs:
-  push-line:
+  preview:
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'preview')
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Send one-time LINE connectivity test
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.send_test }}
+      - run: pip install -r scripts/requirements-market.txt
+      - run: python -m unittest discover -s tests
+      - name: Validate and render the published edition
+        env:
+          REPORT_DAY: ${{ inputs.report_day }}
+        run: |
+          edition="$REPORT_DAY"
+          if [[ -z "$edition" && "$GITHUB_EVENT_NAME" == push ]]; then
+            edition="$(python -c 'import json; print(json.load(open("report.json"))["edition_date"])')"
+          fi
+          args=()
+          if [[ -n "$edition" ]]; then args+=(--report-day "$edition"); fi
+          python scripts/push_line_verified.py "${args[@]}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: line-preview
+          path: line_preview.txt
+          if-no-files-found: error
+
+  send:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'send'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    concurrency:
+      group: tck-line-live-main
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r scripts/requirements-market.txt
+      - name: Send the published edition once and record LINE acceptance
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
-        run: python scripts/test_line_push.py
-      - name: Validate market sessions and send automatic LINE brief
-        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
-        env:
-          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
-          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
-          LINE_DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.preview_only }}
-        run: python scripts/push_line_verified.py
-      - name: Upload LINE preview
-        if: ${{ always() && (github.event_name == 'schedule' || !inputs.send_test) }}
-        uses: actions/upload-artifact@v4
+        run: |
+          set -euo pipefail
+          edition="$(TZ=Asia/Taipei date +%F)"
+          tag="line-sent/$edition"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag"; then
+            echo "Already accepted for $edition"
+            exit 0
+          else
+            status=$?
+            if [[ "$status" != 2 ]]; then exit "$status"; fi
+          fi
+          python scripts/push_line_verified.py --send --report-day "$edition"
+          git push origin "HEAD:refs/tags/$tag"
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: line-preview
           path: line_preview.txt
