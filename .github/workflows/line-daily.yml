@@ -38,13 +38,10 @@ jobs:
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         continue-on-error: true
         run: python scripts/update_twse.py
-      - name: Refresh market history from Yahoo Finance
-        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
-        run: python scripts/update_history.py
       - name: Validate market sessions and send automatic LINE brief
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
           LINE_MANUAL_TODAY: ${{ github.event_name == 'workflow_dispatch' && inputs.send_today }}
-        run: python scripts/push_line_auto.py
+        run: python scripts/push_line_verified.py
