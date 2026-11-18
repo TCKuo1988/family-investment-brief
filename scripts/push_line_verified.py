@@ -29,8 +29,10 @@ def main():
     us=report.get("us_quotes",{})
     if not tw.get("date") or not us.get("date"): fail("market dates missing")
     if tw["date"]!=us["date"]: fail("market dates inconsistent; do not blend sessions")
-    if tw["date"]!=str(now.date()-dt.timedelta(days=1)):
-        fail("market prices not from yesterday; holiday handling requires review")
+    expected=now.date()-dt.timedelta(days=1)
+    while expected.weekday()>=5: expected-=dt.timedelta(days=1)
+    if tw["date"]!=expected.isoformat():
+        fail("market prices not from most recent expected weekday; holiday handling requires review")
     if not all(isinstance(tw.get(s,{}).get("close"),(int,float)) for s in ("taiex","2330","006208","0050")):
         fail("TWSE quotes incomplete")
     # US holdings may be missing; never fill from a different day.
@@ -38,6 +40,7 @@ def main():
     lines=[
         f"📊 TCK 台美股晨報｜{now:%m/%d}",
         f"🇺🇸 美股｜{us['date'][5:]} 收盤",
+        *[line(label,report.get("market_signals",{}).get(key)) for label,key in (("S&P 500","sp500"),("Nasdaq","nasdaq"),("SOX","sox")],
         *[line(t,{"close":stocks.get(t,{}).get("price"),"percent":stocks.get(t,{}).get("change_percent")}) for t in ("NVDA","TSLA","SPCX","VOO","QQQ")],
         "",
         f"🇹🇼 臺股｜{tw['date'][5:]} 收盤",
