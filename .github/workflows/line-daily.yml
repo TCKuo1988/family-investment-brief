@@ -8,7 +8,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: '10 0 * * *' # 08:10 Asia/Taipei (UTC+8)
+    - cron: '10 0 * * 1-5' # 08:10 Asia/Taipei Mon-Fri
 permissions:
   contents: read
 concurrency:
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   push-line:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,9 +29,12 @@ jobs:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
         run: python scripts/test_line_push.py
-      - name: Validate public report and push to LINE
+      - name: Refresh market history from Yahoo Finance
+        if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
+        run: python scripts/update_history.py
+      - name: Validate market sessions and send automatic LINE brief
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.send_test) }}
         env:
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
           LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
-        run: python scripts/push_line_brief.py
+        run: python scripts/push_line_auto.py
