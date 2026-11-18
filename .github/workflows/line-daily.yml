@@ -12,7 +12,7 @@ on:
         description: 'Preview edition YYYY-MM-DD (defaults to today)'
         type: string
   schedule:
-    - cron: '10 0 * * 1-5' # 08:10 Taipei Mon–Fri
+    - cron: '10 0 * * *' # 08:10 Taipei
   push:
     branches: [main]
     paths: ['report.json', 'scripts/**', '.github/workflows/line-daily.yml']

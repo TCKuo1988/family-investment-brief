@@ -2,6 +2,7 @@ name: Refresh public six-month market charts
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - 'scripts/update_history.py'
   schedule:
