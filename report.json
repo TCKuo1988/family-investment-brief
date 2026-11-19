@@ -1,168 +1,169 @@
 {
-  "report-date": "2026/11/18｜週三08:00盤前版（臺美股11/17正式收盤）",
-  "summary": "11/17 臺股連兩日急跌，美股主要指數多數承壓，費半小幅回升。NVIDIA 財報顯示資料中心需求仍強，後續重點是獲利品質、AI 投資回報及領導層變動。",
-  "status": "11/18盤前｜11/17臺美股正式收盤｜高波動、偏空，NVDA財報已公布",
-  "etf-tag": "臺股ETF｜11/17正式收盤",
-  "action-tag": "11/18盤前｜定投照常，額外加碼先確認可動用現金",
-  "action": "比比每月1萬元與本人0050每月3000元既定定投不因單日跌幅調整；臺股連兩日急跌，額外投入先確認家庭現金緩衝。美股重點追蹤NVDA財報強勁與領導層變動、AI資本支出可持續性，不因單日反彈或急跌改變長期持有論點。",
-  "focus": "11/17 AP 報導美股大型股與金融股承壓。NVIDIA 公布 FY2027 第三季營收 1,158 億美元，年增 103%，並預估第四季營收 1,300 億美元，上下浮動 3%。",
+  "report-date": "2026/11/19｜週四08:00盤前版（臺美股11/18正規盤收盤）",
+  "summary": "11/18 臺股加權收40,194.91點（+0.26%），台積電2,175元（+0.23%）；美股S&P 500連五跌至7,323.63點（-0.23%），Nasdaq反彈至24,429.88點（+0.42%）。NVDA財報強但股價下跌2.89%，反映AI成長與高估值風險並存。",
+  "status": "11/19盤前｜臺美股11/18已收盤｜市場溫度：偏冷、分歧且高波動",
+  "etf-tag": "臺股ETF｜11/18收盤",
+  "action-tag": "11/19盤前｜固定定投不變；額外加碼採分批、看風險與折溢價",
+  "action": "006208與0050維持長期只買不賣原則；固定定投照常，額外加碼需先確認市場波動是否收斂、ETF折溢價及可動用資金。美股檢查AI個股集中度與營運論點，不因單日漲跌機械調整。",
+  "focus": "11/18美股S&P500連續第五日下跌，Nasdaq小漲；NVIDIA公布FY2027 Q3營收1158億美元、Q4營收展望1300億美元上下3%，但11/18正規盤NVDA收150.96美元、下跌2.89%；Fed會議紀錄對通膨與利率偏鷹。",
   "quotes": {
-    "date": "2026-11-17",
-    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261117&type=ALLBUT0999",
-    "updated_at": "2026-11-18T02:23:28+00:00",
-    "taiex": {
-      "close": 40092.11,
-      "change": -947.97,
-      "percent": -2.31
-    },
     "2330": {
-      "close": 2170.0,
-      "change": -45.0,
-      "percent": -2.03
+      "close": 2175,
+      "change": 5,
+      "percent": 0.23
+    },
+    "date": "2026-11-18",
+    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261118&type=ALLBUT0999",
+    "updated_at": "2026-11-19T00:05:29.267Z",
+    "taiex": {
+      "close": 40194.91,
+      "change": 102.8,
+      "percent": 0.26
     },
     "006208": {
-      "close": 211.9,
-      "change": null,
-      "percent": null,
-      "note": "交易所未列可比較漲跌（例如除息或參考價重設）"
+      "close": 212,
+      "change": 0.1,
+      "percent": 0.05
     },
     "0050": {
-      "close": 94.0,
-      "change": -2.45,
-      "percent": -2.54
+      "close": 94.1,
+      "change": 0.1,
+      "percent": 0.11
     }
   },
-  "analysis_intro": "截至11/18臺灣盤前：臺股11/17加權-2.31%、前一日-6.03%；美股11/17 S&P500 -1.03%、Nasdaq -0.74%、費半 +0.34%。NVIDIA 11/17財報公布後，市場焦點由單純成長轉向獲利品質、AI支出持續性及領導層風險。",
+  "analysis_intro": "截至11/19臺北08:00：臺股11/18小幅回升，S&P 500續跌、Nasdaq轉升，TSM ADR +0.81%，但NVDA -2.89%；SOX報價分歧未列入方向判斷。",
   "analysis_sections": [
     {
-      "title": "市場狀態｜連續修正、跌勢擴散",
-      "conclusion": "臺股兩日累計明顯下修；美股大型股與金融股亦承壓，不能單純歸因於半導體單一事件",
+      "title": "市場溫度計｜偏冷、結構分歧",
+      "conclusion": "S&P 500連五跌但Nasdaq微升，風險偏好未全面回穩；臺股反彈幅度小，短線仍以高波動情境管理。",
       "points": [
-        "臺股11/16 -6.03%、11/17 -2.31%；美股S&P500 11/17 -1.03%",
-        "AP報導AI股與金融股拖累，市場避險需求增加；尚不能據此認定經濟衰退"
+        "臺股加權+0.26%、台積電+0.23%，ETF同步微升",
+        "S&P 500 -0.23%、Nasdaq +0.42%，科技內部分歧，SOX未完成一致核實"
       ]
     },
     {
-      "title": "NVDA財報｜營運成長與估值風險並存",
-      "conclusion": "NVIDIA 官方 Q3 營收 1,158 億美元，年增 103%，Q4 指引 1,300 億美元，上下浮動 3%。資料中心成長支持 AI 需求仍強的判斷。",
+      "title": "NVIDIA財報｜基本面強、估值考驗加劇",
+      "conclusion": "NVDA長期AI基礎設施需求論點暫未改變，但強勁財報後股價仍下跌2.89%，市場要求更高的現金流與資本效率證據。",
       "points": [
-        "資料中心營收1076億美元、年增110%；非GAAP毛利率74.9%",
-        "仍須追蹤管理層更替、出口限制、超大規模雲端業者資本支出與自由現金流"
+        "FY2027 Q3營收1158億美元、Q4指引1300億美元上下3%（公司財報）；資料中心需求仍強",
+        "關注毛利率、雲端資本支出、出口限制與管理層變化；不能以單季成長推論股價必然反彈"
       ]
     },
     {
-      "title": "TSLA／SPCX｜論點追蹤",
-      "conclusion": "TSLA 11/17 小漲 0.10%。SPCX 是 Space Exploration Technologies Corp. 在 Nasdaq 掛牌的 A 類普通股，當日上漲 3.16%。",
+      "title": "TSLA、SPCX｜長期論點逐項核對",
+      "conclusion": "TSLA與SPCX本日分別上漲0.95%、1.27%，沒有足以單憑價格改變長期論點的證據；SPCX為Nasdaq掛牌Space Exploration Technologies Corp. A類普通股。",
       "points": [
-        "TSLA持續觀察交付、汽車毛利、儲能與自駕商業化",
-        "SPCX持續觀察Starlink用戶、發射成本、資本支出及各業務獲利能力"
+        "TSLA關注汽車毛利、儲能成長、交付與自駕商業化",
+        "SPCX關注Starlink訂戶、發射服務、資本支出、AI布局與現金流"
       ]
     },
     {
-      "title": "1～4週與3～12個月｜投資判讀",
-      "conclusion": "短期關注財報後價格反應及市場廣度；中期關注AI資本支出、企業獲利與估值重估是否延續",
+      "title": "11/19臺股情境｜台積電、006208、0050",
+      "conclusion": "中性偏震盪為基準：Nasdaq與TSM ADR小漲有支撐，但S&P 500續跌、NVDA下挫與SOX未核實削弱追價依據。",
       "points": [
-        "固定定投照常；額外加碼與家庭現金水位分開管理",
-        "若後續財報與資本支出持續強勁，較支持估值修正而非需求崩潰；反之須重估科技股集中度"
+        "偏多：台積電守住前收且市場廣度擴大，006208與0050同步轉強；偏中性：權值股區間整理、ETF低幅波動",
+        "偏空：科技權值股轉弱且指數跌破近期支撐；夜盤未核實，不用作定向訊號"
+      ]
+    },
+    {
+      "title": "短中期策略｜1～4週與3～12個月",
+      "conclusion": "1～4週留意波動、財報消化與資金輪動；3～12個月聚焦AI資本支出轉現金流、利率與估值，維持長期定投而非追逐單日波動。",
+      "points": [
+        "006208額外小額加碼：優先分批、檢查ETF折溢價及市場下跌是否收斂，避免一次性追價",
+        "深度研究題目：AI超大規模資本支出回收期、NVDA客戶集中、TSLA儲能利潤、SPCX Starlink單位經濟"
       ]
     }
   ],
   "podcast": {
-    "status": "截至2026/11/17 08:00未完成新集數核實",
+    "status": "截至2026/11/19 08:00尚未核實股癌與M觀點最新集數",
     "items": [],
-    "note": "股癌與M觀點未取得可核實的新集數或逐字稿；不引述主持人觀點"
+    "note": "未取得可驗證新集數與逐字稿；不引用主持人觀點"
   },
   "us_quotes": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "currency": "USD",
     "basis": "regular_unadjusted",
-    "updated_at": "2026-11-18T02:23:30+00:00",
+    "updated_at": "2026-11-19T00:05:29.267Z",
     "sp500": {
-      "close": 7340.53,
-      "previous_close": 7416.59,
-      "previous_date": "2026-11-16",
-      "percent": -1.03,
-      "source": "https://apnews.com/article/ff6caef4d9289cf7f1e6ee48a706eddc",
-      "cross_checked_with": "https://finance.google.com/finance/quote/.INX:INDEXSP"
+      "close": 7323.63,
+      "previous_close": 7340.53,
+      "previous_date": "2026-11-17",
+      "percent": -0.23,
+      "source": "https://apnews.com/article/990749d3d269f7ef05b9f6c089713a58",
+      "cross_checked_with": "https://portfolio-terminal.com/markets/sp-500"
     },
     "nasdaq": {
-      "close": 24328.38,
-      "previous_close": 24509.76,
-      "previous_date": "2026-11-16",
-      "percent": -0.74,
-      "source": "https://api.nasdaq.com/api/quote/COMP/info?assetclass=index",
-      "cross_checked_with": "https://www.investing.com/indices/nasdaq-composite-historical-data"
-    },
-    "sox": {
-      "close": 9642.88,
-      "previous_close": 9610.65,
-      "previous_date": "2026-11-16",
-      "percent": 0.34,
-      "source": "https://api.nasdaq.com/api/quote/SOX/info?assetclass=index",
-      "cross_checked_with": "https://www.investing.com/indices/phlx-semiconductor-historical-data"
+      "close": 24429.88,
+      "previous_close": 24328.38,
+      "previous_date": "2026-11-17",
+      "percent": 0.42,
+      "source": "https://apnews.com/article/990749d3d269f7ef05b9f6c089713a58",
+      "cross_checked_with": "https://portfolio-terminal.com/markets/stock-market-close"
     },
     "NVDA": {
-      "close": 155.46,
-      "previous_close": 156.14,
-      "previous_date": "2026-11-16",
-      "percent": -0.44,
-      "source": "https://api.nasdaq.com/api/quote/NVDA/historical?assetclass=stocks&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/stocks/nvda/history/"
+      "close": 150.96,
+      "previous_close": 155.46,
+      "previous_date": "2026-11-17",
+      "percent": -2.89,
+      "source": "https://stockanalysis.com/stocks/nvda/history/",
+      "cross_checked_with": "https://www.investing.com/equities/nvidia-corp-historical-data"
     },
     "TSLA": {
-      "close": 380.11,
-      "previous_close": 379.74,
-      "previous_date": "2026-11-16",
-      "percent": 0.1,
-      "source": "https://api.nasdaq.com/api/quote/TSLA/historical?assetclass=stocks&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/stocks/tsla/history/"
+      "close": 383.72,
+      "previous_close": 380.11,
+      "previous_date": "2026-11-17",
+      "percent": 0.95,
+      "source": "https://stockanalysis.com/stocks/tsla/history/"
     },
     "SPCX": {
-      "close": 141.7,
-      "previous_close": 137.36,
-      "previous_date": "2026-11-16",
-      "percent": 3.16,
-      "source": "https://api.nasdaq.com/api/quote/SPCX/historical?assetclass=stocks&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/stocks/spcx/history/"
+      "close": 143.5,
+      "previous_close": 141.7,
+      "previous_date": "2026-11-17",
+      "percent": 1.27,
+      "source": "https://stockanalysis.com/stocks/spcx/history/"
     },
     "VOO": {
-      "close": 673.19,
-      "previous_close": 680.26,
-      "previous_date": "2026-11-16",
-      "percent": -1.04,
-      "source": "https://api.nasdaq.com/api/quote/VOO/historical?assetclass=etf&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/etf/voo/history/"
+      "close": 671.31,
+      "previous_close": 673.19,
+      "previous_date": "2026-11-17",
+      "percent": -0.28,
+      "source": "https://stockanalysis.com/etf/voo/history/"
     },
     "QQQ": {
-      "close": 656.95,
-      "previous_close": 661.75,
-      "previous_date": "2026-11-16",
-      "percent": -0.73,
-      "source": "https://api.nasdaq.com/api/quote/QQQ/historical?assetclass=etf&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/etf/qqq/history/"
+      "close": 659.51,
+      "previous_close": 656.95,
+      "previous_date": "2026-11-17",
+      "percent": 0.39,
+      "source": "https://stockanalysis.com/etf/qqq/history/",
+      "cross_checked_with": "https://ph.investing.com/etfs/powershares-qqqq-historical-data"
     },
     "TSM": {
-      "close": 359.69,
-      "previous_close": 373.45,
-      "previous_date": "2026-11-16",
-      "percent": -3.68,
-      "source": "https://api.nasdaq.com/api/quote/TSM/historical?assetclass=stocks&fromdate=2026-11-15&todate=2026-11-18",
-      "cross_checked_with": "https://stockanalysis.com/stocks/tsm/history/"
+      "close": 362.62,
+      "previous_close": 359.69,
+      "previous_date": "2026-11-17",
+      "percent": 0.81,
+      "source": "https://stockanalysis.com/stocks/tsm/history/"
+    },
+    "sox": {
+      "close": null,
+      "percent": null,
+      "note": "11/18 費半歷史資料跨區域來源不一致（9566.4至9652.8），待Nasdaq官方確認，不填入推估值"
     }
   },
   "additional_podcasts": [],
   "market_signals": {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "night_futures": {
       "close": null,
       "percent": null,
-      "note": "夜盤未核實"
+      "change": null,
+      "note": "11/18台指期夜盤未取得可信完整結算，與日盤40,025點不得混用"
     }
   },
   "market_outlook": {
-    "as_of": "2026-11-18 08:00 Asia/Taipei",
-    "stance": "偏空、高波動；NVDA財報營運面強勁",
-    "summary": "短期：市場修正與避險仍在；中期：NVIDIA營收與指引仍支持AI需求，但管理層與估值風險未消失。"
+    "as_of": "2026-11-19 08:00 Asia/Taipei",
+    "stance": "中性偏震盪、高波動",
+    "summary": "Nasdaq及TSM ADR小漲，但S&P500連五跌、NVDA財報後下挫；偏多需臺股廣度改善，偏空留意科技權值再轉弱。"
   },
   "fx": {
     "provider": "Bank of Taiwan",
@@ -175,60 +176,128 @@
   },
   "sources": [
     {
-      "title": "AP 11/17 US market close",
-      "url": "https://apnews.com/article/ff6caef4d9289cf7f1e6ee48a706eddc",
-      "date": "2026-11-17"
+      "title": "AP：11/18美股收盤",
+      "url": "https://apnews.com/article/990749d3d269f7ef05b9f6c089713a58",
+      "date": "2026-11-18"
     },
     {
-      "title": "NVIDIA FY2027 Q3 official results",
-      "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001045810/46a9c98c-87ae-40f5-acac-7d9264b18eb4.pdf",
-      "date": "2026-11-17"
+      "title": "Reuters：11/18美股、Fed與NVDA",
+      "url": "https://www.reuters.com/business/nasdaq-futures-jump-nvidia-forecast-lifts-ai-trade-ahead-anthropic-pricing-2026-11-18/",
+      "date": "2026-11-18"
     },
     {
-      "title": "NVDA 11/17 historical close",
+      "title": "TWSE 11/18收盤原始資料入口",
+      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261118&type=ALLBUT0999",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "台股加權歷史收盤整理",
+      "url": "https://baomazai.com/data/taiex/",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "2330歷史行情",
+      "url": "https://www.cnyes.com/twstock/ps_historyprice.aspx/1000",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "006208收盤與折溢價",
+      "url": "https://www.moneydj.com/etf/x/basic/basic0003.xdjhtm?etfid=006208.tw",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "0050盤後",
+      "url": "https://blackstockai.com/s/0050/",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "sp500 11/18 regular close",
+      "url": "https://apnews.com/article/990749d3d269f7ef05b9f6c089713a58",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "nasdaq 11/18 regular close",
+      "url": "https://apnews.com/article/990749d3d269f7ef05b9f6c089713a58",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "NVDA 11/18 regular close",
       "url": "https://stockanalysis.com/stocks/nvda/history/",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
-      "title": "TSLA 11/17 historical close",
+      "title": "TSLA 11/18 regular close",
       "url": "https://stockanalysis.com/stocks/tsla/history/",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
-      "title": "SPCX 11/17 historical close",
+      "title": "SPCX 11/18 regular close",
       "url": "https://stockanalysis.com/stocks/spcx/history/",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
-      "title": "VOO 11/17 historical close",
+      "title": "VOO 11/18 regular close",
       "url": "https://stockanalysis.com/etf/voo/history/",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
-      "title": "QQQ 11/17 historical close",
+      "title": "QQQ 11/18 regular close",
       "url": "https://stockanalysis.com/etf/qqq/history/",
-      "date": "2026-11-17"
+      "date": "2026-11-18"
     },
     {
-      "title": "Nasdaq：SPCX A 類普通股",
-      "url": "https://www.nasdaq.com/market-activity/stocks/spcx",
-      "date": "2026-11-17"
-    },
-    {
-      "title": "TWSE：006208 每日成交資訊",
-      "url": "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20261117&stockNo=006208",
-      "date": "2026-11-17"
+      "title": "TSM 11/18 regular close",
+      "url": "https://stockanalysis.com/stocks/tsm/history/",
+      "date": "2026-11-18"
     }
   ],
-  "edition_date": "2026-11-18",
+  "edition_date": "2026-11-19",
   "daily_research": {
-    "market_strength": "整體偏弱。S&P 500 與 Nasdaq 綜合指數下跌，費半小漲，台積電 ADR 下跌。臺股加權連兩日回落。",
-    "news": "美股大型股與金融股承壓。NVIDIA 第三季營收 1,158 億美元，年增 103%，資料中心營收年增 110%。第四季營收指引 1,300 億美元，上下浮動 3%，毛利率指引 71% 至 72%。",
-    "NVDA": "持有論點維持。資料中心營收仍強，接下來觀察毛利率、出口限制、大型雲端業者的資本支出及領導層交接。",
-    "TSLA": "持有論點維持。觀察交付、汽車毛利率、儲能及自駕商業化進度。",
-    "SPCX": "公司研究框架已校正為 Nasdaq 掛牌的 SpaceX A 類普通股。續看 Starlink 訂戶、發射成本、資本支出及各業務的獲利能力。",
-    "short_term": "觀察財報後股價反應、反彈是否擴及更多產業，以及臺股能否止住連續下跌。",
-    "medium_term": "追蹤 AI 資本支出能否轉成營收與自由現金流。若獲利成長鈍化或估值壓縮延續，重估科技股集中度。",
-    "etf_watch": "006208 與 0050 維持既定定投。額外買進前先確認家庭現金緩衝，並比較 ETF 折溢價與臺股跌勢是否收斂。006208 本日以交易所公告的收盤 211.90 為準，官方漲跌欄為特殊處理。"
-  }
+    "market_strength": "偏冷且分歧：S&P 500連五跌、Nasdaq微升；台積電與台灣50 ETF小漲，SOX收盤資料分歧。",
+    "news": "11/18美股震盪；NVIDIA財報營收1158億美元、Q4展望1300億美元上下3%；Fed會議紀錄對通膨與利率偏鷹；油價下跌與公債殖利率回落。",
+    "NVDA": "長期需求論點暫維持；財報強但股價跌2.89%，重點改為資本支出回收、毛利率、自由現金流及出口政策。",
+    "TSLA": "論點暫維持；+0.95%不是基本面轉折證據，追蹤交付、汽車毛利、儲能與自駕。",
+    "SPCX": "論點暫維持；+1.27%，按Nasdaq掛牌Space Exploration Technologies Corp. A類普通股評估Starlink、發射成本及資本效率。",
+    "short_term": "1～4週偏震盪，觀察AI財報後市場廣度、科技股波動與Fed利率預期。",
+    "medium_term": "3～12個月關注AI投資能否帶來可持續現金流、雲端支出與半導體估值。",
+    "etf_watch": "006208、0050固定定投照常，額外加碼需核對折溢價、波動與現金緩衝；不因單日上漲而追價。"
+  },
+  "stocks-tag": "美股11/18正規盤收盤",
+  "market-tag": "臺股11/18收盤",
+  "market-value": "40,194.91",
+  "market-change": "+102.80（+0.26%）",
+  "market-note": "台積電2175（+0.23%）、006208 212.00（+0.05%）、0050 94.10（+0.11%）",
+  "etf-summary": "006208 212.00（+0.05%）；0050 94.10（+0.11%）",
+  "stocks": [
+    {
+      "ticker": "VOO",
+      "price": 671.31,
+      "change_percent": -0.28,
+      "note": "11/18美東16:00正規盤；來源：https://stockanalysis.com/etf/voo/history/"
+    },
+    {
+      "ticker": "NVDA",
+      "price": 150.96,
+      "change_percent": -2.89,
+      "note": "11/18美東16:00正規盤；來源：https://stockanalysis.com/stocks/nvda/history/"
+    },
+    {
+      "ticker": "TSLA",
+      "price": 383.72,
+      "change_percent": 0.95,
+      "note": "11/18美東16:00正規盤；來源：https://stockanalysis.com/stocks/tsla/history/"
+    },
+    {
+      "ticker": "QQQ",
+      "price": 659.51,
+      "change_percent": 0.39,
+      "note": "11/18美東16:00正規盤；來源：https://stockanalysis.com/etf/qqq/history/"
+    },
+    {
+      "ticker": "SPCX",
+      "price": 143.5,
+      "change_percent": 1.27,
+      "note": "11/18美東16:00正規盤；來源：https://stockanalysis.com/stocks/spcx/history/"
+    }
+  ]
 }
