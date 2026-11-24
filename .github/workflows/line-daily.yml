@@ -34,6 +34,11 @@ jobs:
           python-version: '3.12'
       - run: pip install -r scripts/requirements-market.txt
       - run: python -m unittest discover -s tests
+      - name: Install card rendering dependencies
+        run: |
+          pip install Pillow==11.3.0
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
       - name: Validate and render the published edition
         env:
           REPORT_DAY: ${{ inputs.report_day }}
@@ -45,11 +50,15 @@ jobs:
           fi
           args=()
           if [[ -n "$edition" ]]; then args+=(--report-day "$edition"); fi
+          python scripts/render_line_card.py "${args[@]}"
           python scripts/push_line_verified.py "${args[@]}"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: line-preview
-          path: line_preview.txt
+          path: |
+            line_preview.txt
+            line_preview.png
           if-no-files-found: error
 
   send:
