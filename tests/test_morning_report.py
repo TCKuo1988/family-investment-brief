@@ -85,6 +85,18 @@ class MorningReportTests(unittest.TestCase):
              patch("update_us.stockanalysis", return_value=((145, 145), "stockanalysis")):
             self.assertIsNone(resolve("NVDA", (date(2026, 11, 17), date(2026, 11, 16)))["close"])
 
+    def test_line_card_and_link_share_one_request(self):
+        image = "https://raw.githubusercontent.com/example/repo/revision/line_preview.png"
+        accepted = HTTPError("https://api.line.me", 409, "Conflict",
+                             {"X-Line-Accepted-Request-Id": "mock-id"}, None)
+        with patch.dict(line.os.environ, {"LINE_CHANNEL_ACCESS_TOKEN": "mock", "LINE_GROUP_ID": "mock"}), \
+             patch.object(line, "urlopen", side_effect=accepted) as request:
+            line.send(line.SITE, self.edition, image_url=image)
+        messages = json.loads(request.call_args.args[0].data)["messages"]
+        self.assertEqual(messages[0], {"type": "image", "originalContentUrl": image,
+                                       "previewImageUrl": image})
+        self.assertEqual(messages[1]["text"], line.SITE)
+
     def test_line_retry_key_and_duplicate_acceptance(self):
         duplicate = HTTPError("https://api.line.me", 409, "Conflict",
                               {"X-Line-Accepted-Request-Id": "mock-id"}, None)

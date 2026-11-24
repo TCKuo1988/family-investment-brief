@@ -14,7 +14,7 @@ US = ("NVDA", "TSLA", "SPCX", "QQQ", "VOO", "SOXX", "TSM")
 TW = ("2330", "006208")
 
 
-def render(report, edition, market=None):
+def render(report, edition, market=None, *, preview=True):
     published = report["edition_date"]
     issue = None
     if published != edition.isoformat():
@@ -47,7 +47,7 @@ def render(report, edition, market=None):
 
     box(22, 22, 716, 190, "#142D43")
     text(48, 49, "TCK 家庭投資晨報", 45, "white", True)
-    text(48, 114, f"{edition:%m/%d}  08:10 ｜ LINE 預覽", 28, "#BFD4E4")
+    text(48, 114, f"{edition:%m/%d}  08:10" + (" ｜ LINE 預覽" if preview else ""), 28, "#BFD4E4")
     text(48, 163, ("行情已抓取，研究待更新" if market else "今日晨報待更新") if issue else "今日晨報已更新", 27, "#FBE5BA")
 
     box(22, 230, 716, 165, "white")
@@ -89,11 +89,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--report-day", type=date.fromisoformat)
     parser.add_argument("--market-quotes", type=Path)
+    parser.add_argument("--live", action="store_true")
     args = parser.parse_args()
     edition = args.report_day or datetime.now(ZoneInfo("Asia/Taipei")).date()
     report_path = Path(__file__).resolve().parents[1] / "report.json"
     market = load_report(args.market_quotes.read_bytes()) if args.market_quotes else None
-    render(load_report(report_path.read_bytes()), edition, market).save("line_preview.png")
+    render(load_report(report_path.read_bytes()), edition, market, preview=not args.live).save("line_preview.png")
 
 
 if __name__ == "__main__":

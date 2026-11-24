@@ -51,16 +51,20 @@ def render(report, *, correction=False):
     ]).replace("\\r\\n", "\n").replace("\\n", "\n")
 
 
-def send(message, edition, *, correction=False):
+def send(message, edition, *, correction=False, image_url=None):
     token = os.environ["LINE_CHANNEL_ACCESS_TOKEN"].strip()
     group = os.environ["LINE_GROUP_ID"].strip()
     if not token or not group:
         raise ValueError("LINE credentials unavailable")
     delivery = "LINE-correction" if correction else "LINE"
     key = uuid5(NAMESPACE_URL, f"{SITE}{delivery}/{edition}/{group}")
+    messages = [{"type": "text", "text": message}]
+    if image_url:
+        messages.insert(0, {"type": "image", "originalContentUrl": image_url,
+                            "previewImageUrl": image_url})
     request = Request(
         "https://api.line.me/v2/bot/message/push",
-        data=json.dumps({"to": group, "messages": [{"type": "text", "text": message}]},
+        data=json.dumps({"to": group, "messages": messages},
                         ensure_ascii=False).encode(),
         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
                  "X-Line-Retry-Key": str(key)},
@@ -85,6 +89,7 @@ def main():
     parser.add_argument("--send", action="store_true")
     parser.add_argument("--correction", action="store_true")
     parser.add_argument("--report-day", type=date.fromisoformat)
+    parser.add_argument("--image-url")
     args = parser.parse_args()
     now = datetime.now(TAIPEI)
     edition = args.report_day or now.date()
@@ -100,6 +105,13 @@ def main():
     try:
         raw = REPORT.read_bytes()
         report = load_report(raw)
+        if args.send and args.image_url and report["edition_date"] != edition.isoformat() and not args.correction:
+            checks[stage] = "當期研究待更新，發送行情狀態圖卡"
+            checks["Pages"] = "當期完整晨報待發布"
+            stage = "LINE"
+            checks[stage] = send(f"{edition} 晨報研究待更新。請見圖卡的行情與更新狀態。\n{SITE}",
+                                 edition, image_url=args.image_url)
+            return
         validate_report(report, edition)
         checks["臺股交易日"] = report["quotes"]["date"]
         checks["美股交易日"] = report["us_quotes"]["date"]
@@ -117,7 +129,9 @@ def main():
                 raise ValueError("GitHub Pages has not published this report revision")
         checks[stage] = "已發布相同報告"
         stage = "LINE"
-        checks[stage] = send(message, edition, correction=args.correction)
+        if args.image_url:
+            message = f"{edition} 完整晨報\n{SITE}"
+        checks[stage] = send(message, edition, correction=args.correction, image_url=args.image_url)
     except (ValueError, OSError, KeyError, AttributeError, TypeError) as exc:
         checks[stage] = f"失敗：{exc}"
         raise SystemExit(f"LINE withheld or unsuccessful: {exc}") from None
