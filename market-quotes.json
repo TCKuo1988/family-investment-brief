@@ -3,7 +3,7 @@
   "quotes": {
     "date": "2026-11-23",
     "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261123&type=ALLBUT0999",
-    "updated_at": "2026-11-24T03:59:04+00:00",
+    "updated_at": "2026-11-24T07:04:07+00:00",
     "taiex": {
       "close": 36811.89,
       "change": 778.6,
@@ -29,7 +29,7 @@
     "date": "2026-11-23",
     "currency": "USD",
     "basis": "regular_unadjusted",
-    "updated_at": "2026-11-24T03:59:04+00:00",
+    "updated_at": "2026-11-24T07:04:24+00:00",
     "sp500": {
       "close": 7237.17,
       "previous_close": 6910.39,
