@@ -1,6 +1,6 @@
 # TCK 家庭投資晨報
 
-`report.json` 是 GitHub Pages 與 LINE 的共用晨報。臺股和美股分別列交易日。公開研究與行情檔案只放可公開資料，私人持股仍由 Firebase 帳號與規則管理。乖寶寶入口在首頁導覽。
+`report.json` 是 GitHub Pages 與 LINE 的共用晨報。臺股和美股分別列交易日。公開研究與行情檔案只放可公開資料，私人持股仍由 Firebase 帳號與規則管理。
 
 ## 每日更新（臺北時間）
 
