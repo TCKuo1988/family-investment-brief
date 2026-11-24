@@ -274,9 +274,20 @@ try{
         saveStatus.textContent="已略過重複更新，沒有覆蓋資料。";
         return;
       }
+      const rowKey=x=>JSON.stringify([x.owner,x.ticker]);
+      const previous=new Map(Object.values(privateData?.holdings||{}).map(x=>[rowKey(x),x]));
+      const current=new Map(entries.map(x=>[rowKey(x),x]));
+      if(current.size!==entries.length)throw Error("同一成員及代號出現重複持股");
+      let added=0,removed=0,changed=0;
+      for(const [key,row] of current){
+        const prior=previous.get(key);
+        if(!prior)added++;
+        else if(row.shares!==prior.shares||row.totalCostTwd!==prior.totalCostTwd)changed++;
+      }
+      for(const key of previous.keys())if(!current.has(key))removed++;
       pendingImport=data;
       const stockValue=entries.reduce((v,x)=>v+x.sourceMarketValueTwd,0),cash=owners.reduce((v,x)=>v+data.availableCashTwd[x],0);
-      portfolioPreview.textContent="待匯入："+data.asOf+"｜"+entries.length+" 筆｜股票 "+fmtMoney(stockValue)+"｜可投入現金 "+fmtMoney(cash)+(old?"｜原資料 "+old:"");
+      portfolioPreview.textContent="待匯入："+data.asOf+"｜"+entries.length+" 筆｜股票 "+fmtMoney(stockValue)+"｜可投入現金 "+fmtMoney(cash)+(old?"｜原資料 "+old+"｜新增 "+added+"、移除 "+removed+"、股數或成本變更 "+changed+" 筆":"");
       saveStatus.textContent="請核對日期、股數和金額後才按確認。";
       saveBtn.disabled=!auth.currentUser;
     }catch(e){portfolioPreview.textContent="無法使用："+e.message;}
@@ -286,7 +297,16 @@ try{
     if(!window.confirm("確定要以 "+pendingImport.asOf+" 的資料覆蓋目前 Firebase 家庭持股嗎？"))return;
     saveBtn.disabled=true;saveStatus.textContent="正在更新私人資料…";
     try{
-      await set(ref(db,"familyPortfolio"),pendingImport);
+      const submitted=pendingImport,location=ref(db,"familyPortfolio");
+      await set(location,submitted);
+      const saved=await get(location);
+      const canonical=value=>value&&typeof value==="object"
+        ? Object.fromEntries(Object.keys(value).sort().filter(key=>value[key]!==null)
+            .map(key=>[key,canonical(value[key])]))
+        : value;
+      if(!saved.exists()||JSON.stringify(canonical(saved.val()))!==JSON.stringify(canonical(submitted))){
+        throw Error("已送出寫入，但讀回資料與送出內容不一致");
+      }
       saveStatus.textContent="私人資料已更新，正在重新載入確認…";
       pendingImport=null;portfolioFile.value="";
       await loadPrivatePortfolio();

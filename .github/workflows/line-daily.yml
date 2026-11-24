@@ -34,6 +34,11 @@ jobs:
           python-version: '3.12'
       - run: pip install -r scripts/requirements-market.txt
       - run: python -m unittest discover -s tests
+      - name: Install card rendering dependencies
+        run: |
+          pip install Pillow==11.3.0
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
       - name: Validate and render the published edition
         env:
           REPORT_DAY: ${{ inputs.report_day }}
@@ -45,11 +50,21 @@ jobs:
           fi
           args=()
           if [[ -n "$edition" ]]; then args+=(--report-day "$edition"); fi
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+            python scripts/collect_market.py "${args[@]}" > market-quotes.json
+            python scripts/render_line_card.py "${args[@]}" --market-quotes market-quotes.json
+          else
+            python scripts/render_line_card.py "${args[@]}"
+          fi
           python scripts/push_line_verified.py "${args[@]}"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: line-preview
-          path: line_preview.txt
+          path: |
+            line_preview.txt
+            line_preview.png
+            market-quotes.json
           if-no-files-found: error
 
   send:
@@ -74,6 +89,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r scripts/requirements-market.txt
+      - name: Install card rendering dependencies
+        run: |
+          pip install Pillow==11.3.0
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
       - name: Send the published edition once and record LINE acceptance
         env:
           DELIVERY_MODE: ${{ inputs.mode }}
@@ -114,7 +134,20 @@ jobs:
               exit "$status"
             fi
           fi
-          python scripts/push_line_verified.py "${args[@]}"
+          card=(--live --report-day "$edition")
+          published="$(python -c 'import json; print(json.load(open("report.json"))["edition_date"])')"
+          if [[ "$published" != "$edition" ]]; then
+            market="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/tck-market-data/market-quotes.json"
+            if curl --fail --silent --show-error --max-time 15 "$market" -o market-quotes.json; then
+              card+=(--market-quotes market-quotes.json)
+            fi
+          fi
+          python scripts/render_line_card.py "${card[@]}"
+          revision="$(bash scripts/publish_public_file.sh line_preview.png tck-line-images)"
+          image="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$revision/line_preview.png"
+          curl --fail --silent --show-error --retry 3 --max-time 15 "$image" -o "$RUNNER_TEMP/public-line-card.png"
+          cmp line_preview.png "$RUNNER_TEMP/public-line-card.png"
+          python scripts/push_line_verified.py "${args[@]}" --image-url "$image"
           if git push origin "HEAD:refs/tags/$tag"; then
             printf -- '- **發送紀錄**　`%s` 已寫入\n' "$tag" >> "$GITHUB_STEP_SUMMARY"
           else

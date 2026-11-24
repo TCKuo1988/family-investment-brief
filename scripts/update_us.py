@@ -16,6 +16,7 @@ SECURITIES = {
     "NVDA": ("NVDA", "stocks", "stocks"), "TSLA": ("TSLA", "stocks", "stocks"),
     "SPCX": ("SPCX", "stocks", "stocks"), "VOO": ("VOO", "etf", "etf"),
     "QQQ": ("QQQ", "etf", "etf"), "TSM": ("TSM", "stocks", "stocks"),
+    "SOXX": ("SOXX", "etf", "etf"),
 }
 INDEXES = {"sp500": ("SPX", "SP500"), "nasdaq": ("COMP", "NASDAQCOM"), "sox": ("SOX", None)}
 US_KEYS = tuple(INDEXES) + tuple(SECURITIES)

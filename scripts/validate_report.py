@@ -72,6 +72,8 @@ def validate_report(data, edition):
             require(source(quotes.get("source"), {"www.twse.com.tw"}), "TWSE source missing")
         for ticker in tickers:
             item = quotes.get(ticker)
+            if ticker == "SOXX" and ticker not in quotes:
+                continue
             require(isinstance(item, dict), f"{key}.{ticker}: quote missing")
             close, change = item.get("close"), item.get("percent")
             if close is None:
