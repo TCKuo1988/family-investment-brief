@@ -66,7 +66,7 @@ def render(report, edition):
             value = f"{percent:+.2f}%" if percent is not None else "—"
             x, y = 48 + index % 3 * 222, top + 124 + index // 3 * 55
             box(x, y, 205, 43, "#EDF2F6")
-            text(x + 10, y + 8, f"{label}  {value}", 22, bold=True, width=185)
+            text(x + 10, y + 8, f"{label}  {value}", 18 if symbol == "TSM" else 22, bold=True, width=185)
 
     text(48, 962, issue or "— 表示該標的行情尚未取得。", 27)
     return image
