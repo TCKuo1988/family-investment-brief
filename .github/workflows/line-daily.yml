@@ -50,7 +50,12 @@ jobs:
           fi
           args=()
           if [[ -n "$edition" ]]; then args+=(--report-day "$edition"); fi
-          python scripts/render_line_card.py "${args[@]}"
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]; then
+            python scripts/collect_market.py "${args[@]}" > market-quotes.json
+            python scripts/render_line_card.py "${args[@]}" --market-quotes market-quotes.json
+          else
+            python scripts/render_line_card.py "${args[@]}"
+          fi
           python scripts/push_line_verified.py "${args[@]}"
       - uses: actions/upload-artifact@v4
         if: always()
@@ -59,6 +64,7 @@ jobs:
           path: |
             line_preview.txt
             line_preview.png
+            market-quotes.json
           if-no-files-found: error
 
   send:
