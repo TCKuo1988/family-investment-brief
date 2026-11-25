@@ -31,9 +31,9 @@ def render(report, edition, market=None, *, preview=True):
         market = {}
     sessions = expected_sessions(edition) if market else {}
 
-    image = Image.new("RGB", (760, 1670 if not issue else 810), "#F0F3F6")
+    image = Image.new("RGB", (760, 1895 if not issue else 810), "#EAF8F8")
     draw = ImageDraw.Draw(image)
-    ink, muted, accent, navy = "#14293D", "#486075", "#116464", "#10263A"
+    ink, muted, accent, navy = "#112A42", "#354E63", "#007977", "#214EB7"
 
     def font(size, bold=False):
         weight = "Bold" if bold else "Regular"
@@ -62,7 +62,7 @@ def render(report, edition, market=None, *, preview=True):
             text(x, y + index * (size + 10), line, size, muted)
 
     def panel(top, height):
-        draw.rounded_rectangle((24, top, 736, top + height), radius=20, fill="white")
+        draw.rounded_rectangle((24, top, 736, top + height), radius=12, fill="white", outline="#C5E5E8", width=2)
 
     def quote_group(group, market_key):
         original = report.get(group) or {}
@@ -78,32 +78,35 @@ def render(report, edition, market=None, *, preview=True):
         percent = (quotes.get(symbol) or {}).get("percent")
         if percent is None:
             return "—", muted
-        color = "#A13B42" if percent > 0 else "#116464" if percent < 0 else muted
+        color = "#B82E49" if percent > 0 else "#00736A" if percent < 0 else muted
         return f"{percent:+.2f}%", color
 
     us, us_day = quote_group("us_quotes", "us")
     tw, tw_day = quote_group("quotes", "tw")
 
     draw.rectangle((0, 0, 760, 150), fill=navy)
-    draw.rectangle((0, 148, 760, 153), fill="#408F86")
+    draw.rectangle((0, 148, 760, 153), fill="#44E1C4")
     text(42, 27, "TCK 家庭投資晨報", 45, "white", True)
-    text(44, 93, f"{edition:%Y/%m/%d}" + ("  ｜  LINE 預覽" if preview else ""), 26, "#BFD4E4")
+    text(44, 93, f"{edition:%Y/%m/%d}" + ("  ｜  LINE 預覽" if preview else ""), 26, "#E0EDFF")
 
     notes = report.get("daily_research") or {}
-    panel(175, 405 if not issue else 135)
+    panel(175, 630 if not issue else 135)
     text(48, 196, "市場解讀", 33, accent, True)
     if issue:
         paragraph(48, 249, "研究待更新。" + issue, lines=1)
     else:
         paragraph(48, 245, report["summary"], lines=2)
-        paragraph(48, 329, notes["news"], lines=2)
-        text(48, 414, "對台股大盤的影響", 30, accent, True)
+        card = report.get("line_card") or {}
+        paragraph(48, 321, card.get("market_context") or notes["news"], lines=3)
+        text(48, 435, "台股方向與風險", 30, accent, True)
         outlook = report.get("market_outlook") or {}
         analysis = report["analysis_sections"][0]["points"]
         impact = analysis[1] if len(analysis) > 1 else outlook.get("summary") or notes["short_term"]
-        paragraph(48, 457, impact, lines=3)
+        paragraph(48, 481, card.get("taiwan_outlook") or impact, lines=4)
+        text(48, 635, "政策觀察", 30, accent, True)
+        paragraph(48, 681, card.get("policy") or "本期政策進展待查證。", lines=3)
 
-    top = 600 if not issue else 330
+    top = 825 if not issue else 330
     panel(top, 430)
     text(48, top + 22, "台美股主要行情", 33, accent, True)
     for row, (quotes, day, market_name, symbols) in enumerate((
@@ -115,16 +118,16 @@ def render(report, edition, market=None, *, preview=True):
         text(48, y, f"{market_name}交易日  {day or '資料待取得'}", 25, muted, True)
         for index, (symbol, label) in enumerate(symbols):
             x, line_y = 48 + index % 3 * 222, y + 43 + index // 3 * 71
-            draw.rounded_rectangle((x, line_y, x + 211, line_y + 62), radius=10, fill="#EDF2F6")
+            draw.rounded_rectangle((x, line_y, x + 211, line_y + 62), radius=6, fill="#EAF4FF")
             value, color = change(quotes, symbol)
             text(x + 10, line_y + 8, label, 20, muted)
             text(x + 10, line_y + 32, value, 23, color, True)
 
     if not issue:
-        panel(1050, 545)
-        text(48, 1071, "美股個股觀察", 33, accent, True)
+        panel(1275, 545)
+        text(48, 1296, "美股個股觀察", 33, accent, True)
         for index, symbol in enumerate(("NVDA", "TSLA", "SPCX")):
-            y = 1130 + index * 143
+            y = 1355 + index * 143
             if index:
                 draw.line((48, y - 15, 712, y - 15), fill="#DCE5EA", width=2)
             value, color = change(us, symbol)
@@ -133,7 +136,7 @@ def render(report, edition, market=None, *, preview=True):
             # The headline already shows the close-to-close move.
             observation = re.sub(r"^收盤[^。]*。\s*", "", notes[symbol], count=1)
             paragraph(48, y + 45, observation, lines=2)
-        text(48, 1620, "漲跌為收盤比較 ｜ — 表示當期行情待核實", 23, muted)
+        text(48, 1845, "漲跌為收盤比較 ｜ — 表示當期行情待核實", 23, muted)
     else:
         text(48, 777, "— 表示當期行情待核實", 23, muted)
     return image

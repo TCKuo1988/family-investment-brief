@@ -8,3 +8,5 @@ https://raw.githubusercontent.com/TCKuo1988/family-investment-brief/tck-market-d
 只研究一次。摘要先說今日最重要的一件事及為何重要。追蹤 NVDA、TSLA、SPCX、QQQ、VOO、SOXX、台積電 ADR，台股聚焦台積電、006208 及大型權值股。用原始財報、公司公告或具名分析師資料說明最新變化與投資論點，區分事實、觀點及推論。006208 維持定期定額，只在有明確依據時補充額外加碼觀察。股癌及 M 觀點只根據原始音訊或官方逐字稿整理，附集數及可用的時間點，無法取得原集內容則標示待整理。
 
 以既有 report.json 格式更新公開欄位，保留 sources、daily_research、analysis_sections、quotes、us_quotes、fx。驗證後才發布，執行 `python scripts/validate_report.py --report-day YYYY-MM-DD`。有 GitHub 寫入權限時只提交 report.json，核對 commit 與 Pages 的期別。沒有寫入權限時交付同一份 JSON 並標明待提交，LINE 由 GitHub Actions 負責。私人持股與 Excel 檔留在私人流程。
+
+每期寫入公開 `line_card`：`market_context` 綜合市場主流說法、數據與產業輪動（約 60 字），`taiwan_outlook` 說明台股可能方向、支撐與下行條件（約 80 字），`policy` 交代已核實的政策或央行事件及傳導影響（約 60 字）。將政策決定、預期與推論區分；無可核實的新政策時，標示待查，或只寫有依據的觀察條件。所引用的消息同時列入 sources。
