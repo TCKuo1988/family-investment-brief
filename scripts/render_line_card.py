@@ -2,6 +2,7 @@
 import argparse
 from datetime import date, datetime
 from pathlib import Path
+import re
 from zoneinfo import ZoneInfo
 
 from PIL import Image, ImageDraw, ImageFont
@@ -30,58 +31,111 @@ def render(report, edition, market=None, *, preview=True):
         market = {}
     sessions = expected_sessions(edition) if market else {}
 
-    image = Image.new("RGB", (760, 1050), "#EDF2F6")
+    image = Image.new("RGB", (760, 1670 if not issue else 810), "#F0F3F6")
     draw = ImageDraw.Draw(image)
+    ink, muted, accent, navy = "#14293D", "#486075", "#116464", "#10263A"
 
-    def text(x, y, value, size=30, color="#152C40", bold=False, width=660):
+    def font(size, bold=False):
         weight = "Bold" if bold else "Regular"
-        font = ImageFont.truetype(str(FONT / f"NotoSansCJK-{weight}.ttc"), size, index=3)
-        if font.getlength(value) > width:
-            while font.getlength(value + "…") > width:
-                value = value[:-1]
-            value += "…"
-        draw.text((x, y), value, fill=color, font=font, anchor="lt")
+        return ImageFont.truetype(str(FONT / f"NotoSansCJK-{weight}.ttc"), size, index=3)
 
-    def box(x, y, width, height, fill):
-        draw.rounded_rectangle((x, y, x + width, y + height), radius=22, fill=fill)
+    def text(x, y, value, size=30, color=ink, bold=False):
+        draw.text((x, y), value, fill=color, font=font(size, bold), anchor="lt")
 
-    box(22, 22, 716, 190, "#142D43")
-    text(48, 49, "TCK 家庭投資晨報", 45, "white", True)
-    text(48, 114, f"{edition:%m/%d}  08:10" + (" ｜ LINE 預覽" if preview else ""), 28, "#BFD4E4")
-    text(48, 163, ("行情已抓取，研究待更新" if market else "今日晨報待更新") if issue else "今日晨報已更新", 27, "#FBE5BA")
+    def paragraph(x, y, value, *, lines=3, size=27, width=650):
+        face = font(size)
+        rows, row = [], ""
+        for part in re.findall(r"[A-Za-z0-9.+%/−-]+|.", " ".join(value.split())):
+            if row and face.getlength(row + part) > width:
+                rows.append(row.rstrip())
+                row = part.lstrip()
+            else:
+                row += part
+        if row:
+            rows.append(row.rstrip())
+        if len(rows) > lines:
+            tail = rows[lines - 1]
+            while face.getlength(tail + "…") > width:
+                tail = tail[:-1]
+            rows[lines - 1] = tail.rstrip() + "…"
+        for index, line in enumerate(rows[:lines]):
+            text(x, y + index * (size + 10), line, size, muted)
 
-    box(22, 230, 716, 165, "white")
-    text(48, 253, "今天市場在看什麼", 33, bold=True)
-    summary = "等待今日已驗證的晨報。" if issue else report["summary"]
-    text(48, 312, " ".join(summary.split()), 27)
+    def panel(top, height):
+        draw.rounded_rectangle((24, top, 736, top + height), radius=20, fill="white")
 
-    box(22, 413, 716, 323, "white")
-    box(22, 754, 716, 190, "white")
-    for top, title, group, symbols in (
-        (413, "美股與半導體", "us_quotes", US),
-        (754, "台股觀察", "quotes", TW),
-    ):
-        quotes = report.get(group) or {}
-        text(48, top + 22, title, 33, bold=True)
-        session = sessions.get("us" if group == "us_quotes" else "tw")
+    def quote_group(group, market_key):
+        original = report.get(group) or {}
         current = market.get(group) or {}
+        session = sessions.get(market_key)
+        if not issue:
+            return original, original.get("date")
         if session and current.get("date") == session[0].isoformat():
-            quotes = current
-            show_quotes = True
-        else:
-            show_quotes = not issue
-        prefix = "交易日" if show_quotes else "網站最近資料"
-        text(48, top + 75, f"{prefix}  {quotes.get('date') or '未取得'}", 26)
-        for index, symbol in enumerate(symbols):
-            label = {"2330": "台積電", "TSM": "台積電 ADR"}.get(symbol, symbol)
-            quote = quotes.get(symbol) or {}
-            percent = quote.get("percent") if show_quotes else None
-            value = f"{percent:+.2f}%" if percent is not None else "—"
-            x, y = 48 + index % 3 * 222, top + 124 + index // 3 * 55
-            box(x, y, 205, 43, "#EDF2F6")
-            text(x + 10, y + 8, f"{label}  {value}", 18 if symbol == "TSM" else 22, bold=True, width=185)
+            return current, current["date"]
+        return {}, None
 
-    text(48, 962, issue or "— 表示該標的行情尚未取得。", 27)
+    def change(quotes, symbol):
+        percent = (quotes.get(symbol) or {}).get("percent")
+        if percent is None:
+            return "—", muted
+        color = "#A13B42" if percent > 0 else "#116464" if percent < 0 else muted
+        return f"{percent:+.2f}%", color
+
+    us, us_day = quote_group("us_quotes", "us")
+    tw, tw_day = quote_group("quotes", "tw")
+
+    draw.rectangle((0, 0, 760, 150), fill=navy)
+    draw.rectangle((0, 148, 760, 153), fill="#408F86")
+    text(42, 27, "TCK 家庭投資晨報", 45, "white", True)
+    text(44, 93, f"{edition:%Y/%m/%d}" + ("  ｜  LINE 預覽" if preview else ""), 26, "#BFD4E4")
+
+    notes = report.get("daily_research") or {}
+    panel(175, 405 if not issue else 135)
+    text(48, 196, "市場解讀", 33, accent, True)
+    if issue:
+        paragraph(48, 249, "研究待更新。" + issue, lines=1)
+    else:
+        paragraph(48, 245, report["summary"], lines=2)
+        paragraph(48, 329, notes["news"], lines=2)
+        text(48, 414, "對台股大盤的影響", 30, accent, True)
+        outlook = report.get("market_outlook") or {}
+        analysis = report["analysis_sections"][0]["points"]
+        impact = analysis[1] if len(analysis) > 1 else outlook.get("summary") or notes["short_term"]
+        paragraph(48, 457, impact, lines=3)
+
+    top = 600 if not issue else 330
+    panel(top, 430)
+    text(48, top + 22, "台美股主要行情", 33, accent, True)
+    for row, (quotes, day, market_name, symbols) in enumerate((
+        (us, us_day, "美股", (("sp500", "S&P 500"), ("nasdaq", "Nasdaq"), ("TSM", "台積電 ADR"),
+                           ("QQQ", "QQQ"), ("VOO", "VOO"), ("SOXX", "SOXX"))),
+        (tw, tw_day, "台股", (("taiex", "加權指數"), ("2330", "台積電"), ("006208", "006208"))),
+    )):
+        y = top + (77 if row == 0 else 280)
+        text(48, y, f"{market_name}交易日  {day or '資料待取得'}", 25, muted, True)
+        for index, (symbol, label) in enumerate(symbols):
+            x, line_y = 48 + index % 3 * 222, y + 43 + index // 3 * 71
+            draw.rounded_rectangle((x, line_y, x + 211, line_y + 62), radius=10, fill="#EDF2F6")
+            value, color = change(quotes, symbol)
+            text(x + 10, line_y + 8, label, 20, muted)
+            text(x + 10, line_y + 32, value, 23, color, True)
+
+    if not issue:
+        panel(1050, 545)
+        text(48, 951, "美股個股觀察", 33, accent, True)
+        for index, symbol in enumerate(("NVDA", "TSLA", "SPCX")):
+            y = 1130 + index * 143
+            if index:
+                draw.line((48, y - 15, 712, y - 15), fill="#DCE5EA", width=2)
+            value, color = change(us, symbol)
+            text(48, y, symbol, 29, bold=True)
+            text(190, y, value, 29, color, True)
+            # The headline already shows the close-to-close move.
+            observation = re.sub(r"^收盤[^。]*。\s*", "", notes[symbol], count=1)
+            paragraph(48, y + 45, observation, lines=2)
+        text(48, 1620, "漲跌為收盤比較 ｜ — 表示當期行情待核實", 23, muted)
+    else:
+        text(48, 777, "— 表示當期行情待核實", 23, muted)
     return image
 
 
