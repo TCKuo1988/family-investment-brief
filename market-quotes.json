@@ -1,113 +1,100 @@
 {
-  "edition_date": "2026-11-24",
+  "edition_date": "2026-11-25",
   "quotes": {
-    "date": "2026-11-23",
-    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261123&type=ALLBUT0999",
-    "updated_at": "2026-11-24T07:04:07+00:00",
+    "date": "2026-11-24",
+    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261124&type=ALLBUT0999",
+    "updated_at": "2026-11-25T00:35:44+00:00",
     "taiex": {
-      "close": 36811.89,
-      "change": 778.6,
-      "percent": 2.16
+      "close": 40122.35,
+      "change": 3310.46,
+      "percent": 8.99
     },
     "2330": {
-      "close": 2030.0,
-      "change": 30.0,
-      "percent": 1.5
+      "close": 2230.0,
+      "change": 200.0,
+      "percent": 9.85
     },
     "006208": {
-      "close": 195.55,
-      "change": 5.75,
-      "percent": 3.03
+      "close": 215.1,
+      "change": 19.55,
+      "percent": 10.0
     },
     "0050": {
-      "close": 87.0,
-      "change": 2.55,
-      "percent": 3.02
+      "close": 95.7,
+      "change": 8.7,
+      "percent": 10.0
     }
   },
   "us_quotes": {
-    "date": "2026-11-23",
+    "date": "2026-11-24",
     "currency": "USD",
     "basis": "regular_unadjusted",
-    "updated_at": "2026-11-24T07:04:24+00:00",
+    "updated_at": "2026-11-25T00:36:02+00:00",
     "sp500": {
-      "close": 7237.17,
-      "previous_close": 6910.39,
-      "previous_date": "2026-11-20",
-      "percent": 4.73,
+      "close": 7201.09,
+      "previous_close": 7237.17,
+      "previous_date": "2026-11-23",
+      "percent": -0.5,
       "source": "https://finance.google.com/finance/quote/.INX:INDEXSP"
     },
     "nasdaq": {
-      "close": 24089.56,
-      "previous_close": 22617.73,
-      "previous_date": "2026-11-20",
-      "percent": 6.51,
-      "source": "https://api.nasdaq.com/api/quote/COMP/info?assetclass=index",
-      "cross_checked_with": "https://www.investing.com/indices/nasdaq-composite-historical-data"
+      "close": null,
+      "percent": null,
+      "note": "預期交易日收盤價未核實"
     },
     "sox": {
-      "close": 9588.05,
-      "previous_close": 8408.59,
-      "previous_date": "2026-11-20",
-      "percent": 14.03,
-      "source": "https://api.nasdaq.com/api/quote/SOX/info?assetclass=index",
-      "cross_checked_with": "https://www.investing.com/indices/phlx-semiconductor-historical-data"
+      "close": null,
+      "percent": null,
+      "note": "預期交易日收盤價未核實"
     },
     "NVDA": {
-      "close": 165.05,
-      "previous_close": 125.53,
-      "previous_date": "2026-11-20",
-      "percent": 31.48,
-      "source": "https://api.nasdaq.com/api/quote/NVDA/historical?assetclass=stocks&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/stocks/nvda/history/"
+      "close": 155.38,
+      "previous_close": 165.05,
+      "previous_date": "2026-11-23",
+      "percent": -5.86,
+      "source": "https://stockanalysis.com/stocks/nvda/history/"
     },
     "TSLA": {
-      "close": 385.46,
-      "previous_close": 345.82,
-      "previous_date": "2026-11-20",
-      "percent": 11.46,
-      "source": "https://api.nasdaq.com/api/quote/TSLA/historical?assetclass=stocks&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/stocks/tsla/history/"
+      "close": 384.68,
+      "previous_close": 385.46,
+      "previous_date": "2026-11-23",
+      "percent": -0.2,
+      "source": "https://stockanalysis.com/stocks/tsla/history/"
     },
     "SPCX": {
-      "close": 133.35,
-      "previous_close": 127.79,
-      "previous_date": "2026-11-20",
-      "percent": 4.35,
-      "source": "https://api.nasdaq.com/api/quote/SPCX/historical?assetclass=stocks&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/stocks/spcx/history/"
+      "close": 125.81,
+      "previous_close": 133.35,
+      "previous_date": "2026-11-23",
+      "percent": -5.65,
+      "source": "https://stockanalysis.com/stocks/spcx/history/"
     },
     "VOO": {
-      "close": 663.91,
-      "previous_close": 635.54,
-      "previous_date": "2026-11-20",
-      "percent": 4.46,
-      "source": "https://api.nasdaq.com/api/quote/VOO/historical?assetclass=etf&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/etf/voo/history/"
+      "close": 660.71,
+      "previous_close": 663.91,
+      "previous_date": "2026-11-23",
+      "percent": -0.48,
+      "source": "https://stockanalysis.com/etf/voo/history/"
     },
     "QQQ": {
-      "close": 651.03,
-      "previous_close": 608.45,
-      "previous_date": "2026-11-20",
-      "percent": 7.0,
-      "source": "https://api.nasdaq.com/api/quote/QQQ/historical?assetclass=etf&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/etf/qqq/history/"
+      "close": 638.1,
+      "previous_close": 651.03,
+      "previous_date": "2026-11-23",
+      "percent": -1.99,
+      "source": "https://stockanalysis.com/etf/qqq/history/"
     },
     "TSM": {
-      "close": 363.6,
-      "previous_close": 318.71,
-      "previous_date": "2026-11-20",
-      "percent": 14.08,
-      "source": "https://api.nasdaq.com/api/quote/TSM/historical?assetclass=stocks&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/stocks/tsm/history/"
+      "close": 349.17,
+      "previous_close": 363.6,
+      "previous_date": "2026-11-23",
+      "percent": -3.97,
+      "source": "https://stockanalysis.com/stocks/tsm/history/"
     },
     "SOXX": {
-      "close": 140.22,
-      "previous_close": 123.4,
-      "previous_date": "2026-11-20",
-      "percent": 13.63,
-      "source": "https://api.nasdaq.com/api/quote/SOXX/historical?assetclass=etf&fromdate=2026-11-19&todate=2026-11-24",
-      "cross_checked_with": "https://stockanalysis.com/etf/soxx/history/"
+      "close": 128.62,
+      "previous_close": 140.22,
+      "previous_date": "2026-11-23",
+      "percent": -8.27,
+      "source": "https://stockanalysis.com/etf/soxx/history/"
     }
   }
 }
