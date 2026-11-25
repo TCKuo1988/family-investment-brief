@@ -122,7 +122,7 @@ def render(report, edition, market=None, *, preview=True):
 
     if not issue:
         panel(1050, 545)
-        text(48, 951, "美股個股觀察", 33, accent, True)
+        text(48, 1071, "美股個股觀察", 33, accent, True)
         for index, symbol in enumerate(("NVDA", "TSLA", "SPCX")):
             y = 1130 + index * 143
             if index:
