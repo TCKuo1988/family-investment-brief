@@ -38,37 +38,50 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 #market-history-section{border-left:4px solid #527291}
 #overview .research-details[open] summary{margin-bottom:4px}
 html{scroll-behavior:smooth}
-#overview>[id]{scroll-margin-top:1rem}
-.report-board{color:#e7f5ff;background:linear-gradient(126deg,#132845,#16485d);border:1px solid #365f77;padding:clamp(17px,3vw,26px);margin:0 0 16px;border-radius:17px}
-.report-board h2{margin:0;font-size:1.2rem;color:#fff}
-.report-board p{margin:4px 0 15px;color:#baddf0}
-.board-metrics,.report-index{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.board-metric{min-width:0;border:1px solid #55778e;border-radius:8px;padding:9px;background:#142b43}
-.board-metric span,.board-metric small{display:block;color:#baddf0}
-.board-metric strong{display:block;font-size:clamp(16px,3vw,23px);color:#fff;font-variant-numeric:tabular-nums}
-.report-index{margin:14px 0 0;grid-template-columns:repeat(3,minmax(0,1fr))}
-.report-index a{padding:8px 10px;border:1px solid #55778e;border-radius:6px;color:#e3f6ff;text-decoration:none;font-weight:700}
-.report-index a:hover,.report-index a:focus-visible{background:#226077;color:#fff;outline:2px solid #6ee4db;outline-offset:2px}
-.report-index a .arrow{float:right;color:#82e6dd}
-@media(max-width:520px){.board-metrics,.report-index{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.editorial-shell{display:grid;grid-template-columns:176px minmax(0,1fr);gap:22px;align-items:start}
+.editorial-index{position:sticky;top:16px;padding:12px;background:#102d45;border-radius:12px}
+.editorial-index a{display:block;padding:9px 11px;color:#e7f4ff;text-decoration:none;border-radius:6px}
+.editorial-index a[hidden]{display:none}
+.editorial-index a:hover,.editorial-index a:focus-visible{background:#20566a;outline:2px solid #80e6dd;outline-offset:-2px}
+.editorial-report{background:#fff;border:1px solid #dce5eb;border-radius:15px;overflow:hidden}
+.editorial-report section{padding:22px clamp(20px,4vw,34px);border-bottom:1px solid #dce5eb;scroll-margin-top:16px}
+.editorial-report section:last-child{border-bottom:0}
+.editorial-report h2{font-size:1.38rem;line-height:1.33;margin:0 0 12px;color:#183e54}
+.editorial-report p{margin:0 0 12px}.editorial-report p:last-child{margin-bottom:0}.editorial-report p:empty{display:none}
+.editorial-lead{background:#eff8fa}.editorial-lead h2{font-size:clamp(1.7rem,4.6vw,2.3rem);letter-spacing:-.02em;margin:8px 0 14px}
+.edition-label{color:#176669;font-size:.85rem;font-weight:750}
+.editorial-lead small{display:block;color:#475d70}
+.editorial-stocks>div+div{border-top:1px solid #dce5eb;margin-top:12px;padding-top:12px}
+.editorial-stocks h3{margin:0 0 3px;font-size:1rem;color:#176669}
+.editorial-data{margin-top:16px}.editorial-data>summary{cursor:pointer;padding:12px 16px;background:#e1edf3;color:#163c56;border-radius:8px;font-weight:750;margin-bottom:10px}
+@media(max-width:640px){.editorial-shell{grid-template-columns:1fr;gap:12px}.editorial-index{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.editorial-index a{padding:5px 8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head><body><header><div class="wrap"><div class="eyebrow">TCK FAMILY INVESTMENT DASHBOARD</div><h1>TCK 每日台美股投資快報</h1><p id="date">2026 / 10 / 21｜週三晨報</p></div></header><main class="main"><nav class="tabs" aria-label="網站導覽"><button class="tab" data-tab="overview" aria-selected="true">投資晨報</button><button class="tab" data-tab="portfolio" aria-selected="false">目前持股</button><a class="tab" href="https://tck-private-vehicle-journal.tckuo1988.chatgpt.site" style="text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center">雙車帳本</a></nav>
 <section class="pane" id="overview" aria-label="投資晨報">
-<section class="report-board" aria-labelledby="board-title">
-<h2 id="board-title">市場儀表板</h2><p id="board-edition">讀取晨報期別及交易日…</p>
-<div class="board-metrics" id="board-metrics"></div>
-<nav class="report-index" aria-label="晨報章節">
-<a href="#market-reading">市場解讀 <span class="arrow" aria-hidden="true">↗</span></a><a href="#taiwan-risk">台股方向 <span class="arrow" aria-hidden="true">↗</span></a><a href="#policy-section" id="policy-link" hidden>總經政策 <span class="arrow" aria-hidden="true">↗</span></a><a href="#stock-research">美股個股 <span class="arrow" aria-hidden="true">↗</span></a><a href="#investment-view">投資策略 <span class="arrow" aria-hidden="true">↗</span></a><a href="#daily-analysis">研究與節目 <span class="arrow" aria-hidden="true">↗</span></a><a href="#quote-table">行情與圖表 <span class="arrow" aria-hidden="true">↗</span></a>
-</nav></section>
-<div class="card hero" id="market-reading"><div class="headrow"><h2 class="title">市場解讀</h2><span class="tag" id="status"></span></div><p class="summary" id="summary"></p><p id="market-context" hidden></p><button class="smallbtn" id="share">分享此頁 ↗</button></div>
-<div class="card" id="taiwan-risk"><h2 class="title">台股方向與風險</h2><p id="market-outlook-stance" class="tag">待核實</p><p id="market-outlook-summary">跨市場訊號待核實。</p><p id="short-term"></p><p id="medium-term"></p><p class="source" id="market-outlook-asof"></p></div><div class="card report-policy" id="policy-section" hidden><h2 class="title">總經與政策</h2><p id="policy-note"></p></div>
-<div class="card"><div class="headrow"><h2 class="title">ETF 進場判斷</h2><span class="tag" id="etf-tag"></span></div><p id="etf-summary"></p></div>
-<div class="card" id="stock-research"><div class="headrow"><h2 class="title">美股個股觀察</h2><span class="tag good" id="stocks-tag"></span></div><div id="stocks"></div></div>
-<div class="card" id="investment-view"><div class="headrow"><h2 class="title">投資策略與注意事項</h2><span class="tag good" id="action-tag"></span></div><p id="action"></p><p class="sub" id="focus"></p></div>
-<div hidden><span id="market-tag"></span><span id="market-value"></span><span id="market-change"></span><span id="market-note"></span><span id="price-006208"></span><span id="price-0050"></span><span id="change-006208"></span><span id="change-0050"></span></div>
-<div id="daily-analysis" hidden></div>
-<div class="card" id="quote-table"><div class="headrow"><h2 class="title">市場行情一覽</h2><span class="tag" id="etf-date-label">各標的以資料日為準</span></div><p class="briefnote">美股以美東正規盤未調整收盤計算，臺股採交易所收盤公告。</p><div class="tablewrap"><table><thead><tr><th>標的</th><th>收盤</th><th>漲跌</th><th>資料日</th></tr></thead><tbody id="tracked-prices"></tbody></table></div><p class="source" id="quote-status"></p><details class="research-details"><summary>行情與研究來源</summary><ul id="report-sources"></ul></details></div>
-<div class="card" id="market-history-section"><div class="headrow"><h2 class="title">市場走勢圖</h2><span class="tag">8 檔追蹤</span></div><p class="briefnote">可切換近1／3／6個月。日期與區間高低點直接標在圖上；資料不足時不補造歷史行情。</p><div class="history-ma"><label><input type="checkbox" class="ma-toggle" value="20"> MA20 月線</label><label><input type="checkbox" class="ma-toggle" value="60"> MA60 季線</label><label><input type="checkbox" class="ma-toggle" value="120"> MA120 半年線</label></div><div class="history-range" role="group" aria-label="圖表區間"><button type="button" class="range-btn active" data-range="1">1個月</button><button type="button" class="range-btn" data-range="3">3個月</button><button type="button" class="range-btn" data-range="6">6個月</button></div><div class="history-grid" id="history-grid"><p class="sub">歷史行情載入中…</p></div><p class="source" id="history-status">歷史行情尚未同步時，會保留今日收盤價並標示資料不足。</p></div></section>
+<div class="editorial-shell">
+<nav class="editorial-index" aria-label="晨報章節">
+<a href="#market-reading">今日主題</a>
+<a href="#policy-section" id="policy-link" hidden>總經與政策</a>
+<a href="#stock-research">個股研究</a>
+<a href="#taiwan-risk">台股與 006208</a>
+<a href="#investment-view">投資觀察</a>
+<a href="#quote-table">行情與來源</a>
+</nav>
+<article class="editorial-report" aria-label="市場研究報告">
+<section id="market-reading" class="editorial-lead">
+<span class="edition-label" id="board-edition">讀取晨報期別…</span>
+<h2 id="summary">市場晨報</h2>
+<p id="market-context"></p>
+<small id="status"></small>
+</section>
+<section id="policy-section" hidden><h2>總經與政策</h2><p id="policy-note"></p><div id="policy-reading"></div></section>
+<section id="stock-research"><h2>美股個股研究</h2><div id="stocks" class="editorial-stocks"></div></section>
+<section id="taiwan-risk"><h2>台股方向與 006208</h2><p id="market-outlook-summary"></p><p id="etf-summary"></p></section>
+<section id="investment-view"><h2>接下來觀察什麼</h2><p id="short-term"></p><p id="medium-term"></p></section>
+</article></div>
+<details class="editorial-data"><summary>完整行情、走勢與資料來源</summary>
+<div class="card" id="quote-table"><div class="headrow"><h2 class="title">市場行情一覽</h2></div><p class="briefnote">美股以美東正規盤未調整收盤計算，臺股採交易所收盤公告。</p><div class="tablewrap"><table><thead><tr><th>標的</th><th>收盤</th><th>漲跌</th><th>資料日</th></tr></thead><tbody id="tracked-prices"></tbody></table></div><p class="source" id="quote-status"></p><details class="research-details"><summary>行情與研究來源</summary><ul id="report-sources"></ul></details></div>
+<div class="card" id="market-history-section"><div class="headrow"><h2 class="title">市場走勢圖</h2><span class="tag">8 檔追蹤</span></div><p class="briefnote">可切換近1／3／6個月。日期與區間高低點直接標在圖上；資料不足時不補造歷史行情。</p><div class="history-ma"><label><input type="checkbox" class="ma-toggle" value="20"> MA20 月線</label><label><input type="checkbox" class="ma-toggle" value="60"> MA60 季線</label><label><input type="checkbox" class="ma-toggle" value="120"> MA120 半年線</label></div><div class="history-range" role="group" aria-label="圖表區間"><button type="button" class="range-btn active" data-range="1">1個月</button><button type="button" class="range-btn" data-range="3">3個月</button><button type="button" class="range-btn" data-range="6">6個月</button></div><div class="history-grid" id="history-grid"><p class="sub">歷史行情載入中…</p></div><p class="source" id="history-status">歷史行情尚未同步時，會保留今日收盤價並標示資料不足。</p></div></details></section>
 <section class="pane" id="portfolio" hidden><div class="card privacy"><h2 class="title">家庭持股｜私人投資儀表板</h2><p class="sub">使用已授權的 Google 帳號登入，即可安全查看家庭持股、成本與可投入現金。</p><div id="auth-guest"><button class="smallbtn" id="google-login" type="button">使用 Google 帳號登入</button></div><div id="auth-user" hidden><p><b id="auth-name">已登入</b></p><p id="auth-email" class="sub"></p><button class="smallbtn" id="google-logout" type="button">登出</button><p class="source">資料經 Firebase 身分及權限驗證後才載入，未放在公開 GitHub。</p><details id="private-import" style="margin:14px 0;background:#fff;border:1px solid #cbd9ec;border-radius:12px;padding:13px"><summary style="cursor:pointer;font-weight:800;color:#224c82">更新私人持股（僅資料擁有者）</summary><p class="sub">選擇由 ChatGPT 依最新 Excel 產生的私人 JSON，確認來源日期和數量後再送出。只有 Firebase 規則授權的帳號才能寫入；請勿在公開 GitHub 上傳此檔案。</p><input id="portfolio-file" type="file" accept=".json,application/json" style="max-width:100%" /><p class="sub" id="portfolio-preview">尚未選擇檔案。</p><button class="smallbtn" id="portfolio-save" type="button" disabled>確認並更新私人持股</button> <button class="smallbtn" id="portfolio-backup" type="button" disabled>下載現有資料備份</button><p class="source" id="portfolio-save-status">更新前建議先下載備份；相同資料會自動略過，避免重複覆蓋。</p></details><div id="private-dashboard" hidden><h3 class="title">家庭股票互動總覽</h3><div class="filter" id="private-filters" role="group" aria-label="篩選家庭成員"></div><p class="sub" id="private-date"></p><div class="grid"><div class="metric"><small>股票估值（依標示行情日）</small><strong id="private-stocks-value">—</strong></div><div class="metric"><small>可投入現金</small><strong id="private-cash-value">—</strong></div><div class="metric"><small>股票＋現金</small><strong id="private-total-value">—</strong></div></div><h3 style="margin:18px 0 8px">未實現損益（依Excel持有成本）</h3><div class="grid"><div class="metric"><small>持股成本合計</small><strong id="private-cost-total">—</strong></div><div class="metric"><small>未實現損益</small><strong id="private-pnl-total">—</strong></div><div class="metric"><small>未實現報酬率</small><strong id="private-pnl-rate">—</strong></div></div><p class="source" id="private-pnl-note">僅計入有有效成本的持股，不包含現金、已實現損益、股息、交易與匯款費用。</p><h3 style="margin:18px 0 8px">資產配置</h3><div id="private-allocation" class="allocation" aria-label="家庭資產配置比例"></div><div id="private-legend" class="allocationlegend"></div><h3 style="margin:18px 0 8px">四人持股與資金</h3><div class="tablewrap"><table><thead><tr><th>成員</th><th>股票市值</th><th>持股成本</th><th>未實現損益</th><th>報酬率</th><th>可投入現金</th></tr></thead><tbody id="private-people"></tbody></table></div><h3 style="margin:18px 0 8px">個別標的</h3><div class="filter"><label for="private-search" class="sub">搜尋標的</label><input id="private-search" type="search" placeholder="例如 NVDA、006208" style="border:1px solid #cedaed;border-radius:9px;padding:8px 10px;min-width:190px;max-width:100%;font:inherit" /><label for="private-sort" class="sub">排序</label><select id="private-sort" style="border:1px solid #cedaed;border-radius:9px;padding:8px;font:inherit"><option value="value">市值由高到低</option><option value="ticker">標的代號</option><option value="cost">投入成本</option></select></div><div class="tablewrap"><table><thead><tr><th>成員</th><th>標的</th><th>股數</th><th>平均成本</th><th>成本總額(TWD)</th><th>估值(TWD)／資料日</th><th>未實現損益</th><th>報酬率</th></tr></thead><tbody id="private-holdings"></tbody></table></div><p class="source">臺股按有效收盤價、美股按美元收盤價×臺銀美元即期買入匯率估值；損益以Excel提供的新臺幣持有成本計算，非券商已實現損益，未計股息、手續費、稅及匯款費用。行情與匯率日期以頁面標示為準。</p></div></div><p class="sub" id="auth-status">Firebase 登入模組載入中…</p><button class="smallbtn" id="db-test" type="button" disabled hidden>重新載入持股</button><p class="source" id="db-test-result">請先登入。</p></div></section>
 <div class="foot">非即時行情，所有日期以頁面標註為準。本報告是投資研究整理，非買賣指令。</div></main>
 <script>
@@ -77,47 +90,6 @@ const tabs=document.querySelectorAll('.tab[data-tab]');
 function show(name){tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===name)));document.querySelectorAll('.pane').forEach(el=>el.hidden=el.id!==name)}
 tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
 function put(k,v){if(v!==undefined&&q(k))q(k).textContent=v}
-// 晨報分析僅採用 report.json；不回退到過期研究內容。
-function fillDailyAnalysis(d){
-  if(!Array.isArray(d.analysis_sections)||!d.analysis_sections.length){const host=q("daily-analysis");host.hidden=false;host.textContent="研究內容尚未更新，請以本頁資料日期為準。";return;}
-  const host=q('daily-analysis');
-  host.replaceChildren();
-  d.analysis_sections.forEach(section=>{
-    const card=document.createElement('div');card.className='card report-research';
-    const title=document.createElement('h2');title.className='title';title.textContent=section.title||'市場分析';card.appendChild(title);
-    if(section.conclusion){const conclusion=document.createElement('p');conclusion.className='thesis';conclusion.textContent=section.conclusion;card.appendChild(conclusion)}
-    const details=document.createElement('details');details.className='research-details';
-    details.open=true;
-    const toggle=document.createElement('summary');toggle.textContent='研究證據、分析師觀點與投資影響';details.appendChild(toggle);
-    (section.points||[]).forEach(point=>{
-      const raw=typeof point==='string'?point:(point.text||'');
-      const match=raw.match(/^【([^】]+)】\s*/);
-      const wrap=document.createElement('div');wrap.className='research-point';
-      if(match){const h=document.createElement('strong');h.textContent=match[1];wrap.appendChild(h)}
-      const p=document.createElement('p');p.textContent=match?raw.slice(match[0].length):raw;wrap.appendChild(p);details.appendChild(wrap);
-    });
-    if((section.sources||[]).length){
-      const sources=document.createElement('div');sources.className='research-sources';
-      (section.sources||[]).forEach(source=>{
-        if(!source.url||!/^https:\/\//.test(source.url))return;
-        const link=document.createElement('a');link.href=source.url;link.textContent=source.label||'資料來源';link.target='_blank';link.rel='noopener noreferrer';sources.appendChild(link);
-      });details.appendChild(sources);
-    }
-    card.appendChild(details);host.appendChild(card);
-  });
-  const podcasts=[...(d.podcast?[{show:"股癌",...d.podcast}]:[]),...(Array.isArray(d.additional_podcasts)?d.additional_podcasts:[])];
-  podcasts.forEach(pod=>{const card=document.createElement('div');card.className='card podcastcard';
-    const h=document.createElement('h2');h.className='title';h.textContent='🎧 '+(pod.show||'Podcast')+' '+(pod.episode||'')+'｜'+(pod.date||'日期未確認');card.appendChild(h);
-    if(pod.status||pod.note){const p=document.createElement('p');p.className='briefnote';p.textContent=[pod.status,pod.note].filter(Boolean).join('。');card.appendChild(p)}
-    if(pod.headline){const title=document.createElement('p');title.className='summary';title.textContent=pod.headline;card.appendChild(title)}
-    (pod.points||[]).forEach(x=>{const p=document.createElement('p');p.textContent='• '+x;card.appendChild(p)});
-    if(pod.impact){const p=document.createElement('p');p.className='source';p.textContent='與家庭投資的關係：'+pod.impact;card.appendChild(p)}
-    if(pod.url&&/^https:\/\//.test(pod.url)){const a=document.createElement('a');a.href=pod.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent='節目來源 ↗';card.appendChild(a)}
-    host.appendChild(card);
-  });
-  host.hidden=false;
-  const foot=document.querySelector('.foot');if(foot)foot.textContent='市場行情與研究分析各有資料日期；本報告僅供投資研究，不構成買賣指令。';
-}
 const usLabels = [['sp500','S&P 500'],['nasdaq','Nasdaq 綜合'],['sox','費半 SOX'],
   ['NVDA','NVDA'],['TSLA','TSLA'],['SPCX','SPCX'],['VOO','VOO'],['QQQ','QQQ'],['SOXX','半導體 ETF SOXX'],['TSM','台積電 ADR']];
 const twLabels = [['taiex','加權指數'],['2330','台積電'],['006208','006208'],['0050','0050']];
@@ -221,51 +193,44 @@ document.querySelectorAll('.range-btn').forEach(btn=>btn.addEventListener('click
 fetch('./history.json?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(d=>{if(!d||!d.series||!Object.values(d.series).some(a=>Array.isArray(a)&&a.length))throw Error('歷史資料格式不正確');renderHistory(d);}).catch(err=>{const root=q('history-grid');if(root){root.replaceChildren();const note=document.createElement('div');note.className='history-empty';note.textContent='歷史行情載入失敗：'+err.message+'。請重新整理，或開啟 GitHub 原始資料確認。';root.appendChild(note);}const status=q('history-status');if(status)status.textContent='資料載入錯誤（不是沒有歷史資料）';});
 function renderReport(d){
   const notes=d.daily_research||{};
+  const brief=d.line_card||{};
   const taipeiDay=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-  for(const key of ['summary','action','action-tag','report-date','focus','etf-tag'])put(key,d[key]);
+  const edition=d.edition_date||'日期未提供';
   put('date',d['report-date']);
-  put('status',d.edition_date===taipeiDay?d.status:`歷史晨報｜${d.edition_date||'日期未提供'}，今日資料尚未發布`);
-  put('market-outlook-stance',d.market_outlook?.stance||'待核實');
-  put('market-outlook-summary',notes.market_strength||d.market_outlook?.summary||'跨市場訊號待核實。');
-  put('short-term',notes.short_term?`1～4 週｜${notes.short_term}`:'');
-  put('medium-term',notes.medium_term?`3～12 個月｜${notes.medium_term}`:'');
-  put('market-outlook-asof',d.market_outlook?.as_of||'');
-  put('etf-summary',notes.etf_watch||d['etf-summary']);
-  put('stocks-tag','投資論點');
+  put('board-edition',edition===taipeiDay?'晨報 '+edition:'最近發布 '+edition+' · 本頁為歷史期別');
+  put('summary',d.summary||'市場晨報');
+  put('market-context',brief.market_context||notes.market_strength||d.analysis_intro||'');
+  put('status',notes.news||'');
+  q('policy-section').hidden=!brief.policy;
+  q('policy-link').hidden=!brief.policy;
+  if(brief.policy) put('policy-note',brief.policy);
+  const policyReading=q('policy-reading');
+  policyReading.replaceChildren();
+  const policySection=(d.analysis_sections||[]).find(section=>/總經|政策/.test(section.title||''));
+  for(const point of policySection?.points||[]){
+    if(typeof point!=='string'||point===notes.news||point===brief.policy)continue;
+    const paragraph=document.createElement('p');
+    paragraph.textContent=point;
+    policyReading.appendChild(paragraph);
+  }
   q('stocks').replaceChildren(...['NVDA','TSLA','SPCX'].map(ticker=>{
-    const row=document.createElement('div');
-    row.className='sectionline';
-    const label=document.createElement('b');
-    label.textContent=ticker+'｜';
-    row.append(label,notes[ticker]||'尚未更新');
-    return row;
+    const item=document.createElement('div');
+    const title=document.createElement('h3');
+    title.textContent=ticker;
+    const body=document.createElement('p');
+    body.textContent=notes[ticker]||'本期尚未更新。';
+    item.append(title,body);
+    return item;
   }));
+  put('market-outlook-summary',brief.taiwan_outlook||d.market_outlook?.summary||notes.short_term||'');
+  put('etf-summary',notes.etf_watch||d.action||d['etf-summary']||'');
+  put('short-term',notes.short_term&&notes.short_term!==brief.taiwan_outlook?'近期｜'+notes.short_term:'');
+  put('medium-term',notes.medium_term?'中期｜'+notes.medium_term:'');
   renderTrackedPrices(d);
-  const context=d.line_card?.market_context;
-  q('market-context').hidden=!context;
-  if(context) put('market-context',context);
-  if(d.line_card?.taiwan_outlook) put('market-outlook-summary',d.line_card.taiwan_outlook);
-  const policy=d.line_card?.policy;
-  q('policy-link').hidden=!policy;
-  put('board-edition',d.edition_date===taipeiDay
-    ? '晨報 '+d.edition_date : '最近發布 '+(d.edition_date||'日期未提供')+' · 今日晨報在對話更新');
-  const metrics=[['台股加權',d.quotes,'taiex'],['S&P 500',d.us_quotes,'sp500'],['台積電 ADR',d.us_quotes,'TSM'],['006208',d.quotes,'006208']];
-  q('board-metrics').replaceChildren(...metrics.map(([label,market,key])=>{
-    const card=document.createElement('div');
-    card.className='board-metric';
-    const name=document.createElement('span'),change=document.createElement('strong'),day=document.createElement('small');
-    name.textContent=label;
-    const percent=market?.[key]?.percent;
-    change.textContent=Number.isFinite(percent)?(percent>0?'+':'')+percent.toFixed(2)+'%':'待核實';
-    day.textContent=market?.date?'收盤 '+market.date:'交易日未提供';
-    card.append(name,change,day);
-    return card;
-  }));
-  q('policy-section').hidden=!policy;
-  if(policy) put('policy-note',policy);
-  fillDailyAnalysis(d);
 }
-q('share').addEventListener('click',()=>{if(navigator.share)navigator.share({title:document.title,url:location.href}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(location.href).then(()=>alert('已複製網址'));else alert(location.href)});
+const dataJump=document.querySelector('.editorial-index a[href="#quote-table"]');
+dataJump.addEventListener('click',()=>{document.querySelector('.editorial-data').open=true});
+if(location.hash==='#quote-table')document.querySelector('.editorial-data').open=true;
 fetch('./report.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('report.json 載入失敗');return r.json()}).then(renderReport).catch(e=>{console.warn(e);put('status','資料載入異常，請重新整理或確認報告檔案');put('board-edition','晨報資料載入異常')});
 </script><script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
