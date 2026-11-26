@@ -1,303 +1,333 @@
 {
-  "edition_date": "2026-11-25",
+  "edition_date": "2026-11-26",
   "quotes": {
-    "date": "2026-11-24",
-    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261124&type=ALLBUT0999",
-    "updated_at": "2026-11-25T00:35:44+00:00",
+    "date": "2026-11-25",
+    "source": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261125&type=ALLBUT0999",
+    "updated_at": "2026-11-26T00:20:51+00:00",
     "taiex": {
-      "close": 40122.35,
-      "change": 3310.46,
-      "percent": 8.99
+      "close": 38195.43,
+      "change": -1926.92,
+      "percent": -4.8
     },
     "2330": {
-      "close": 2230.0,
-      "change": 200.0,
-      "percent": 9.85
+      "close": 2150.0,
+      "change": -80.0,
+      "percent": -3.59
     },
     "006208": {
-      "close": 215.1,
-      "change": 19.55,
-      "percent": 10.0
+      "close": 203.15,
+      "change": -11.95,
+      "percent": -5.56
     },
     "0050": {
-      "close": 95.7,
-      "change": 8.7,
-      "percent": 10.0
+      "close": 90.3,
+      "change": -5.4,
+      "percent": -5.64
     }
   },
   "us_quotes": {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "currency": "USD",
     "basis": "regular_unadjusted",
-    "updated_at": "2026-11-25T00:36:02+00:00",
+    "updated_at": "2026-11-26T00:20:53+00:00",
     "sp500": {
-      "close": 7201.09,
-      "previous_close": 7237.17,
-      "previous_date": "2026-11-23",
-      "percent": -0.5,
+      "close": 7182.78,
+      "previous_close": 7201.09,
+      "previous_date": "2026-11-24",
+      "percent": -0.25,
       "source": "https://finance.google.com/finance/quote/.INX:INDEXSP"
     },
     "nasdaq": {
-      "close": 23733.54,
-      "previous_close": 24089.56,
-      "previous_date": "2026-11-23",
-      "percent": -1.48,
+      "close": 23585.8,
+      "previous_close": 23733.54,
+      "previous_date": "2026-11-24",
+      "percent": -0.62,
       "source": "https://www.investing.com/indices/nasdaq-composite-historical-data"
     },
     "sox": {
-      "close": 8832.3,
-      "previous_close": 9588.0,
-      "previous_date": "2026-11-23",
-      "percent": -7.88,
+      "close": 8774.9,
+      "previous_close": 8832.5,
+      "previous_date": "2026-11-24",
+      "percent": -0.65,
       "source": "https://www.investing.com/indices/phlx-semiconductor-historical-data",
       "note": "來源以小數 1 位公布"
     },
     "NVDA": {
-      "close": 155.38,
-      "previous_close": 165.05,
-      "previous_date": "2026-11-23",
-      "percent": -5.86,
+      "close": 149.3,
+      "previous_close": 155.38,
+      "previous_date": "2026-11-24",
+      "percent": -3.91,
       "source": "https://stockanalysis.com/stocks/nvda/history/"
     },
     "TSLA": {
-      "close": 384.68,
-      "previous_close": 385.46,
-      "previous_date": "2026-11-23",
-      "percent": -0.2,
+      "close": 380.14,
+      "previous_close": 384.68,
+      "previous_date": "2026-11-24",
+      "percent": -1.18,
       "source": "https://stockanalysis.com/stocks/tsla/history/"
     },
     "SPCX": {
-      "close": 125.81,
-      "previous_close": 133.35,
-      "previous_date": "2026-11-23",
-      "percent": -5.65,
+      "close": 127.44,
+      "previous_close": 125.81,
+      "previous_date": "2026-11-24",
+      "percent": 1.3,
       "source": "https://stockanalysis.com/stocks/spcx/history/"
     },
     "VOO": {
-      "close": 660.71,
-      "previous_close": 663.91,
-      "previous_date": "2026-11-23",
-      "percent": -0.48,
+      "close": 658.87,
+      "previous_close": 660.71,
+      "previous_date": "2026-11-24",
+      "percent": -0.28,
       "source": "https://stockanalysis.com/etf/voo/history/"
     },
     "QQQ": {
-      "close": 638.1,
-      "previous_close": 651.03,
-      "previous_date": "2026-11-23",
-      "percent": -1.99,
+      "close": 633.93,
+      "previous_close": 638.1,
+      "previous_date": "2026-11-24",
+      "percent": -0.65,
       "source": "https://stockanalysis.com/etf/qqq/history/"
     },
     "TSM": {
-      "close": 349.17,
-      "previous_close": 363.6,
-      "previous_date": "2026-11-23",
-      "percent": -3.97,
+      "close": 342.34,
+      "previous_close": 349.2,
+      "previous_date": "2026-11-24",
+      "percent": -1.96,
       "source": "https://stockanalysis.com/stocks/tsm/history/"
     },
     "SOXX": {
-      "close": 128.62,
-      "previous_close": 140.22,
-      "previous_date": "2026-11-23",
-      "percent": -8.27,
+      "close": 127.98,
+      "previous_close": 128.62,
+      "previous_date": "2026-11-24",
+      "percent": -0.5,
       "source": "https://stockanalysis.com/etf/soxx/history/"
     }
   },
-  "report-date": "2026/11/25｜台美股收盤 11/24",
-  "summary": "台美股走勢分歧。台股 +8.99%，美股 SOXX -8.27%。",
-  "status": "11/25 晨報｜11/24 收盤｜部分研究來源待核實",
-  "analysis_intro": "11/24 台股加權 40,122.35（+8.99%），其後美股 S&P 500 -0.50%、Nasdaq -1.48%，台積電 ADR -3.97%。",
-  "action": "006208 維持定期定額。本期尚無額外加碼訊號，持續觀察科技權值股與市場廣度。",
-  "focus": "觀察台積電、半導體及大型權值股的帶動範圍。",
-  "market-tag": "臺股 11/24 正式收盤",
-  "market-value": "40,122.35",
-  "market-change": "+3,310.46（+8.99%）",
-  "market-note": "台積電 2,230.00（+9.85%）、006208 215.10（+10.00%）",
-  "etf-tag": "臺股 ETF｜11/24 收盤",
+  "report-date": "2026/11/26｜台美股收盤 11/25",
+  "summary": "美股收斂跌幅，台股先看反彈是否擴散。",
+  "status": "11/26 晨報｜11/25 收盤",
+  "analysis_intro": "11/25 台股加權 38,195.43（-4.80%），美股 S&P 500 -0.25%、Nasdaq -0.62%，台積電 ADR -1.96%。",
+  "action": "006208 維持定期定額。評估額外加碼前，先確認回撤幅度和整體半導體曝險。",
+  "focus": "觀察台積電、鴻海及聯發科走勢與市場廣度。",
+  "market-tag": "台股 11/25 正式收盤",
+  "market-value": "38,195.43",
+  "market-change": "-4.80%",
+  "market-note": "台積電 2,150.00（-3.59%）、006208 203.15（-5.56%）",
+  "etf-tag": "台股 ETF｜11/25 收盤",
   "action-tag": "定期定額照常",
-  "etf-summary": "006208 215.10（+10.00%），0050 95.70（+10.00%）。",
-  "stocks-tag": "美股 11/24 正規盤收盤",
+  "etf-summary": "006208 203.15（-5.56%）、0050 90.30（-5.64%）。",
+  "stocks-tag": "美股 11/25 正規盤收盤",
   "stocks": [
     {
       "ticker": "VOO",
-      "price": 660.71,
-      "change_percent": -0.48,
+      "price": 658.87,
+      "change_percent": -0.28,
       "note": "https://stockanalysis.com/etf/voo/history/"
     },
     {
       "ticker": "NVDA",
-      "price": 155.38,
-      "change_percent": -5.86,
+      "price": 149.3,
+      "change_percent": -3.91,
       "note": "https://stockanalysis.com/stocks/nvda/history/"
     },
     {
       "ticker": "TSLA",
-      "price": 384.68,
-      "change_percent": -0.2,
+      "price": 380.14,
+      "change_percent": -1.18,
       "note": "https://stockanalysis.com/stocks/tsla/history/"
     },
     {
       "ticker": "QQQ",
-      "price": 638.1,
-      "change_percent": -1.99,
+      "price": 633.93,
+      "change_percent": -0.65,
       "note": "https://stockanalysis.com/etf/qqq/history/"
     },
     {
       "ticker": "SOXX",
-      "price": 128.62,
-      "change_percent": -8.27,
+      "price": 127.98,
+      "change_percent": -0.5,
       "note": "https://stockanalysis.com/etf/soxx/history/"
     },
     {
       "ticker": "SPCX",
-      "price": 125.81,
-      "change_percent": -5.65,
+      "price": 127.44,
+      "change_percent": 1.3,
       "note": "https://stockanalysis.com/stocks/spcx/history/"
     },
     {
       "ticker": "TSM",
-      "price": 349.17,
-      "change_percent": -3.97,
+      "price": 342.34,
+      "change_percent": -1.96,
       "note": "https://stockanalysis.com/stocks/tsm/history/"
     }
   ],
   "daily_research": {
-    "market_strength": "11/24 台股加權 40,122.35（+8.99%），其後美股 S&P 500 -0.50%、Nasdaq -1.48%，台積電 ADR -3.97%。",
-    "news": "本期關注晶片股回落與美股大盤分歧。公司重大新聞及分析師最新觀點待原始來源核實。",
-    "NVDA": "收盤 155.38（-5.86%）。長期論點暫維持，追蹤資料中心營收、客戶資本支出與毛利率。",
-    "TSLA": "收盤 384.68（-0.20%）。長期論點暫維持，追蹤汽車毛利、儲能獲利及自駕商業化。",
-    "SPCX": "收盤 125.81（-5.65%）。本期長期論點待新增公司披露，觀察 Starlink、發射成本及資本支出。",
-    "short_term": "留意半導體跌勢是否延續，以及台積電與其他權值股能否支撐市場廣度。",
-    "medium_term": "觀察雲端資本支出是否轉化為持久的晶片訂單、獲利及自由現金流，並追蹤估值對利率的敏感度。",
-    "etf_watch": "006208 維持定期定額。本期尚無額外加碼訊號，持續觀察科技權值股與市場廣度。"
+    "market_strength": "11/25 台股加權 38,195.43（-4.80%），美股 S&P 500 -0.25%、Nasdaq -0.62%，台積電 ADR -1.96%。",
+    "news": "美股感恩節 11/26 休市，11/27 美東 13:00 提早收盤。NVIDIA 列入負面信用觀察。",
+    "NVDA": "收盤 149.30（-3.91%）。標普列入負面信用觀察，觀察公司治理、出口合規和客戶現金回報。",
+    "TSLA": "收盤 380.14（-1.18%）。觀察汽車毛利、儲能獲利與自駕監管進展。",
+    "SPCX": "收盤 127.44（+1.30%）。合併報導待公司正式文件，評估 Starlink 現金流與資本支出。",
+    "short_term": "觀察台積電與其他大型權值股是否同步回穩。假期前後以成交量輔助判讀。",
+    "medium_term": "追蹤 AI 訂單能否轉成自由現金流，以及融資成本與政策風險。",
+    "etf_watch": "006208 維持定期定額。評估額外加碼前，先確認回撤幅度和整體半導體曝險。"
   },
   "analysis_sections": [
     {
-      "title": "市場與台股連動",
-      "conclusion": "台美股走勢分歧。台股 +8.99%，美股 SOXX -8.27%。",
+      "title": "市場廣度與台股方向",
+      "conclusion": "美股收斂跌幅，台股先看反彈是否擴散。",
       "points": [
-        "11/24 台股加權 40,122.35（+8.99%），其後美股 S&P 500 -0.50%、Nasdaq -1.48%，台積電 ADR -3.97%。",
-        "台股先收盤，美股科技股隨後回落。台積電 ADR 走弱可作為下一個台股交易日的風險觀察，仍須看開盤後買盤是否擴散。"
+        "11/25 台股加權 38,195.43（-4.80%），美股 S&P 500 -0.25%、Nasdaq -0.62%，台積電 ADR -1.96%。",
+        "若台積電守住低點，且鴻海、聯發科與上漲家數同步改善，反彈較有延續性。若科技權值股繼續下探，留意賣壓擴散。"
       ]
     },
     {
-      "title": "個股長期論點",
-      "conclusion": "本期已核對收盤，新增公司資訊仍待原始來源確認。",
+      "title": "總經、政策與估值",
+      "conclusion": "美國核心 PCE 年增 3.3%，第三季 GDP 上修至年化 4.3%。美國貿易代表署提出涉及台灣的 301 關稅方案，後續留意適用產品、例外與實施日期。",
       "points": [
-        "收盤 155.38（-5.86%）。長期論點暫維持，追蹤資料中心營收、客戶資本支出與毛利率。",
-        "收盤 384.68（-0.20%）。長期論點暫維持，追蹤汽車毛利、儲能獲利及自駕商業化。",
-        "收盤 125.81（-5.65%）。本期長期論點待新增公司披露，觀察 Starlink、發射成本及資本支出。"
+        "核心 PCE 月增 0.3%。觀察政策預期與利率如何影響高估值個股。",
+        "美股感恩節 11/26 休市，11/27 美東 13:00 提早收盤。NVIDIA 列入負面信用觀察。"
       ]
     },
     {
-      "title": "ETF 與市場展望",
-      "conclusion": "006208 維持定期定額。本期尚無額外加碼訊號，持續觀察科技權值股與市場廣度。",
+      "title": "個股與現金流",
+      "conclusion": "追蹤管理、合規與資金成本。",
       "points": [
-        "留意半導體跌勢是否延續，以及台積電與其他權值股能否支撐市場廣度。",
-        "觀察雲端資本支出是否轉化為持久的晶片訂單、獲利及自由現金流，並追蹤估值對利率的敏感度。"
+        "收盤 149.30（-3.91%）。標普列入負面信用觀察，觀察公司治理、出口合規和客戶現金回報。",
+        "收盤 380.14（-1.18%）。觀察汽車毛利、儲能獲利與自駕監管進展。",
+        "收盤 127.44（+1.30%）。合併報導待公司正式文件，評估 Starlink 現金流與資本支出。"
       ]
     },
     {
-      "title": "深度研究｜ETF 成分股重疊",
-      "conclusion": "用成分股權重檢查半導體集中度。",
+      "title": "ETF 與投資策略",
+      "conclusion": "006208 維持定期定額。評估額外加碼前，先確認回撤幅度和整體半導體曝險。",
       "points": [
-        "VOO 跨產業，QQQ 偏大型成長企業，SOXX 專注半導體。可將各 ETF 的組合權重乘上其個別成分股權重，再加上直接持股，估算實際產業曝險。"
+        "觀察台積電與其他大型權值股是否同步回穩。假期前後以成交量輔助判讀。",
+        "追蹤 AI 訂單能否轉成自由現金流，以及融資成本與政策風險。"
       ]
     }
   ],
   "podcast": {
-    "status": "原集尚未完成整理",
-    "items": [],
-    "note": "股癌及 M 觀點原始音訊或官方逐字稿尚未核實。"
+    "status": "本期節目分析在對話晨報整理",
+    "items": []
   },
   "additional_podcasts": [],
   "market_signals": {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "night_futures": {
       "close": null,
       "change": null,
       "percent": null,
-      "note": "本期夜盤收盤及比較基準待核實。"
+      "note": "本期夜盤待核實。"
     }
   },
   "market_outlook": {
-    "as_of": "2026-11-25 Asia/Taipei",
-    "stance": "科技股承壓，觀察權值股支撐",
-    "summary": "留意半導體跌勢是否延續，以及台積電與其他權值股能否支撐市場廣度。"
+    "as_of": "2026-11-26 Asia/Taipei",
+    "stance": "高波動，觀察反彈廣度",
+    "summary": "若台積電守住低點，且鴻海、聯發科與上漲家數同步改善，反彈較有延續性。若科技權值股繼續下探，留意賣壓擴散。"
   },
   "fx": {
     "provider": "Bank of Taiwan",
     "pair": "USD/TWD",
     "type": "spot_buy",
-    "rate": 32.865,
-    "date": "2026-11-25",
+    "rate": 33.05,
+    "date": "2026-11-26",
     "source": "https://rate.bot.com.tw/xrt?Lang=zh-TW",
     "note": "臺北時間 07:51 掛牌。"
   },
   "sources": [
     {
-      "title": "臺灣證券交易所 11/24 收盤",
-      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261124&type=ALLBUT0999",
-      "date": "2026-11-24"
-    },
-    {
-      "title": "臺銀美元即期買入",
-      "url": "https://rate.bot.com.tw/xrt?Lang=zh-TW",
+      "title": "證交所 11/25 收盤",
+      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20261125&type=ALLBUT0999",
       "date": "2026-11-25"
     },
     {
-      "title": "sp500 11/24 收盤",
+      "title": "AP 美股 11/25 收盤",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-94fdb0ecb060ec65c0b02879ce0d2d09",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "BEA 10 月 PCE",
+      "url": "https://www.bea.gov/sites/default/files/2026-11/pi1026.pdf",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "Reuters 美國第三季 GDP",
+      "url": "https://www.reuters.com/business/finance/us-third-quarter-gdp-growth-revised-sharply-higher-2026-11-25/",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "美國貿易代表署 301 公告",
+      "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026/november/ustr-makes-determinations-and-proposes-actions-14-section-301-investigations-relating-structural",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "Reuters NVIDIA 信用觀察",
+      "url": "https://www.reuters.com/business/sp-global-places-nvidia-rating-creditwatch-negative-rising-management-governance-2026-11-25/",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "NVIDIA 第三季財報",
+      "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/",
+      "date": "2026-11-17"
+    },
+    {
+      "title": "NYSE 交易日曆",
+      "url": "https://www.nyse.com/trade/hours-calendars",
+      "date": "2026-11-26"
+    },
+    {
+      "title": "sp500 11/25 收盤",
       "url": "https://finance.google.com/finance/quote/.INX:INDEXSP",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "nasdaq 11/24 收盤",
+      "title": "nasdaq 11/25 收盤",
       "url": "https://www.investing.com/indices/nasdaq-composite-historical-data",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "sox 11/24 收盤",
+      "title": "sox 11/25 收盤",
       "url": "https://www.investing.com/indices/phlx-semiconductor-historical-data",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "NVDA 11/24 收盤",
+      "title": "NVDA 11/25 收盤",
       "url": "https://stockanalysis.com/stocks/nvda/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "TSLA 11/24 收盤",
+      "title": "TSLA 11/25 收盤",
       "url": "https://stockanalysis.com/stocks/tsla/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "SPCX 11/24 收盤",
+      "title": "SPCX 11/25 收盤",
       "url": "https://stockanalysis.com/stocks/spcx/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "VOO 11/24 收盤",
+      "title": "VOO 11/25 收盤",
       "url": "https://stockanalysis.com/etf/voo/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "QQQ 11/24 收盤",
+      "title": "QQQ 11/25 收盤",
       "url": "https://stockanalysis.com/etf/qqq/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "TSM 11/24 收盤",
+      "title": "TSM 11/25 收盤",
       "url": "https://stockanalysis.com/stocks/tsm/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "SOXX 11/24 收盤",
+      "title": "SOXX 11/25 收盤",
       "url": "https://stockanalysis.com/etf/soxx/history/",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     }
   ],
   "line_card": {
-    "market_context": "台股先大漲收盤，隨後美股轉弱。Nasdaq 跌幅大於 S&P 500，SOXX 跌得更多，顯示賣壓偏向科技與半導體。",
-    "taiwan_outlook": "台積電 ADR 走弱，台股盤初可能承壓。若台積電止穩且買盤擴及其他權值股，大盤有機會收斂跌幅；若半導體放量走弱，留意前一日漲幅回吐。",
-    "policy": "觀察美國通膨數據如何改變聯準會利率預期。若降息預期降溫，高估值科技股更容易承壓。本期未核實有新政策公告。"
+    "market_context": "11/25 台股加權 38,195.43（-4.80%），美股 S&P 500 -0.25%、Nasdaq -0.62%，台積電 ADR -1.96%。",
+    "taiwan_outlook": "若台積電守住低點，且鴻海、聯發科與上漲家數同步改善，反彈較有延續性。若科技權值股繼續下探，留意賣壓擴散。",
+    "policy": "美國核心 PCE 年增 3.3%，第三季 GDP 上修至年化 4.3%。美國貿易代表署提出涉及台灣的 301 關稅方案，後續留意適用產品、例外與實施日期。"
   }
 }
