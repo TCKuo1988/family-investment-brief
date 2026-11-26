@@ -33,14 +33,15 @@ h1{font-size:clamp(29px,5vw,41px);font-weight:900;letter-spacing:.5px}
 @media(max-width:480px){#overview th,#overview td{padding:7px 5px;font-size:12px}#overview td:first-child{white-space:normal}#overview td:last-child{white-space:nowrap}}
 @media(max-width:540px){.tabs{flex-wrap:wrap}.tabs>.tab{flex:1 1 28%}}#overview>.hero{border-top:4px solid #2563ab}
 .report-research{border-left:4px solid #237e80}
+.report-policy{border-left:4px solid #956019}
 #overview .podcastcard{border-left:4px solid #6856a4}
 #market-history-section{border-left:4px solid #527291}
 #overview .research-details[open] summary{margin-bottom:4px}
 </style></head><body><header><div class="wrap"><div class="eyebrow">TCK FAMILY INVESTMENT DASHBOARD</div><h1>TCK 每日台美股投資快報</h1><p id="date">2026 / 10 / 21｜週三晨報</p></div></header><main class="main"><nav class="tabs" aria-label="網站導覽"><button class="tab" data-tab="overview" aria-selected="true">投資晨報</button><button class="tab" data-tab="portfolio" aria-selected="false">目前持股</button><a class="tab" href="https://tck-private-vehicle-journal.tckuo1988.chatgpt.site" style="text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center">雙車帳本</a></nav>
 <section class="pane" id="overview" aria-label="投資晨報">
-<div class="card hero"><div class="headrow"><h2 class="title">市場解讀</h2><span class="tag" id="status"></span></div><p class="summary" id="summary"></p><button class="smallbtn" id="share">分享此頁 ↗</button></div>
+<div class="card hero"><div class="headrow"><h2 class="title">市場解讀</h2><span class="tag" id="status"></span></div><p class="summary" id="summary"></p><p id="market-context" hidden></p><button class="smallbtn" id="share">分享此頁 ↗</button></div>
 <div class="card"><div class="headrow"><h2 class="title">市場行情一覽</h2><span class="tag" id="etf-date-label">各標的以資料日為準</span></div><p class="briefnote">美股以美東正規盤未調整收盤計算，臺股採交易所收盤公告。</p><div class="tablewrap"><table><thead><tr><th>標的</th><th>收盤</th><th>漲跌</th><th>資料日</th></tr></thead><tbody id="tracked-prices"></tbody></table></div><p class="source" id="quote-status"></p><details class="research-details"><summary>行情與研究來源</summary><ul id="report-sources"></ul></details></div>
-<div class="card"><h2 class="title">台股方向與風險</h2><p id="market-outlook-stance" class="tag">待核實</p><p id="market-outlook-summary">跨市場訊號待核實。</p><p id="short-term"></p><p id="medium-term"></p><p class="source" id="market-outlook-asof"></p></div>
+<div class="card"><h2 class="title">台股方向與風險</h2><p id="market-outlook-stance" class="tag">待核實</p><p id="market-outlook-summary">跨市場訊號待核實。</p><p id="short-term"></p><p id="medium-term"></p><p class="source" id="market-outlook-asof"></p></div><div class="card report-policy" id="policy-section" hidden><h2 class="title">總經與政策</h2><p id="policy-note"></p></div>
 <div class="card"><div class="headrow"><h2 class="title">ETF 進場判斷</h2><span class="tag" id="etf-tag"></span></div><p id="etf-summary"></p></div>
 <div class="card"><div class="headrow"><h2 class="title">美股個股觀察</h2><span class="tag good" id="stocks-tag"></span></div><div id="stocks"></div></div>
 <div class="card"><div class="headrow"><h2 class="title">投資策略與注意事項</h2><span class="tag good" id="action-tag"></span></div><p id="action"></p><p class="sub" id="focus"></p></div>
@@ -218,6 +219,13 @@ function renderReport(d){
     return row;
   }));
   renderTrackedPrices(d);
+  const context=d.line_card?.market_context;
+  q('market-context').hidden=!context;
+  if(context) put('market-context',context);
+  if(d.line_card?.taiwan_outlook) put('market-outlook-summary',d.line_card.taiwan_outlook);
+  const policy=d.line_card?.policy;
+  q('policy-section').hidden=!policy;
+  if(policy) put('policy-note',policy);
   fillDailyAnalysis(d);
 }
 q('share').addEventListener('click',()=>{if(navigator.share)navigator.share({title:document.title,url:location.href}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(location.href).then(()=>alert('已複製網址'));else alert(location.href)});
