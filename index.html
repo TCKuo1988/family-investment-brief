@@ -75,9 +75,9 @@ html{scroll-behavior:smooth}
 <small id="status"></small>
 </section>
 <section id="policy-section" hidden><h2>總經與政策</h2><p id="policy-note"></p><div id="policy-reading"></div></section>
-<section id="stock-research"><h2>美股個股研究</h2><div id="stocks" class="editorial-stocks"></div></section>
+<section id="stock-research"><h2>美股個股研究</h2><p id="stock-evidence"></p><div id="stocks" class="editorial-stocks"></div></section>
 <section id="taiwan-risk"><h2>台股方向與 006208</h2><p id="market-outlook-summary"></p><p id="etf-summary"></p></section>
-<section id="investment-view"><h2>接下來觀察什麼</h2><p id="short-term"></p><p id="medium-term"></p></section>
+<section id="investment-view"><h2>接下來觀察什麼</h2><p id="risk-evidence"></p><p id="short-term"></p><p id="medium-term"></p></section>
 </article></div>
 <details class="editorial-data"><summary>完整行情、走勢與資料來源</summary>
 <div class="card" id="quote-table"><div class="headrow"><h2 class="title">市場行情一覽</h2></div><p class="briefnote">美股以美東正規盤未調整收盤計算，臺股採交易所收盤公告。</p><div class="tablewrap"><table><thead><tr><th>標的</th><th>收盤</th><th>漲跌</th><th>資料日</th></tr></thead><tbody id="tracked-prices"></tbody></table></div><p class="source" id="quote-status"></p><details class="research-details"><summary>行情與研究來源</summary><ul id="report-sources"></ul></details></div>
@@ -207,12 +207,15 @@ function renderReport(d){
   const policyReading=q('policy-reading');
   policyReading.replaceChildren();
   const policySection=(d.analysis_sections||[]).find(section=>/總經|政策/.test(section.title||''));
-  for(const point of policySection?.points||[]){
+  const policyPoints=d.public_analysis?.policy?[d.public_analysis.policy]:(policySection?.points||[]);
+  for(const point of policyPoints){
     if(typeof point!=='string'||point===notes.news||point===brief.policy)continue;
     const paragraph=document.createElement('p');
     paragraph.textContent=point;
     policyReading.appendChild(paragraph);
   }
+  put('stock-evidence',d.public_analysis?.stock||'');
+  put('risk-evidence',d.public_analysis?.investment||'');
   q('stocks').replaceChildren(...['NVDA','TSLA','SPCX'].map(ticker=>{
     const item=document.createElement('div');
     const title=document.createElement('h3');
