@@ -1,8 +1,8 @@
 # TCK 家庭投資晨報
 
-`report.json` 是 GitHub Pages 與 LINE 的共用晨報。臺股和美股分別列交易日。公開研究與行情檔案只放可公開資料，私人持股仍由 Firebase 帳號與規則管理。
+公開網站保留最後發布的 `report.json` 供查閱。每日晨報只在 Codex 對話提供，網站資料更新與 LINE 推播已停用。私人持股由獨立網站管理。
 
-## 每日更新（臺北時間）
+## 舊版自動流程（已停用）
 
 1. **07:35** Collect TCK market closes 蒐集並核對兩地預期交易日。當期結果寫入 [公開行情快照](https://raw.githubusercontent.com/TCKuo1988/family-investment-brief/tck-market-data/market-quotes.json)，同時保留 Actions artifact。研究前先核對快照的 `edition_date` 及兩地交易日。
 2. **08:00** 依 [每日研究指令](daily-research-prompt.md) 研究一次。驗證通過後以授權 GitHub 帳號只更新 `report.json`。若 ChatGPT 排程無法寫入 GitHub，使用同一次研究生成的 JSON 交由授權帳號提交。
